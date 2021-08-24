@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Codeforces Round #739 (Div. 3) Problem. C - Yuris</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Jihun Hong"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Jihun Hong"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="https:&amp;#x2F;&amp;#x2F;codeforces.com&amp;#x2F;contest&amp;#x2F;1560&amp;#x2F;problem&amp;#x2F;CCodeforces Round #739 (Div. 3) C. Infinity Table   TimeLimit MemoryLimit Difficulty Tags    1 S 256 MB 800 implementation math      Attr SubNo SolveTime Ti"><meta property="og:type" content="blog"><meta property="og:title" content="Codeforces Round #739 (Div. 3) Problem. C"><meta property="og:url" content="https://yuris99.github.io/2021/08/25/codeforces-739-C/"><meta property="og:site_name" content="Yuris"><meta property="og:description" content="https:&amp;#x2F;&amp;#x2F;codeforces.com&amp;#x2F;contest&amp;#x2F;1560&amp;#x2F;problem&amp;#x2F;CCodeforces Round #739 (Div. 3) C. Infinity Table   TimeLimit MemoryLimit Difficulty Tags    1 S 256 MB 800 implementation math      Attr SubNo SolveTime Ti"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://espresso.codeforces.com/aa1eece2e042a16fcbc09f2af100e73049fd8841.png"><meta property="article:published_time" content="2021-08-24T16:53:26.000Z"><meta property="article:modified_time" content="2021-08-24T17:59:36.409Z"><meta property="article:author" content="Jihun Hong"><meta property="article:tag" content="Algorithm"><meta property="article:tag" content="Problem Solve"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://espresso.codeforces.com/aa1eece2e042a16fcbc09f2af100e73049fd8841.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://yuris99.github.io/2021/08/25/codeforces-739-C/"},"headline":"Codeforces Round #739 (Div. 3) Problem. C","image":["https://espresso.codeforces.com/aa1eece2e042a16fcbc09f2af100e73049fd8841.png"],"datePublished":"2021-08-24T16:53:26.000Z","dateModified":"2021-08-24T17:59:36.409Z","author":{"@type":"Person","name":"Jihun Hong"},"publisher":{"@type":"Organization","name":"Yuris","logo":{"@type":"ImageObject","url":"https://yuris99.github.io/img/logo.svg"}},"description":"https:&#x2F;&#x2F;codeforces.com&#x2F;contest&#x2F;1560&#x2F;problem&#x2F;CCodeforces Round #739 (Div. 3) C. Infinity Table   TimeLimit MemoryLimit Difficulty Tags    1 S 256 MB 800 implementation math      Attr SubNo SolveTime Ti"}</script><link rel="canonical" href="https://yuris99.github.io/2021/08/25/codeforces-739-C/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Change Themes" href="https://github.com/ppoffice/hexo-theme-icarus">hi!<i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="카탈로그" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="검색" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-08-24T16:53:26.000Z" title="2021. 8. 25. 오전 1:53:26">2021-08-25</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-08-24T17:59:36.409Z" title="2021. 8. 25. 오전 2:59:36">2021-08-25</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Algorithm/">Algorithm</a><span> / </span><a class="link-muted" href="/categories/Algorithm/Codeforces/">Codeforces</a><span> / </span><a class="link-muted" href="/categories/Algorithm/Codeforces/Problems/">Problems</a></span></div></div><h1 class="title is-3 is-size-4-mobile">Codeforces Round #739 (Div. 3) Problem. C</h1><div class="content"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1560/problem/C">https://codeforces.com/contest/1560/problem/C</a><br>Codeforces Round #739 (Div. 3)</p>
+<h2 id="C-Infinity-Table"><a href="#C-Infinity-Table" class="headerlink" title="C. Infinity Table"></a>C. Infinity Table</h2><table>
+<thead>
+<tr>
+<th>TimeLimit</th>
+<th>MemoryLimit</th>
+<th align="center">Difficulty</th>
+<th>Tags</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 S</td>
+<td>256 MB</td>
+<td align="center">800</td>
+<td><code>implementation</code> <code>math</code></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Attr</th>
+<th align="left">SubNo</th>
+<th align="center">SolveTime</th>
+<th align="center">Time</th>
+<th align="center">Memory</th>
+<th align="center">Accept?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="left">126343911</td>
+<td align="center">+14min (70m)</td>
+<td align="center">30 ms</td>
+<td align="center">3600KB</td>
+<td align="center">Accepted</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="문제-요약"><a href="#문제-요약" class="headerlink" title="문제 요약"></a>문제 요약</h2><p>2차원배열 가장 왼쪽 위부터 시작하는 table이 있다. 이table은 다음과같은 패턴으로 순서대로 생성이 된다.<br><img src="https://espresso.codeforces.com/aa1eece2e042a16fcbc09f2af100e73049fd8841.png" alt="table 패턴"><br>위와같은 패턴으로 table이 무한정 생성될 때 <strong>k</strong>가 존재하는 행과 열을 구하여라.</p>
+<h3 id="피드백"><a href="#피드백" class="headerlink" title="피드백"></a>피드백</h3><h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>1-st line : Testcase (1 &lt;= t &lt;= 100)<br>각 Testcase 마다<br>t-th line : 1개의 정수 (1 &lt;= k &lt;= 10<sup>9</sup>)</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>각 Testcase 마다<br>2개의 정수 (r, c &gt;= 1) space로 구분 : <strong>k</strong>가 위치하고있는 열과 행</p>
+<hr>
+<h2 id="문제-풀이"><a href="#문제-풀이" class="headerlink" title="문제 풀이"></a>문제 풀이</h2><p>또 800점 문제이다. 또한 패턴만 구하면 간단하게 해결할 수 있었다.</p>
+<p>0번째 열을 확인해보면 각각 n번째 행의 원소들이 <strong>n의 제곱</strong>인것을 확인할 수 있다.<br>다르게 말하면 0번째 행의 0보다 큰 n번째 열의 원소는 <strong>n-1의 제곱 + 1</strong>이라는 사실도 성립된다.<br>또한 변화하는 행과 열의 종류가 변경되는 시점은 <strong>n-1의 제곱 + (n-1)</strong>이기 때문에 <code>k</code>의 위치는 쉽게 구할 수 있었다.</p>
+<hr>
+<h3 id="최종-해설"><a href="#최종-해설" class="headerlink" title="최종 해설"></a>최종 해설</h3><p>먼저 정수형 <code>sq</code>를 선언하여 <code>k</code>의 제곱근(소수점부분은 제외)을 구하였다.</p>
+<p>만약 소수점을 제외한 <code>sq</code>의 제곱이 <code>k</code>와 같다면, <code>k</code>의 위치는 <strong>0열 <code>sq</code>행</strong>으로 고정되기 때문에 예외를 두어 처리를 해 주었다.</p>
+<p>다음으로 알아야 하는것은 <code>k</code>가 위치하고 있는 곳이 열이 변경되는 구간인지, 행이 변경되는 구간인지 알 필요가 있다.<br>먼저 행과 열이 바뀌는 구간은 <strong><code>sq</code>의 제곱 + <code>sq</code></strong>로 구할 수 있다. (행과 열이 만나는 시점)</p>
+<p>따라서 해당 값보다 크게 되면, 가로로 배치되는 시점이므로 행의 위치는 <code>sq+1</code>로 고정이며 열의 위치는 <code>sq+1의 제곱</code>에서 <code>k</code>값을 뺀 값이 k가 위치하는 열의 번호가 된다.</p>
+<p>또는</p>
+<p>행과 열이 만나는 시점보다 <code>k</code>의 값이 작게 되면, 세로로 배치되는 시점이므로 열의 위치는 <code>sq+1</code>로 고정이며 행의 위치는 <code>k</code>에서 <code>sq의 제곱</code>을 뺀 값이 된다.</p>
+<hr>
+<h2 id="최종-코드"><a href="#최종-코드" class="headerlink" title="최종 코드"></a>최종 코드</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> TestCase = <span class="number">0</span>;</span><br><span class="line">    cin &gt;&gt; TestCase;</span><br><span class="line">    <span class="keyword">while</span> (TestCase --)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> k;</span><br><span class="line">        cin &gt;&gt; k;</span><br><span class="line">        <span class="keyword">int</span> sq = (<span class="keyword">int</span>)<span class="built_in">sqrt</span>(k);</span><br><span class="line">        <span class="keyword">if</span>(sq*sq == k) &#123;</span><br><span class="line">            cout &lt;&lt; sq &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; <span class="number">1</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(k &gt; sq*sq+sq) </span><br><span class="line">            cout &lt;&lt; sq+<span class="number">1</span> &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; sq-(k-(sq*sq)-sq)+<span class="number">2</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            cout &lt;&lt; k-(sq*sq) &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; sq+<span class="number">1</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="느낀점"><a href="#느낀점" class="headerlink" title="느낀점"></a>느낀점</h2><p>어렵지 않았다. 간단한 공식을 알아내면 쉽게 풀 수 있는 문제였다.<br>앞에서 뻘짓한게 아까웠다..</p>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Algorithm/">Algorithm</a><a class="link-muted mr-2" rel="tag" href="/tags/Problem-Solve/">Problem Solve</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/08/25/codeforces-739-D/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Codeforces Round</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/08/23/codeforces-739-B/"><span class="level-item">Codeforces Round #739 (Div. 3) Problem. B</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">댓글</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "b40938e127a0f296dee38b59c52e137f",
+            repo: "yuris99.github.io",
+            owner: "yuris99",
+            clientID: "82a6a8c340c16a0049b8",
+            clientSecret: "79a7021606c3d95b487b75348d55505eee545664",
+            admin: ["yuris99"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 10,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">카탈로그</h3><ul class="menu-list"><li><a class="level is-mobile" href="#C-Infinity-Table"><span class="level-left"><span class="level-item">1</span><span class="level-item">C. Infinity Table</span></span></a></li><li><a class="level is-mobile" href="#문제-요약"><span class="level-left"><span class="level-item">2</span><span class="level-item">문제 요약</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#피드백"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">피드백</span></span></a></li><li><a class="level is-mobile" href="#Input"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">Input</span></span></a></li><li><a class="level is-mobile" href="#Output"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">Output</span></span></a></li></ul></li><li><a class="level is-mobile" href="#문제-풀이"><span class="level-left"><span class="level-item">3</span><span class="level-item">문제 풀이</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#최종-해설"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">최종 해설</span></span></a></li></ul></li><li><a class="level is-mobile" href="#최종-코드"><span class="level-left"><span class="level-item">4</span><span class="level-item">최종 코드</span></span></a></li><li><a class="level is-mobile" href="#느낀점"><span class="level-left"><span class="level-item">5</span><span class="level-item">느낀점</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">5</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/"><span class="level-start"><span class="level-item">Codeforces</span></span><span class="level-end"><span class="level-item tag">5</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/Problems/"><span class="level-start"><span class="level-item">Problems</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li></ul></li></ul></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-3/"><span class="tag">Div.3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Problem-Solve/"><span class="tag">Problem Solve</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/summary/"><span class="tag">summary</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a><p class="is-size-7"><span>&copy; 2021 Jihun Hong</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/yuris99"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="맨 위로" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "이 웹 사이트는 귀하의 경험을 향상시키기 위해 Cookie를 사용합니다.",
+          dismiss: "무시",
+          allow: "허용",
+          deny: "거부",
+          link: "더 알아보기",
+          policy: "Cookie 정책",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="입력 하세요..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"입력 하세요...","untitled":"(제목 없음)","posts":"포스트","pages":"페이지","categories":"카테고리","tags":"태그"});
+        });</script></body></html>
