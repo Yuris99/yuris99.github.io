@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>[강의정리] 데이터통신과네트워크 Network Layer - Yuris</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Jihun Hong"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Jihun Hong"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Network-layer function Forwarding: 여러개의 패킷을 매칭되는 output 포트로 연결시켜주는 역할  Routing: 포워딩한 패킷들이 정해진 목적지까지 가는것   예시: 여행  포워딩: 교차로에서 어디로갈지 결정 라우팅: 출발점에서 도착점까지 어떤 경로로 갈지 정하는것    Data plane router input port로"><meta property="og:type" content="blog"><meta property="og:title" content="[강의정리] 데이터통신과네트워크 Network Layer"><meta property="og:url" content="https://yuris99.github.io/2021/12/07/dataNetwork-network/"><meta property="og:site_name" content="Yuris"><meta property="og:description" content="Network-layer function Forwarding: 여러개의 패킷을 매칭되는 output 포트로 연결시켜주는 역할  Routing: 포워딩한 패킷들이 정해진 목적지까지 가는것   예시: 여행  포워딩: 교차로에서 어디로갈지 결정 라우팅: 출발점에서 도착점까지 어떤 경로로 갈지 정하는것    Data plane router input port로"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://yuris99.github.io/img/og_image.png"><meta property="article:published_time" content="2021-12-07T02:57:57.000Z"><meta property="article:modified_time" content="2021-12-07T10:23:41.365Z"><meta property="article:author" content="Jihun Hong"><meta property="article:tag" content="Computer Network"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://yuris99.github.io/2021/12/07/dataNetwork-network/"},"headline":"[강의정리] 데이터통신과네트워크 Network Layer","image":["https://yuris99.github.io/img/og_image.png"],"datePublished":"2021-12-07T02:57:57.000Z","dateModified":"2021-12-07T10:23:41.365Z","author":{"@type":"Person","name":"Jihun Hong"},"publisher":{"@type":"Organization","name":"Yuris","logo":{"@type":"ImageObject","url":"https://yuris99.github.io/img/logo.svg"}},"description":"Network-layer function Forwarding: 여러개의 패킷을 매칭되는 output 포트로 연결시켜주는 역할  Routing: 포워딩한 패킷들이 정해진 목적지까지 가는것   예시: 여행  포워딩: 교차로에서 어디로갈지 결정 라우팅: 출발점에서 도착점까지 어떤 경로로 갈지 정하는것    Data plane router input port로"}</script><link rel="canonical" href="https://yuris99.github.io/2021/12/07/dataNetwork-network/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Change Themes" href="https://github.com/ppoffice/hexo-theme-icarus">hi!<i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="카탈로그" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="검색" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-07T02:57:57.000Z" title="2021. 12. 7. 오전 11:57:57">2021-12-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-07T10:23:41.365Z" title="2021. 12. 7. 오후 7:23:41">2021-12-07</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></span></div></div><h1 class="title is-3 is-size-4-mobile">[강의정리] 데이터통신과네트워크 Network Layer</h1><div class="content"><hr>
+<h2 id="Network-layer-function"><a href="#Network-layer-function" class="headerlink" title="Network-layer function"></a>Network-layer function</h2><ul>
+<li><p>Forwarding: 여러개의 패킷을 매칭되는 output 포트로 연결시켜주는 역할</p>
+</li>
+<li><p>Routing: 포워딩한 패킷들이 정해진 목적지까지 가는것 </p>
+</li>
+<li><p>예시: 여행</p>
+<ul>
+<li>포워딩: 교차로에서 어디로갈지 결정</li>
+<li>라우팅: 출발점에서 도착점까지 어떤 경로로 갈지 정하는것</li>
+</ul>
+</li>
+</ul>
+<h3 id="Data-plane"><a href="#Data-plane" class="headerlink" title="Data plane"></a>Data plane</h3><ul>
+<li>router input port로 어떠한 데이터가 왔을 때 output port로 포워딩을 해주는것을 결정하는 역할</li>
+</ul>
+<h3 id="control-plane"><a href="#control-plane" class="headerlink" title="control plane"></a>control plane</h3><ul>
+<li><p>datagram이 왔을때 어떤경로로 routing 해줄지 결정</p>
+</li>
+<li><p>2가지 control-plane approaches:</p>
+<ul>
+<li>traditional routing algorithm: 패킷에서 최선의 결정으로 라우팅</li>
+<li>software-defined networking(SDN): 중앙에서 소프트웨어적으로 라우팅을 변경해줌</li>
+</ul>
+</li>
+</ul>
+<h4 id="Tanditional-Approch"><a href="#Tanditional-Approch" class="headerlink" title="Tanditional Approch"></a>Tanditional Approch</h4><ul>
+<li>Routing Alogrithm: forwarding table을 만들어줌 (control plane)</li>
+<li>table로 forwarding 시켜줌(data plane)</li>
+</ul>
+<h4 id="SDN"><a href="#SDN" class="headerlink" title="SDN"></a>SDN</h4><ul>
+<li>중앙서버에 RemoteController 존재.</li>
+<li>각Router에 Control agents로 컨트롤</li>
+</ul>
+<h2 id="Router-architecture"><a href="#Router-architecture" class="headerlink" title="Router architecture"></a>Router architecture</h2><h3 id="Input-port-functions"><a href="#Input-port-functions" class="headerlink" title="Input port functions"></a>Input port functions</h3><ul>
+<li>line termination: 아날로그신호 -&gt; 디지털</li>
+<li>link layer protocol: link layer에서 작업</li>
+</ul>
+<h4 id="decentralized-switching"><a href="#decentralized-switching" class="headerlink" title="decentralized switching"></a>decentralized switching</h4><ul>
+<li>lookup: 어느 output port로갈지 결정</li>
+<li>forwarding: output 출력 port 설정</li>
+<li>queueing: 나가는 속도보다 들어오는 속도가 빠르면 queueing</li>
+</ul>
+<h5 id="destination-based-forwarding"><a href="#destination-based-forwarding" class="headerlink" title="destination-based forwarding:"></a>destination-based forwarding:</h5><ul>
+<li>패킷에서 destination 해더 정보를 보고 어디로 보낼지 결정</li>
+</ul>
+<h5 id="generalized-forwarding"><a href="#generalized-forwarding" class="headerlink" title="generalized forwarding:"></a>generalized forwarding:</h5><ul>
+<li>헤더의 여러 정보들을 보고 결정</li>
+<li>특수한 경우에만 사용</li>
+</ul>
+<h3 id="Switch-fabric"><a href="#Switch-fabric" class="headerlink" title="Switch fabric"></a>Switch fabric</h3><ul>
+<li>경로들이 엉킬수도 있음 (fabric: 직물)</li>
+</ul>
+<h3 id="destination-based-forwarding-1"><a href="#destination-based-forwarding-1" class="headerlink" title="destination-based forwarding"></a>destination-based forwarding</h3><ul>
+<li>destination IP Address 주소를 기반으로 어떤 Output Port로 데이터를 보낼 것인지를 결정하는 forwarding algorithm </li>
+</ul>
+<h4 id="longest-prefix-matching"><a href="#longest-prefix-matching" class="headerlink" title="longest prefix matching"></a>longest prefix matching</h4><ul>
+<li>원하는 부분만 정하고 나머지부분은 와일드카드로 설정하는 방법</li>
+</ul>
+<h3 id="Switching"><a href="#Switching" class="headerlink" title="Switching"></a>Switching</h3><ul>
+<li>Switching fabric: 라우터의 핵심</li>
+<li>memory: 과거방식, 패킷을 받고 메모리에 보관후 포워딩 테이블을 보고 보냄, 인터럽트 기반.</li>
+<li>bus: 레이블을 붙여서 버스에 보냄, 자신의 레이블이면 받아서 처리, 아니면 드롭</li>
+<li>crossbar: interseption마다 on off 스위치 있음</li>
+</ul>
+<h3 id="Input-port-queueing"><a href="#Input-port-queueing" class="headerlink" title="Input port queueing"></a>Input port queueing</h3><ul>
+<li>Head-of-the-Line(HOL) blocking: 앞선 패킷(head)이 나가지 않았을 때 뒤에있는 패킷들도 계속 기다리는 현상</li>
+</ul>
+<h3 id="Output-port-queueing"><a href="#Output-port-queueing" class="headerlink" title="Output port queueing"></a>Output port queueing</h3><ul>
+<li>line termination에서 보내는 속도가 switch fabric에서 들어오는 속도보다 느릴 때 datagram buffer에서 queueing 발생</li>
+<li>scheduling discipline: 우선순위 기발 패킷 스케쥴링</li>
+</ul>
+<h4 id="Schedule-mechanisms-스케쥴링-매커니즘"><a href="#Schedule-mechanisms-스케쥴링-매커니즘" class="headerlink" title="Schedule mechanisms (스케쥴링 매커니즘)"></a>Schedule mechanisms (스케쥴링 매커니즘)</h4><ul>
+<li>FIFO 스케쥴링: 먼저 들어온 패킷을 먼저 보냄(FCFS)</li>
+</ul>
+<h4 id="priority-scheduling-우선순위-스케쥴링"><a href="#priority-scheduling-우선순위-스케쥴링" class="headerlink" title="priority scheduling (우선순위 스케쥴링)"></a>priority scheduling (우선순위 스케쥴링)</h4><ul>
+<li>여러개 큐중 우선순위가 높은 큐의 패킷부터 전송</li>
+<li>우선순위가 낮은 큐는 끝없이 밀릴 수 있음: 가중치를 줘서 우선순위를 가변적으로 만듬</li>
+</ul>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Computer-Network/">Computer Network</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/11/26/dataNetwork-transport/"><span class="level-item">[강의정리] 데이터통신과네트워크 Transport Layer</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">댓글</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "b4bac81824030609a5f19843f86b8c1a",
+            repo: "yuris99.github.io",
+            owner: "yuris99",
+            clientID: "82a6a8c340c16a0049b8",
+            clientSecret: "79a7021606c3d95b487b75348d55505eee545664",
+            admin: ["yuris99"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 10,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">카탈로그</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Network-layer-function"><span class="level-left"><span class="level-item">1</span><span class="level-item">Network-layer function</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Data-plane"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">Data plane</span></span></a></li><li><a class="level is-mobile" href="#control-plane"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">control plane</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Tanditional-Approch"><span class="level-left"><span class="level-item">1.2.1</span><span class="level-item">Tanditional Approch</span></span></a></li><li><a class="level is-mobile" href="#SDN"><span class="level-left"><span class="level-item">1.2.2</span><span class="level-item">SDN</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#Router-architecture"><span class="level-left"><span class="level-item">2</span><span class="level-item">Router architecture</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Input-port-functions"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">Input port functions</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#decentralized-switching"><span class="level-left"><span class="level-item">2.1.1</span><span class="level-item">decentralized switching</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Switch-fabric"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">Switch fabric</span></span></a></li><li><a class="level is-mobile" href="#destination-based-forwarding-1"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">destination-based forwarding</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#longest-prefix-matching"><span class="level-left"><span class="level-item">2.3.1</span><span class="level-item">longest prefix matching</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Switching"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">Switching</span></span></a></li><li><a class="level is-mobile" href="#Input-port-queueing"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">Input port queueing</span></span></a></li><li><a class="level is-mobile" href="#Output-port-queueing"><span class="level-left"><span class="level-item">2.6</span><span class="level-item">Output port queueing</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Schedule-mechanisms-스케쥴링-매커니즘"><span class="level-left"><span class="level-item">2.6.1</span><span class="level-item">Schedule mechanisms (스케쥴링 매커니즘)</span></span></a></li><li><a class="level is-mobile" href="#priority-scheduling-우선순위-스케쥴링"><span class="level-left"><span class="level-item">2.6.2</span><span class="level-item">priority scheduling (우선순위 스케쥴링)</span></span></a></li></ul></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/"><span class="level-start"><span class="level-item">Codeforces</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/Problems/"><span class="level-start"><span class="level-item">Problems</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/"><span class="level-start"><span class="level-item">Lecture Summary</span></span><span class="level-end"><span class="level-item tag">17</span></span></a><ul><li><a class="level is-mobile" href="/categories/Lecture-Summary/Advanced-Computer-Math/"><span class="level-start"><span class="level-item">Advanced Computer Math</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Computer-Data-Network/"><span class="level-start"><span class="level-item">Computer Data Network</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Information-Science/"><span class="level-start"><span class="level-item">Information Science</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Math/"><span class="tag">Computer Math</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-2/"><span class="tag">Div.2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-3/"><span class="tag">Div.3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Information-Science/"><span class="tag">Information Science</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Problem-Solve/"><span class="tag">Problem Solve</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/summary/"><span class="tag">summary</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a><p class="is-size-7"><span>&copy; 2021 Jihun Hong</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/yuris99"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="맨 위로" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "이 웹 사이트는 귀하의 경험을 향상시키기 위해 Cookie를 사용합니다.",
+          dismiss: "무시",
+          allow: "허용",
+          deny: "거부",
+          link: "더 알아보기",
+          policy: "Cookie 정책",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="입력 하세요..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"입력 하세요...","untitled":"(제목 없음)","posts":"포스트","pages":"페이지","categories":"카테고리","tags":"태그"});
+        });</script></body></html>
