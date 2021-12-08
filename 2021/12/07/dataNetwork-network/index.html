@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>[강의정리] 데이터통신과네트워크 Network Layer - Yuris</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Jihun Hong"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Jihun Hong"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Network-layer function Forwarding: 여러개의 패킷을 매칭되는 output 포트로 연결시켜주는 역할  Routing: 포워딩한 패킷들이 정해진 목적지까지 가는것   예시: 여행  포워딩: 교차로에서 어디로갈지 결정 라우팅: 출발점에서 도착점까지 어떤 경로로 갈지 정하는것    Data plane router input port로"><meta property="og:type" content="blog"><meta property="og:title" content="[강의정리] 데이터통신과네트워크 Network Layer"><meta property="og:url" content="https://yuris99.github.io/2021/12/07/dataNetwork-network/"><meta property="og:site_name" content="Yuris"><meta property="og:description" content="Network-layer function Forwarding: 여러개의 패킷을 매칭되는 output 포트로 연결시켜주는 역할  Routing: 포워딩한 패킷들이 정해진 목적지까지 가는것   예시: 여행  포워딩: 교차로에서 어디로갈지 결정 라우팅: 출발점에서 도착점까지 어떤 경로로 갈지 정하는것    Data plane router input port로"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://yuris99.github.io/img/og_image.png"><meta property="article:published_time" content="2021-12-07T02:57:57.000Z"><meta property="article:modified_time" content="2021-12-07T10:23:41.365Z"><meta property="article:author" content="Jihun Hong"><meta property="article:tag" content="Computer Network"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://yuris99.github.io/2021/12/07/dataNetwork-network/"},"headline":"[강의정리] 데이터통신과네트워크 Network Layer","image":["https://yuris99.github.io/img/og_image.png"],"datePublished":"2021-12-07T02:57:57.000Z","dateModified":"2021-12-07T10:23:41.365Z","author":{"@type":"Person","name":"Jihun Hong"},"publisher":{"@type":"Organization","name":"Yuris","logo":{"@type":"ImageObject","url":"https://yuris99.github.io/img/logo.svg"}},"description":"Network-layer function Forwarding: 여러개의 패킷을 매칭되는 output 포트로 연결시켜주는 역할  Routing: 포워딩한 패킷들이 정해진 목적지까지 가는것   예시: 여행  포워딩: 교차로에서 어디로갈지 결정 라우팅: 출발점에서 도착점까지 어떤 경로로 갈지 정하는것    Data plane router input port로"}</script><link rel="canonical" href="https://yuris99.github.io/2021/12/07/dataNetwork-network/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Change Themes" href="https://github.com/ppoffice/hexo-theme-icarus">hi!<i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="카탈로그" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="검색" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-07T02:57:57.000Z" title="2021. 12. 7. 오전 11:57:57">2021-12-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-07T10:23:41.365Z" title="2021. 12. 7. 오후 7:23:41">2021-12-07</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></span></div></div><h1 class="title is-3 is-size-4-mobile">[강의정리] 데이터통신과네트워크 Network Layer</h1><div class="content"><hr>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>[강의정리] 데이터통신과네트워크 Network Layer - Yuris</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Jihun Hong"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Jihun Hong"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Network-layer function Forwarding: 여러개의 패킷을 매칭되는 output 포트로 연결시켜주는 역할  Routing: 포워딩한 패킷들이 정해진 목적지까지 가는것   예시: 여행  포워딩: 교차로에서 어디로갈지 결정 라우팅: 출발점에서 도착점까지 어떤 경로로 갈지 정하는것    Data plane router input port로"><meta property="og:type" content="blog"><meta property="og:title" content="[강의정리] 데이터통신과네트워크 Network Layer"><meta property="og:url" content="https://yuris99.github.io/2021/12/07/dataNetwork-network/"><meta property="og:site_name" content="Yuris"><meta property="og:description" content="Network-layer function Forwarding: 여러개의 패킷을 매칭되는 output 포트로 연결시켜주는 역할  Routing: 포워딩한 패킷들이 정해진 목적지까지 가는것   예시: 여행  포워딩: 교차로에서 어디로갈지 결정 라우팅: 출발점에서 도착점까지 어떤 경로로 갈지 정하는것    Data plane router input port로"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://yuris99.github.io/img/og_image.png"><meta property="article:published_time" content="2021-12-07T02:57:57.000Z"><meta property="article:modified_time" content="2021-12-08T13:12:14.286Z"><meta property="article:author" content="Jihun Hong"><meta property="article:tag" content="Computer Network"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://yuris99.github.io/2021/12/07/dataNetwork-network/"},"headline":"[강의정리] 데이터통신과네트워크 Network Layer","image":["https://yuris99.github.io/img/og_image.png"],"datePublished":"2021-12-07T02:57:57.000Z","dateModified":"2021-12-08T13:12:14.286Z","author":{"@type":"Person","name":"Jihun Hong"},"publisher":{"@type":"Organization","name":"Yuris","logo":{"@type":"ImageObject","url":"https://yuris99.github.io/img/logo.svg"}},"description":"Network-layer function Forwarding: 여러개의 패킷을 매칭되는 output 포트로 연결시켜주는 역할  Routing: 포워딩한 패킷들이 정해진 목적지까지 가는것   예시: 여행  포워딩: 교차로에서 어디로갈지 결정 라우팅: 출발점에서 도착점까지 어떤 경로로 갈지 정하는것    Data plane router input port로"}</script><link rel="canonical" href="https://yuris99.github.io/2021/12/07/dataNetwork-network/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Change Themes" href="https://github.com/ppoffice/hexo-theme-icarus">hi!<i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="카탈로그" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="검색" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-07T02:57:57.000Z" title="2021. 12. 7. 오전 11:57:57">2021-12-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-08T13:12:14.286Z" title="2021. 12. 8. 오후 10:12:14">2021-12-08</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></span></div></div><h1 class="title is-3 is-size-4-mobile">[강의정리] 데이터통신과네트워크 Network Layer</h1><div class="content"><hr>
 <h2 id="Network-layer-function"><a href="#Network-layer-function" class="headerlink" title="Network-layer function"></a>Network-layer function</h2><ul>
 <li><p>Forwarding: 여러개의 패킷을 매칭되는 output 포트로 연결시켜주는 역할</p>
 </li>
@@ -78,7 +78,508 @@
 <li>여러개 큐중 우선순위가 높은 큐의 패킷부터 전송</li>
 <li>우선순위가 낮은 큐는 끝없이 밀릴 수 있음: 가중치를 줘서 우선순위를 가변적으로 만듬</li>
 </ul>
-</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Computer-Network/">Computer Network</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/11/26/dataNetwork-transport/"><span class="level-item">[강의정리] 데이터통신과네트워크 Transport Layer</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">댓글</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+<h4 id="Round-Robin-RR"><a href="#Round-Robin-RR" class="headerlink" title="Round Robin (RR)"></a>Round Robin (RR)</h4><ul>
+<li>각 클래스마다 한번씩 보냄</li>
+</ul>
+<h4 id="Weighted-Fair-Queueing-WFQ"><a href="#Weighted-Fair-Queueing-WFQ" class="headerlink" title="Weighted Fair Queueing (WFQ)"></a>Weighted Fair Queueing (WFQ)</h4><ul>
+<li>Round Robin 방식에서 사용</li>
+<li>각 클래스에 사이클의 weight를 줌</li>
+</ul>
+<hr>
+<h2 id="Internet-network-layer"><a href="#Internet-network-layer" class="headerlink" title="Internet network layer"></a>Internet network layer</h2><ul>
+<li>routing protocols -&gt; forwarding table</li>
+<li>IP protocol</li>
+</ul>
+<h3 id="IP-fragmentation-reassembly"><a href="#IP-fragmentation-reassembly" class="headerlink" title="IP fragmentation, reassembly"></a>IP fragmentation, reassembly</h3><ul>
+<li>network links have MTU(max transfer size)</li>
+<li>fragmentation: 큰 패킷이 MTU때문에 작게 쪼개지는것</li>
+<li>reassembly: 쪼개진 패킷들을 합치는것 (final destination에서만 이루어짐)</li>
+</ul>
+<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><ul>
+<li>4000byte datagram</li>
+<li>MTU = 1500bytes</li>
+</ul>
+<ol>
+<li>length: 1500(1480 data field) / ID = x / fragflag = 1 / offset = 0</li>
+<li>length: 1500(1480 data field) / ID = x / fragflag = 1 / offset = 185(1480/8)</li>
+<li>length: 1040(1020 data field) / ID = x / fragflag = 0 / offset = 370</li>
+</ol>
+<h3 id="IP-addressing"><a href="#IP-addressing" class="headerlink" title="IP addressing"></a>IP addressing</h3><ul>
+<li><p>ip address: 32-bit</p>
+</li>
+<li><p>interface: host/router와 physical link 사이의 connection</p>
+</li>
+<li><p>router: multiple interface</p>
+</li>
+</ul>
+<h4 id="Subnets"><a href="#Subnets" class="headerlink" title="Subnets"></a>Subnets</h4><ul>
+<li><p>높은 주소 비트: subnet part</p>
+</li>
+<li><p>낮은 주소 비트: host part</p>
+</li>
+<li><p>ex: 233.1.1.0/24 (subnet mask: /24): 총 24비트(233.1.1)이 서브넷</p>
+</li>
+</ul>
+<h4 id="IP-addressing-classful-addressing"><a href="#IP-addressing-classful-addressing" class="headerlink" title="IP addressing: classful addressing"></a>IP addressing: classful addressing</h4><ul>
+<li>IP주소는 8, 16, 24비트 단위로 쪼개짐</li>
+</ul>
+<h5 id="classful-addressing-문제"><a href="#classful-addressing-문제" class="headerlink" title="classful addressing 문제"></a>classful addressing 문제</h5><ul>
+<li>class C(/24)를 보면 2^8 - 2 = 254개의 호스트만 사용가능 (기업에선 매우 작은 숫자)</li>
+<li>그렇다고 class B(/16)을 사용하면 65,634개로 너무 많음</li>
+</ul>
+<h4 id="IP-addressing-CIDR"><a href="#IP-addressing-CIDR" class="headerlink" title="IP addressing: CIDR"></a>IP addressing: CIDR</h4><ul>
+<li><p>CIDR: Classless Inter Domain Routing</p>
+</li>
+<li><p>서브넷 임의의 길이</p>
+</li>
+<li><p>address format: a.b.c.d/x, x는 서브넷을 의미하는 비트의 길이</p>
+</li>
+<li><p>Broadcasting address: 255.255.255.255</p>
+</li>
+</ul>
+<h4 id="IP-addresses-how-to-get-one"><a href="#IP-addresses-how-to-get-one" class="headerlink" title="IP addresses: how to get one?"></a>IP addresses: how to get one?</h4><ul>
+<li>hard-coded by system admin in a file</li>
+<li><strong>DHCP</strong>(Dynamic Host Configuration Protocol): 동적으로 서버에서 주소를 가져옴<ul>
+<li>plug and play</li>
+</ul>
+</li>
+</ul>
+<h4 id="DHCP-client-server-scenario"><a href="#DHCP-client-server-scenario" class="headerlink" title="DHCP client-server scenario"></a>DHCP client-server scenario</h4><ol>
+<li>DHCP discover: client broadcast로 DHCP 서버가 있는지 물어봄 </li>
+<li>DHCP offer: DHCP 서버가 broadcast해줌</li>
+</ol>
+<ul>
+<li>yiaddrr: your Internet address (너가 쓸 인터넷 주소)</li>
+</ul>
+<ol start="3">
+<li>DHCP request: yiaddrr 사용하겠다고 broadcast 해줌</li>
+<li>DHCP ACK: 사용해도된다 허락해줌</li>
+</ol>
+<h5 id="ISP-Internet-Service-Provide"><a href="#ISP-Internet-Service-Provide" class="headerlink" title="ISP: Internet Service Provide"></a>ISP: Internet Service Provide</h5><ul>
+<li>ISP’s block: 200.23.16.0/20</li>
+<li>Organization 0: 200.23.16.0/23</li>
+<li>Organization 1: 200.23.18.0/23</li>
+<li>…</li>
+<li>Organization 7: 200.23.30.0/23</li>
+</ul>
+<p>Q: ISP는 어떻게 address를 가져오나?<br>A: ICANN: Internet Corportaion for Assigned Names and Numbers</p>
+<h3 id="NAT-network-address-translation"><a href="#NAT-network-address-translation" class="headerlink" title="NAT: network address translation"></a>NAT: network address translation</h3><ul>
+<li>local network에서 내부 서브넷으로 통신(10.0.0/24)</li>
+<li>외부로 나갈때는 외부에서 쓸 수 있는 주소로 바꿔줌 (138.76.29.7)</li>
+<li>반대도 수행</li>
+</ul>
+<hr>
+<h2 id="용어-정리"><a href="#용어-정리" class="headerlink" title="용어 정리:"></a>용어 정리:</h2><ul>
+<li><p>공인 IP 주소 (public IP address)</p>
+<ul>
+<li>전 세계적으로 고유한 주소 (예: 서울시 동작구 상도동 정보과학관 102호)</li>
+</ul>
+</li>
+<li><p>사설 IP 주소 (private IP address)</p>
+<ul>
+<li>주소가 고유하지 않음 (예: 624호)</li>
+<li>사용 예:<ul>
+<li>공유기에 공인 IP 할당 후, 공유기에 연결된 다수의 컴퓨터에 사설 IP 할당</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>공인 IP와 사설 IP를 변환해주는것: NAT</p>
+</li>
+</ul>
+<h3 id="NAT-network-address-translation-1"><a href="#NAT-network-address-translation-1" class="headerlink" title="NAT: network address translation"></a>NAT: network address translation</h3><ul>
+<li>사설 네트워크를 구축하면 특정 IP range를 ISP로부터 사올 필요 없음<ul>
+<li>모든 device에 하나의 IP</li>
+</ul>
+</li>
+<li>내부 사설 IP가 바뀌어도 외부에 통보필요x</li>
+<li>내부 IP를 바꾸지 않고 ISP 변경 가능</li>
+<li>외부에는 고정IP주소만 공개되기 때문에 보안적으로도 좋음</li>
+</ul>
+<h4 id="NAT-implementation-구현"><a href="#NAT-implementation-구현" class="headerlink" title="NAT implementation(구현)"></a>NAT implementation(구현)</h4><ol>
+<li>source: 자신의 사설IP와 임의의 PORT NUMBER</li>
+<li>NAT tranlation table 에 기록후 source change</li>
+<li>destination에서 도착하면 table을 보고 맞는 destination으로 보내줌</li>
+</ol>
+<h3 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h3><h4 id="motivation-동기"><a href="#motivation-동기" class="headerlink" title="motivation (동기)"></a>motivation (동기)</h4><ul>
+<li>32비트 공간은 결국 부족해질것이다.</li>
+<li>IPv4의 format header에서 쓸모없는게 너무 많음 speed 증가시키기 위해</li>
+<li>QoS(Quality of Service)를 증가시키기 위해</li>
+</ul>
+<h4 id="IPv6-datagram-format"><a href="#IPv6-datagram-format" class="headerlink" title="IPv6 datagram format"></a>IPv6 datagram format</h4><ul>
+<li>Traffic class: datagram의 priority(우선순위)를 주기위한 field</li>
+<li>Flow Label: datagram의 flow가 같은 flow 인지 identify(식별)<ul>
+<li>flow 개념이 정확하게 정의되지 않았음</li>
+</ul>
+</li>
+<li>Next header: upper layer protocol의 정보를 기입할때 사용(tcp/udp)</li>
+</ul>
+<h4 id="IPv4-비교"><a href="#IPv4-비교" class="headerlink" title="IPv4 비교"></a>IPv4 비교</h4><ul>
+<li>Checksum: 속도를 올리기 위해 빠짐</li>
+<li>Options: 필요하면 “Next header” 활용</li>
+<li>ICMPv6: new version of ICMP<ul>
+<li>새로운 메시지 타입, e.g. “Packet Too Big”</li>
+<li>MTU가 지원하지 않는 패킷이 도착하면, 버리고 다시 작게 보내라함</li>
+</ul>
+</li>
+</ul>
+<h4 id="Transition-from-IPv4-to-IPv6"><a href="#Transition-from-IPv4-to-IPv6" class="headerlink" title="Transition from IPv4 to IPv6"></a>Transition from IPv4 to IPv6</h4><ul>
+<li><p>모든 라우터가 동시에 업그레이드 할 수 없음</p>
+<ul>
+<li>“flag days”가 없음</li>
+</ul>
+</li>
+<li><p>tunneling: IPv4 dataram payload에 IPv6 datagram을 담는다.</p>
+</li>
+</ul>
+<hr>
+<h2 id="Network-layer-functions"><a href="#Network-layer-functions" class="headerlink" title="Network-layer functions"></a>Network-layer functions</h2><ul>
+<li><p>two network layer functions:</p>
+<ul>
+<li>Forwarding: 라우터의 input에서 패킷을 라우터의 output으로 옮기는 역할 </li>
+<li><blockquote>
+<p>Data Plane</p>
+</blockquote>
+</li>
+<li>Routing: 전체 경로 결정 source to destination</li>
+<li><blockquote>
+<p>Control Plane</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>two approaches to structuring network control plane:</p>
+</li>
+<li><p>라우터마다 컨트롤(traditional)</p>
+</li>
+<li><p>중앙기관에서 컨트롤(Software defined networking)</p>
+</li>
+</ul>
+<h3 id="Routing-protocol"><a href="#Routing-protocol" class="headerlink" title="Routing protocol"></a>Routing protocol</h3><ul>
+<li>Routing protocol goal: “good” paths 결정</li>
+</ul>
+<h4 id="Graph-abstraction-of-the-network"><a href="#Graph-abstraction-of-the-network" class="headerlink" title="Graph abstraction of the network"></a>Graph abstraction of the network</h4><ul>
+<li><p>Graph: G = (N,E)</p>
+</li>
+<li><p>N = set of routers = {u,v,w,x,y,z}</p>
+</li>
+<li><p>E = set of links = {(u,v), (u,x), (v,x) …}</p>
+</li>
+<li><p>c(x, x’) = cost of link(x, x’)</p>
+<ul>
+<li>cost는 bandwidth와 역관계 </li>
+<li>congestion와 역관계</li>
+</ul>
+</li>
+<li><p>cost of path(x1, x2, x3, …, xp)</p>
+<ul>
+<li>c(x1,x2) + c(x2,x3) + … + c(xp-1,xp)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Key question: u에서 z까지 얼마나 적은 코스트를 사용하여 이동할 수 있는가?</strong><br><strong>Routing alogrithm: source에서 destination까지 얼마나 효율적으로 보낼 수 있는가</strong></p>
+<h3 id="Routing-algorithm-classification"><a href="#Routing-algorithm-classification" class="headerlink" title="Routing algorithm classification"></a>Routing algorithm classification</h3><ul>
+<li><p>Global or Decentralized information</p>
+<ul>
+<li><p>Global:</p>
+<ul>
+<li>모든 라우터들이 완벽한 topology에 대한 정보, link cost info 가짐</li>
+<li>“link state” algorithm</li>
+</ul>
+</li>
+<li><p>Decentralized:</p>
+<ul>
+<li>router는 물리적으로 연결된 이웃의 link cost만 알고 routing 진행</li>
+<li>“distance vector” 알고리즘</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>static or dynamic</p>
+<ul>
+<li>static: 라우팅 알고리즘의 경로가 거의 변하지 않음</li>
+<li>dynamic: 라우팅 알고리즘의 경로가 자주 바뀜, 빠르게 변경</li>
+</ul>
+</li>
+</ul>
+<h4 id="link-state-routing-algorithm"><a href="#link-state-routing-algorithm" class="headerlink" title="link-state routing algorithm"></a>link-state routing algorithm</h4><ul>
+<li>다익스트라 알고리즘<ul>
+<li>모든 네트워크 노드들의 edge에 대해서 cost를 다 알고있음<ul>
+<li>각 라우터들이 자신과 관련된 “link state broadcast”를함</li>
+<li>모든 노드가 같은 정보를 가짐</li>
+</ul>
+</li>
+<li>source에서부터 모든 경로에대한 최소 path을 구할 수 있음<ul>
+<li>forwarding table에 반영</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Dijkstra’s-algorithm-discussion"><a href="#Dijkstra’s-algorithm-discussion" class="headerlink" title="Dijkstra’s algorithm discussion"></a>Dijkstra’s algorithm discussion</h5><ul>
+<li><p>Algorithm complexity: n nodes</p>
+<ul>
+<li>최대 O(n^2), 최적화해도 O(n log n)</li>
+</ul>
+</li>
+<li><p>Oscillations possible:</p>
+<ul>
+<li>최적화된 경로가 계속 바뀌면서 무한루프 될 수 있음.</li>
+</ul>
+</li>
+</ul>
+<h4 id="Distance-vector-algorithm"><a href="#Distance-vector-algorithm" class="headerlink" title="Distance vector algorithm"></a>Distance vector algorithm</h4><ul>
+<li>Bellman-Ford equation </li>
+</ul>
+<p>dx(y) := cost of least-cost path from x to y<br>then dx(y) = minv{c(x,v) + dv(y)}</p>
+<ul>
+<li>v: x의 모든 이웃 노드</li>
+<li>c(x,v): 이웃노드 v로 가는 코스트 </li>
+<li>dv(y): v에서 y까지 최소 거리</li>
+</ul>
+<p>결국 이웃노드를 계속 탐색하면서 최소 경로를 찾아감</p>
+<p>Dx(y) = x에서 y까지 가는 최소 코스트로 추정되는 값</p>
+<ul>
+<li>x는 distance vector값을 유지 Dx = [Dx(y): y in N]</li>
+</ul>
+<p>node x:</p>
+<ul>
+<li>이웃노드의 코스트를 알고있음 v: c(x, v)</li>
+<li>v로부터 받은 추정값도 알고있음 Dv</li>
+</ul>
+<h5 id="key-idea-이웃노드들의-도움을-받아서-계산"><a href="#key-idea-이웃노드들의-도움을-받아서-계산" class="headerlink" title="key idea: 이웃노드들의 도움을 받아서 계산"></a>key idea: 이웃노드들의 도움을 받아서 계산</h5><ul>
+<li>Dx(y) = minv{c(x,v) + Dv(y)} for each node y in N</li>
+</ul>
+<h5 id="Distance-vector-algorithm-사용될때"><a href="#Distance-vector-algorithm-사용될때" class="headerlink" title="Distance vector algorithm 사용될때:"></a>Distance vector algorithm 사용될때:</h5><ul>
+<li>link cost 변경</li>
+<li>주변 노드 Dv값 변경</li>
+</ul>
+<h5 id="Distributed-분배"><a href="#Distributed-분배" class="headerlink" title="Distributed(분배):"></a>Distributed(분배):</h5><ul>
+<li>자신의 Dv가 변할 때 각 이웃노드들에게 알려줌</li>
+</ul>
+<h5 id="동작구조-각각의-노드들"><a href="#동작구조-각각의-노드들" class="headerlink" title="동작구조 - 각각의 노드들:"></a>동작구조 - 각각의 노드들:</h5><p>loop</p>
+<ul>
+<li>wait for (이웃노드들이나 local link cost값이 변경되었을때)</li>
+<li>recompute (다시계산)</li>
+<li>이웃들에게 Dv가 변경되면 알려줌</li>
+</ul>
+<h5 id="Distance-vector-algorithm-link-cost-changes"><a href="#Distance-vector-algorithm-link-cost-changes" class="headerlink" title="Distance vector algorithm: link cost changes"></a>Distance vector algorithm: link cost changes</h5><ul>
+<li>노드에서 local link cost가 바뀐걸 알아챔</li>
+<li>routing info를 updates, distance vector 다시 계산</li>
+<li>만약 Dv 가 바뀌면, 이웃에게 알림</li>
+</ul>
+<p><strong>“good news travels fast”</strong></p>
+<p>t0: y가 link-cost 변경된걸 확인, Dv 업데이트, 이웃에게 알림<br>t1: z는 그값을 y로부터 받음, 테비을 업데이트, z to x로 가는 최소값을 변경, 이웃에게 Dv 전달<br>t2: y는 z의 업데이트값 전달받음, distance table 수정, 변경되는점은 없음 </p>
+<h5 id="bad-news-travels-slow-“무한반복”-문제"><a href="#bad-news-travels-slow-“무한반복”-문제" class="headerlink" title="bad news travels slow - “무한반복” 문제"></a>bad news travels slow - “무한반복” 문제</h5><p>link cost가 업데이트된걸 다른 노드들은 모르고 있기 때문에 생김<br>결국 -&gt; 많이 반복해야함 -&gt; inf problem</p>
+<h5 id="Distance-vector-algorithm-poisoned-reverse"><a href="#Distance-vector-algorithm-poisoned-reverse" class="headerlink" title="Distance vector algorithm: poisoned reverse"></a>Distance vector algorithm: poisoned reverse</h5><ul>
+<li>If Z가 Y를 통해 X로 패킷을 라우팅할 때: Z로부터 X까지의 경로는 INF로 설정</li>
+<li>하지만 단편적인 해결책</li>
+<li>INF problem 해결 못함</li>
+</ul>
+<h4 id="Link-State-vs-Distance-Vector"><a href="#Link-State-vs-Distance-Vector" class="headerlink" title="Link State vs Distance Vector"></a>Link State vs Distance Vector</h4><ul>
+<li><p>Message complexity</p>
+<ul>
+<li>LS: N nodes, E links, O(N*E) msg sent</li>
+<li>DV: 이웃노드끼리만 교환<ul>
+<li>Convergence time varies</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Speed of convergence(수렴 속도)</p>
+<ul>
+<li>LS: O(N^2) 알고리즘 O(N * E) 메시지<ul>
+<li>진동이 있을 수 있음</li>
+</ul>
+</li>
+<li>DV: 제각각<ul>
+<li>routing loops</li>
+<li>count-to-infinity problem</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Roubustness(견고성)</p>
+<ul>
+<li>LS: 각자 계산하기 때문에 실수하면 자신의 포워딩 테이블만 에러</li>
+<li>DS: 이웃노드에게 잘못 계산된 Dv를 알려주면 에러가 번식함</li>
+</ul>
+</li>
+</ul>
+<h2 id="Intea-AS-routing-in-the-Internet-OSPF"><a href="#Intea-AS-routing-in-the-Internet-OSPF" class="headerlink" title="Intea-AS routing in the Internet: OSPF"></a>Intea-AS routing in the Internet: OSPF</h2><h3 id="Making-routing-scalable-라우팅을-확장가능하게-만듬"><a href="#Making-routing-scalable-라우팅을-확장가능하게-만듬" class="headerlink" title="Making routing scalable (라우팅을 확장가능하게 만듬)"></a>Making routing scalable (라우팅을 확장가능하게 만듬)</h3><ul>
+<li>지금까지 배운 라우팅 - 이상적임<ul>
+<li>모든 라우터가 동일</li>
+<li>네트워크가 “flat”</li>
+</ul>
+</li>
+</ul>
+<p>Scale: 많은 destinations</p>
+<ul>
+<li><p>지구상의 모든 destination을 가지고 routing table을 만들 수 없음</p>
+</li>
+<li><p>communication cost도 무한 함</p>
+</li>
+<li><p>Administrative autonomy (관리 자동화)</p>
+<ul>
+<li>각각의 노드들의 routing을 자동화</li>
+<li>자신의 네트워크를 컨트롤할 수 있어야함</li>
+</ul>
+</li>
+</ul>
+<h3 id="scalable-routing에대한-Internet-approach"><a href="#scalable-routing에대한-Internet-approach" class="headerlink" title="scalable routing에대한 Internet approach"></a>scalable routing에대한 Internet approach</h3><ul>
+<li>Autonomous systems(AS): 라우터를 하나의 지역으로 모은것 (a.k.a. “domains”)</li>
+</ul>
+<h4 id="Intra-AS-routing-하나의-도메인-내에서-라우팅"><a href="#Intra-AS-routing-하나의-도메인-내에서-라우팅" class="headerlink" title="Intra-AS routing - 하나의 도메인 내에서 라우팅"></a>Intra-AS routing - 하나의 도메인 내에서 라우팅</h4><ul>
+<li>같은 지역의 호스트, 라우터 간의 라우팅 지원</li>
+<li>모든 한 지역에 있는 라우터들은 같은 intra-domain protocol 구동</li>
+<li>다른 AS에 있는 ㄹ라우터들은 다른 intra-doamin routing protocol 돌릴 수 있음</li>
+<li>Gateway router: AS의 edge, 인프라들이 다른곳과 통신할 때 거쳐가는 라우터 </li>
+</ul>
+<h4 id="Inter-AS-routing"><a href="#Inter-AS-routing" class="headerlink" title="Inter-AS routing"></a>Inter-AS routing</h4><ul>
+<li>도매인간의 통신을 지원 </li>
+<li>Gateway가 inter-domain routing 지원</li>
+</ul>
+<h4 id="Interconnected-ASes"><a href="#Interconnected-ASes" class="headerlink" title="Interconnected ASes"></a>Interconnected ASes</h4><ul>
+<li>Forwarding table = Intra-AS Routing algorithm + Inter-AS Routing algorithm</li>
+<li>intra-AS: 하나의 AS 안에서 destinations 결정</li>
+<li>inter-AS &amp; intra-AS: AS 밖에 있는 destinatons 결정</li>
+</ul>
+<h4 id="Inter-AS-tasks"><a href="#Inter-AS-tasks" class="headerlink" title="Inter-AS tasks"></a>Inter-AS tasks</h4><ul>
+<li><p>gateway router에서 Inter-AS 업무 수행</p>
+</li>
+<li><p>AS2와 AS3를 어떤 데스크로 연결할 수 있는지</p>
+</li>
+<li><p>어디로 가야하는지 AS1의 모든 라우터에 전달</p>
+</li>
+</ul>
+<h3 id="Inter-AS-Routing"><a href="#Inter-AS-Routing" class="headerlink" title="Inter-AS Routing"></a>Inter-AS Routing</h3><ul>
+<li><p>interior gateway protocols (IGP)  </p>
+</li>
+<li><p>주로 사용되는 intea-AS routing protocols:</p>
+<ul>
+<li>RIP: Routing Information Protocol</li>
+<li>OSPF: Open Shortest Path First<ul>
+<li>IS-IS (Intermediate System to Intermediate System) protocol: OSPF랑 유사</li>
+</ul>
+</li>
+<li>IGRP: Interior Gateway Routing Protocols (Cisco에서 2016까지 사적으로 사용)</li>
+</ul>
+</li>
+</ul>
+<h4 id="OSPF-Open-Shortest-Path-First"><a href="#OSPF-Open-Shortest-Path-First" class="headerlink" title="OSPF (Open Shortest Path First)"></a>OSPF (Open Shortest Path First)</h4><ul>
+<li><p>표준: publicly available</p>
+<ul>
+<li>link-state algorithm 기반</li>
+<li>link state packet을 뿌려야함</li>
+<li>각 노드에 topology map을 만들 수 있어야함</li>
+<li>라우터에서 다익스트라 알고리즘 구현</li>
+</ul>
+</li>
+<li><p>OSPF를 돌리는 라우터들은 항상 AS의 모든 라우터들에게 link-state를 광고해야함</p>
+</li>
+<li><p>IS-IS routing protocol: 다익스트라기반, OSPF랑 유사</p>
+</li>
+</ul>
+<h5 id="Large-domains-에서는-Hierarchical-계층적-OSPF"><a href="#Large-domains-에서는-Hierarchical-계층적-OSPF" class="headerlink" title="Large domains 에서는 Hierarchical(계층적) OSPF"></a>Large domains 에서는 Hierarchical(계층적) OSPF</h5><ul>
+<li><p>two-level hierarchy: local area, backbone</p>
+<ul>
+<li>area 내에서만 link-state advertisement를 해줌</li>
+<li>각각의 노드들은 detailed한 area topology를 알고있음; 다른 도메인으로 이동하는 경로를 알고있음</li>
+</ul>
+</li>
+<li><p>Area border routers: 자신의 area에 있는 네트워크들의 정보를 취합해서 다른 area border routers에게 advertise해줌</p>
+</li>
+<li><p>Backbone routers: Backbone router들 끼리 OSPF 라우팅을 할 수 있음</p>
+</li>
+<li><p>Boundary routers: 다른 AS 시스템이랑 연결</p>
+</li>
+</ul>
+<h3 id="Internet-inter-AS-routing-BGP"><a href="#Internet-inter-AS-routing-BGP" class="headerlink" title="Internet inter-AS routing: BGP"></a>Internet inter-AS routing: BGP</h3><ul>
+<li><p>BGP (Border Gateway Protocol): inter-domain routing에서 사용하는 표준과 같은 형태</p>
+<ul>
+<li>이것을 통해 인터넷의 모든 노드들이 데이터를 주고 받음 </li>
+</ul>
+</li>
+<li><p>BGT는 AS에게 2가지 규격 제안:</p>
+<ul>
+<li>eBGP (External BGP): AS간의 메시지 교환</li>
+<li>iBGP (Internal BGP): 하나의 AS안에 있는 routers끼리 메시지 교환</li>
+</ul>
+</li>
+<li><p>BGP는 특정 subnet에 자신의 존재를 알려주는 protocol</p>
+</li>
+</ul>
+<h4 id="BGP-basics"><a href="#BGP-basics" class="headerlink" title="BGP basics"></a>BGP basics</h4><ul>
+<li>BGP session: TCP connection을 통해서 BGP messages 교환<ul>
+<li>다른 지역에 있는 network 들에게 자신의 존재를 알리는 역할 (path vector)</li>
+</ul>
+</li>
+</ul>
+<h4 id="Path-attributes-amp-BGP-routes"><a href="#Path-attributes-amp-BGP-routes" class="headerlink" title="Path attributes &amp; BGP routes"></a>Path attributes &amp; BGP routes</h4><ul>
+<li><p>어떤식으로 BGP가 자신을 홍보할까</p>
+<ul>
+<li><p>prefix + attributes = “route”<br>prefix: CIDRized prefixes(subnet)</p>
+<ul>
+<li>E.g. 138.16.68/22</li>
+</ul>
+</li>
+<li><p>two important attributes:</p>
+<ul>
+<li>AS-PATH: 전체 경로를 나타냄</li>
+<li>NEXT-HOP: 옆에 어떤 AS가 있는지 나타냄</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Policy-based routing:</p>
+<ul>
+<li>Policy에 의하여 경로 결정</li>
+</ul>
+</li>
+</ul>
+<h4 id="BGP-messages"><a href="#BGP-messages" class="headerlink" title="BGP messages"></a>BGP messages</h4><ul>
+<li>TCP connection을 통해서 데이터를 주고받음</li>
+<li>BGP messages:<ul>
+<li>OPEN: BGP peer을 remote하는 TCP connection 오픈</li>
+<li>UPDATE: 새로운 path를 광고</li>
+<li>KEEPALIVE: 업데이트가 없을때 연결 유지</li>
+<li>NOTIFICATION: 이전 msg에 오류 보고, connection을 닫을때도 사용</li>
+</ul>
+</li>
+</ul>
+<h4 id="BGP-route-selection"><a href="#BGP-route-selection" class="headerlink" title="BGP route selection"></a>BGP route selection</h4><ul>
+<li>라우터들은 destination AS에 대한 하나 이상의 경로를 학습</li>
+<li>선택 기준:<ul>
+<li>local 기본 설정 값 속성: 정책 결정</li>
+<li>shortest AS-PATH</li>
+<li>closest NEXT-HOP router: hot potato routing</li>
+<li>추가 기준</li>
+</ul>
+</li>
+</ul>
+<h5 id="Hot-Potato-Routing"><a href="#Hot-Potato-Routing" class="headerlink" title="Hot Potato Routing"></a>Hot Potato Routing</h5><ul>
+<li>intra-domain에서 비용이 가장 적은 local gateway 선택</li>
+</ul>
+<h4 id="Why-different-Intra-Inter-AS-routing"><a href="#Why-different-Intra-Inter-AS-routing" class="headerlink" title="Why different Intra-, Inter-AS routing?"></a>Why different Intra-, Inter-AS routing?</h4><ul>
+<li><p>Policy:</p>
+<ul>
+<li>inter-AS: admin은 traffic을 cotrol하고 싶고, 누가 들어오는지 조절하기 때문에 중요</li>
+<li>intra-AS: single admin이므로 별로 중요하지 않음</li>
+</ul>
+</li>
+<li><p>Scale:</p>
+<ul>
+<li>hierarchical routing을 사용, traffic을 줄임</li>
+</ul>
+</li>
+<li><p>Performance:</p>
+<ul>
+<li>intra-AS: performance에 focus 할 수 있음</li>
+<li>inter-AS: 성능보단 policy가 더 중요</li>
+</ul>
+</li>
+</ul>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Computer-Network/">Computer Network</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/11/26/dataNetwork-transport/"><span class="level-item">[강의정리] 데이터통신과네트워크 Transport Layer 기말</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">댓글</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
             id: "b4bac81824030609a5f19843f86b8c1a",
             repo: "yuris99.github.io",
             owner: "yuris99",
@@ -94,7 +595,7 @@
             enableHotKey: true,
             
         })
-        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">카탈로그</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Network-layer-function"><span class="level-left"><span class="level-item">1</span><span class="level-item">Network-layer function</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Data-plane"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">Data plane</span></span></a></li><li><a class="level is-mobile" href="#control-plane"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">control plane</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Tanditional-Approch"><span class="level-left"><span class="level-item">1.2.1</span><span class="level-item">Tanditional Approch</span></span></a></li><li><a class="level is-mobile" href="#SDN"><span class="level-left"><span class="level-item">1.2.2</span><span class="level-item">SDN</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#Router-architecture"><span class="level-left"><span class="level-item">2</span><span class="level-item">Router architecture</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Input-port-functions"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">Input port functions</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#decentralized-switching"><span class="level-left"><span class="level-item">2.1.1</span><span class="level-item">decentralized switching</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Switch-fabric"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">Switch fabric</span></span></a></li><li><a class="level is-mobile" href="#destination-based-forwarding-1"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">destination-based forwarding</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#longest-prefix-matching"><span class="level-left"><span class="level-item">2.3.1</span><span class="level-item">longest prefix matching</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Switching"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">Switching</span></span></a></li><li><a class="level is-mobile" href="#Input-port-queueing"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">Input port queueing</span></span></a></li><li><a class="level is-mobile" href="#Output-port-queueing"><span class="level-left"><span class="level-item">2.6</span><span class="level-item">Output port queueing</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Schedule-mechanisms-스케쥴링-매커니즘"><span class="level-left"><span class="level-item">2.6.1</span><span class="level-item">Schedule mechanisms (스케쥴링 매커니즘)</span></span></a></li><li><a class="level is-mobile" href="#priority-scheduling-우선순위-스케쥴링"><span class="level-left"><span class="level-item">2.6.2</span><span class="level-item">priority scheduling (우선순위 스케쥴링)</span></span></a></li></ul></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/"><span class="level-start"><span class="level-item">Codeforces</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/Problems/"><span class="level-start"><span class="level-item">Problems</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/"><span class="level-start"><span class="level-item">Lecture Summary</span></span><span class="level-end"><span class="level-item tag">17</span></span></a><ul><li><a class="level is-mobile" href="/categories/Lecture-Summary/Advanced-Computer-Math/"><span class="level-start"><span class="level-item">Advanced Computer Math</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Computer-Data-Network/"><span class="level-start"><span class="level-item">Computer Data Network</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Information-Science/"><span class="level-start"><span class="level-item">Information Science</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Math/"><span class="tag">Computer Math</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-2/"><span class="tag">Div.2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-3/"><span class="tag">Div.3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Information-Science/"><span class="tag">Information Science</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Problem-Solve/"><span class="tag">Problem Solve</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/summary/"><span class="tag">summary</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a><p class="is-size-7"><span>&copy; 2021 Jihun Hong</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/yuris99"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">카탈로그</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Network-layer-function"><span class="level-left"><span class="level-item">1</span><span class="level-item">Network-layer function</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Data-plane"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">Data plane</span></span></a></li><li><a class="level is-mobile" href="#control-plane"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">control plane</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Tanditional-Approch"><span class="level-left"><span class="level-item">1.2.1</span><span class="level-item">Tanditional Approch</span></span></a></li><li><a class="level is-mobile" href="#SDN"><span class="level-left"><span class="level-item">1.2.2</span><span class="level-item">SDN</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#Router-architecture"><span class="level-left"><span class="level-item">2</span><span class="level-item">Router architecture</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Input-port-functions"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">Input port functions</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#decentralized-switching"><span class="level-left"><span class="level-item">2.1.1</span><span class="level-item">decentralized switching</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Switch-fabric"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">Switch fabric</span></span></a></li><li><a class="level is-mobile" href="#destination-based-forwarding-1"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">destination-based forwarding</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#longest-prefix-matching"><span class="level-left"><span class="level-item">2.3.1</span><span class="level-item">longest prefix matching</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Switching"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">Switching</span></span></a></li><li><a class="level is-mobile" href="#Input-port-queueing"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">Input port queueing</span></span></a></li><li><a class="level is-mobile" href="#Output-port-queueing"><span class="level-left"><span class="level-item">2.6</span><span class="level-item">Output port queueing</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Schedule-mechanisms-스케쥴링-매커니즘"><span class="level-left"><span class="level-item">2.6.1</span><span class="level-item">Schedule mechanisms (스케쥴링 매커니즘)</span></span></a></li><li><a class="level is-mobile" href="#priority-scheduling-우선순위-스케쥴링"><span class="level-left"><span class="level-item">2.6.2</span><span class="level-item">priority scheduling (우선순위 스케쥴링)</span></span></a></li><li><a class="level is-mobile" href="#Round-Robin-RR"><span class="level-left"><span class="level-item">2.6.3</span><span class="level-item">Round Robin (RR)</span></span></a></li><li><a class="level is-mobile" href="#Weighted-Fair-Queueing-WFQ"><span class="level-left"><span class="level-item">2.6.4</span><span class="level-item">Weighted Fair Queueing (WFQ)</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#Internet-network-layer"><span class="level-left"><span class="level-item">3</span><span class="level-item">Internet network layer</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#IP-fragmentation-reassembly"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">IP fragmentation, reassembly</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#example"><span class="level-left"><span class="level-item">3.1.1</span><span class="level-item">example</span></span></a></li></ul></li><li><a class="level is-mobile" href="#IP-addressing"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">IP addressing</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Subnets"><span class="level-left"><span class="level-item">3.2.1</span><span class="level-item">Subnets</span></span></a></li><li><a class="level is-mobile" href="#IP-addressing-classful-addressing"><span class="level-left"><span class="level-item">3.2.2</span><span class="level-item">IP addressing: classful addressing</span></span></a></li><li><a class="level is-mobile" href="#IP-addressing-CIDR"><span class="level-left"><span class="level-item">3.2.3</span><span class="level-item">IP addressing: CIDR</span></span></a></li><li><a class="level is-mobile" href="#IP-addresses-how-to-get-one"><span class="level-left"><span class="level-item">3.2.4</span><span class="level-item">IP addresses: how to get one?</span></span></a></li><li><a class="level is-mobile" href="#DHCP-client-server-scenario"><span class="level-left"><span class="level-item">3.2.5</span><span class="level-item">DHCP client-server scenario</span></span></a></li></ul></li><li><a class="level is-mobile" href="#NAT-network-address-translation"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">NAT: network address translation</span></span></a></li></ul></li><li><a class="level is-mobile" href="#용어-정리"><span class="level-left"><span class="level-item">4</span><span class="level-item">용어 정리:</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#NAT-network-address-translation-1"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">NAT: network address translation</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#NAT-implementation-구현"><span class="level-left"><span class="level-item">4.1.1</span><span class="level-item">NAT implementation(구현)</span></span></a></li></ul></li><li><a class="level is-mobile" href="#IPv6"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">IPv6</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#motivation-동기"><span class="level-left"><span class="level-item">4.2.1</span><span class="level-item">motivation (동기)</span></span></a></li><li><a class="level is-mobile" href="#IPv6-datagram-format"><span class="level-left"><span class="level-item">4.2.2</span><span class="level-item">IPv6 datagram format</span></span></a></li><li><a class="level is-mobile" href="#IPv4-비교"><span class="level-left"><span class="level-item">4.2.3</span><span class="level-item">IPv4 비교</span></span></a></li><li><a class="level is-mobile" href="#Transition-from-IPv4-to-IPv6"><span class="level-left"><span class="level-item">4.2.4</span><span class="level-item">Transition from IPv4 to IPv6</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#Network-layer-functions"><span class="level-left"><span class="level-item">5</span><span class="level-item">Network-layer functions</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Routing-protocol"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">Routing protocol</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Graph-abstraction-of-the-network"><span class="level-left"><span class="level-item">5.1.1</span><span class="level-item">Graph abstraction of the network</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Routing-algorithm-classification"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">Routing algorithm classification</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#link-state-routing-algorithm"><span class="level-left"><span class="level-item">5.2.1</span><span class="level-item">link-state routing algorithm</span></span></a></li><li><a class="level is-mobile" href="#Distance-vector-algorithm"><span class="level-left"><span class="level-item">5.2.2</span><span class="level-item">Distance vector algorithm</span></span></a></li><li><a class="level is-mobile" href="#Link-State-vs-Distance-Vector"><span class="level-left"><span class="level-item">5.2.3</span><span class="level-item">Link State vs Distance Vector</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#Intea-AS-routing-in-the-Internet-OSPF"><span class="level-left"><span class="level-item">6</span><span class="level-item">Intea-AS routing in the Internet: OSPF</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Making-routing-scalable-라우팅을-확장가능하게-만듬"><span class="level-left"><span class="level-item">6.1</span><span class="level-item">Making routing scalable (라우팅을 확장가능하게 만듬)</span></span></a></li><li><a class="level is-mobile" href="#scalable-routing에대한-Internet-approach"><span class="level-left"><span class="level-item">6.2</span><span class="level-item">scalable routing에대한 Internet approach</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Intra-AS-routing-하나의-도메인-내에서-라우팅"><span class="level-left"><span class="level-item">6.2.1</span><span class="level-item">Intra-AS routing - 하나의 도메인 내에서 라우팅</span></span></a></li><li><a class="level is-mobile" href="#Inter-AS-routing"><span class="level-left"><span class="level-item">6.2.2</span><span class="level-item">Inter-AS routing</span></span></a></li><li><a class="level is-mobile" href="#Interconnected-ASes"><span class="level-left"><span class="level-item">6.2.3</span><span class="level-item">Interconnected ASes</span></span></a></li><li><a class="level is-mobile" href="#Inter-AS-tasks"><span class="level-left"><span class="level-item">6.2.4</span><span class="level-item">Inter-AS tasks</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Inter-AS-Routing"><span class="level-left"><span class="level-item">6.3</span><span class="level-item">Inter-AS Routing</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#OSPF-Open-Shortest-Path-First"><span class="level-left"><span class="level-item">6.3.1</span><span class="level-item">OSPF (Open Shortest Path First)</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Internet-inter-AS-routing-BGP"><span class="level-left"><span class="level-item">6.4</span><span class="level-item">Internet inter-AS routing: BGP</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#BGP-basics"><span class="level-left"><span class="level-item">6.4.1</span><span class="level-item">BGP basics</span></span></a></li><li><a class="level is-mobile" href="#Path-attributes-amp-BGP-routes"><span class="level-left"><span class="level-item">6.4.2</span><span class="level-item">Path attributes &amp; BGP routes</span></span></a></li><li><a class="level is-mobile" href="#BGP-messages"><span class="level-left"><span class="level-item">6.4.3</span><span class="level-item">BGP messages</span></span></a></li><li><a class="level is-mobile" href="#BGP-route-selection"><span class="level-left"><span class="level-item">6.4.4</span><span class="level-item">BGP route selection</span></span></a></li><li><a class="level is-mobile" href="#Why-different-Intra-Inter-AS-routing"><span class="level-left"><span class="level-item">6.4.5</span><span class="level-item">Why different Intra-, Inter-AS routing?</span></span></a></li></ul></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/"><span class="level-start"><span class="level-item">Codeforces</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/Problems/"><span class="level-start"><span class="level-item">Problems</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/"><span class="level-start"><span class="level-item">Lecture Summary</span></span><span class="level-end"><span class="level-item tag">17</span></span></a><ul><li><a class="level is-mobile" href="/categories/Lecture-Summary/Advanced-Computer-Math/"><span class="level-start"><span class="level-item">Advanced Computer Math</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Computer-Data-Network/"><span class="level-start"><span class="level-item">Computer Data Network</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Information-Science/"><span class="level-start"><span class="level-item">Information Science</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Math/"><span class="tag">Computer Math</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-2/"><span class="tag">Div.2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-3/"><span class="tag">Div.3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Information-Science/"><span class="tag">Information Science</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Problem-Solve/"><span class="tag">Problem Solve</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/summary/"><span class="tag">summary</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a><p class="is-size-7"><span>&copy; 2021 Jihun Hong</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/yuris99"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
