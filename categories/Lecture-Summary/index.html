@@ -562,7 +562,7 @@
 <td>IPS가 차단할 합법적인 traffic을 차단하지 않음</td>
 </tr>
 </tbody></table>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-08T13:24:02.000Z" title="2021. 12. 8. 오후 10:24:02">2021-12-08</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-08T16:45:11.580Z" title="2021. 12. 9. 오전 1:45:11">2021-12-09</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/08/dataNetwork-link/">[강의정리] 데이터통신과네트워크 Link Layer</a></h1><div class="content"><hr>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-08T13:24:02.000Z" title="2021. 12. 8. 오후 10:24:02">2021-12-08</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-09T09:00:38.265Z" title="2021. 12. 9. 오후 6:00:38">2021-12-09</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/08/dataNetwork-link/">[강의정리] 데이터통신과네트워크 Link Layer</a></h1><div class="content"><hr>
 <h2 id="Link-layer-Introduction"><a href="#Link-layer-Introduction" class="headerlink" title="Link layer: Introduction"></a>Link layer: Introduction</h2><ul>
 <li><p>data-link layer: datagram을 서로 인접한 노드간에 전달해주는 책임을 가지고 있는 레이어</p>
 </li>
@@ -859,7 +859,242 @@
 <hr>
 <h2 id="Switched-local-networks"><a href="#Switched-local-networks" class="headerlink" title="Switched local networks"></a>Switched local networks</h2><ul>
 <li>3개 학과, 2개 서버와 4개의 스위치 라우터</li>
+<li>스위치들은 link-layer에서 동작<ol>
+<li>link-layer frame으로 동작(L2 switch)</li>
+<li>network-layer address 인지못함</li>
+<li>routing algorithm 사용 못함(요즘은 됨)</li>
+</ol>
+</li>
 </ul>
+<h3 id="MAC-address-and-ARP"><a href="#MAC-address-and-ARP" class="headerlink" title="MAC address and ARP"></a>MAC address and ARP</h3><ul>
+<li><p>32-bit ip address:</p>
+<ul>
+<li>Network-layer 에서 사용하는 주소</li>
+<li>layer 3에서 forwarding하는데 사용</li>
+</ul>
+</li>
+<li><p>MAC(or LAN or physical or Ethernet) address:</p>
+<ul>
+<li>locally하게만 사용, 한 인터페이스마다 고유한 주소</li>
+<li>48 bit MAC address, NIC ROM에 고정되있음</li>
+<li>e.g. 00:d0:ca:1c:f0:ed (3bytes: 제조업체 식별정보, 3bytes: 시리얼 넘버)</li>
+</ul>
+</li>
+<li><p>데이터를 보낼 때 보내고자하는 Destination MAC 주소를 사용</p>
+</li>
+<li><p>Broadcast address (FF:FF:FF:FF:FF:FF)</p>
+</li>
+</ul>
+<h4 id="MAC-address-more"><a href="#MAC-address-more" class="headerlink" title="MAC address (more)"></a>MAC address (more)</h4><ul>
+<li><p>MAC address는 IEEE에서 관리</p>
+</li>
+<li><p>비유:</p>
+<ul>
+<li>MAC address: 주민등록번호</li>
+<li>IP address: 우편주소</li>
+</ul>
+</li>
+<li><p>MAC flat address -&gt; 휴대성</p>
+<ul>
+<li>LAN카드만 옮기면 됨</li>
+</ul>
+</li>
+<li><p>IP hierarchical address not protable</p>
+<ul>
+<li>IP subnet때문에 휴대성 부족</li>
+</ul>
+</li>
+</ul>
+<h4 id="ARP-address-resolution-protocol"><a href="#ARP-address-resolution-protocol" class="headerlink" title="ARP: address resolution protocol"></a>ARP: address resolution protocol</h4><ul>
+<li>모든 PC들은 network-layer address(IP주소)와 link-layer address(MAC주소)를 같이 가지고 있음<ul>
+<li>두 addresses 사이에 translate 필요</li>
+</ul>
+</li>
+</ul>
+<h5 id="ARP-table"><a href="#ARP-table" class="headerlink" title="ARP table"></a>ARP table</h5><ul>
+<li>각 IP node들은 ARP table을 가지고 있음</li>
+<li>ARP table 구성: &lt;IP address, MAC address, TTL&gt;</li>
+<li>TTL(Time to Live): mapping이 유지되는 시간(일반적으로 20min)</li>
+</ul>
+<h4 id="ARP-protocol-same-LAN"><a href="#ARP-protocol-same-LAN" class="headerlink" title="ARP protocol: same LAN"></a>ARP protocol: same LAN</h4><ol>
+<li>A는 Local에 있는 B에게 datagram을 전송하고 싶어함</li>
+</ol>
+<ul>
+<li>A의 ARP table에는 B의 MAC address가 존재하지 않음</li>
+</ul>
+<ol start="2">
+<li>A가 ARP query packet을 만들어서 B의 IP address를 포함한 후 broadcast해줌</li>
+</ol>
+<ul>
+<li>Destination MAC address = FF-FF-FF-FF-FF-FF</li>
+<li>All nodes on LAN receive ARP query</li>
+</ul>
+<ol start="3">
+<li>B가 ARP packet 받음, A에게 자신의 MAC address 회신</li>
+</ol>
+<ul>
+<li>A의 MAC address로 unicast</li>
+</ul>
+<ol start="4">
+<li>A caches IP-to-MAC address를 pair로 ARP table에 저장</li>
+</ol>
+<ul>
+<li>ARP is “plug-and-play”</li>
+</ul>
+<h4 id="Addressing-routing-to-another-LAN"><a href="#Addressing-routing-to-another-LAN" class="headerlink" title="Addressing: routing to another LAN"></a>Addressing: routing to another LAN</h4><ul>
+<li>A에서 R을 거쳐 B로 datagram send</li>
+</ul>
+<ol>
+<li>create IP datagram with IP source A, destination B<br>link-layer frame의 destination address를 R의 MAC address로 전송</li>
+<li>frame sent from A to R<br>R에서 frame 수신, datagram removed, passed up to IP</li>
+<li>R에서 IP source A, destination B로 datagram forward<br>link-layer frame의 destination address는 B의 MAC address, source는 R<br>회신도 같은 구조 </li>
+</ol>
+<h3 id="Ethernet"><a href="#Ethernet" class="headerlink" title="Ethernet"></a>Ethernet</h3><ul>
+<li><p>wired Lan technology의 표준:</p>
+<ul>
+<li>먼저 널리 사용된 LAN technology</li>
+<li>간단하고, 저렴함</li>
+<li>성능도 좋음</li>
+</ul>
+</li>
+<li><p>bus: 90년도까지 사용</p>
+<ul>
+<li>모든 노드는 same colision domain (서로 충돌할 수 있음)</li>
+</ul>
+</li>
+<li><p>star: 오늘날 사용</p>
+<ul>
+<li>중앙에 스위치 활성화</li>
+<li>각각 direct로 사용</li>
+</ul>
+</li>
+</ul>
+<h4 id="Ethernet-frame-structure"><a href="#Ethernet-frame-structure" class="headerlink" title="Ethernet frame structure"></a>Ethernet frame structure</h4><ul>
+<li><p>Sending adapter는 Ethernet frame에 IP datagram을 캡슐화</p>
+</li>
+<li><p>Preamble (8bytes)</p>
+<ul>
+<li>정해져있는 패턴</li>
+<li>시작점을 포착하기 위함, 동기화용</li>
+</ul>
+</li>
+<li><p>Addresses (6bytes)</p>
+<ul>
+<li>source, destination MAC address</li>
+</ul>
+</li>
+<li><p>Type (2bytes)</p>
+<ul>
+<li>higher layer protocol을 나타냄 (주로 IP)</li>
+</ul>
+</li>
+<li><p>Data field (46 to 1,500 bytes)</p>
+<ul>
+<li> IP datagram 포함</li>
+<li>이더넷의 MTU(Maximum transmission unit)이 1,500 bytes로 정해짐</li>
+</ul>
+</li>
+<li><p>CRC (4bytes)</p>
+<ul>
+<li>Error detected</li>
+</ul>
+</li>
+</ul>
+<h4 id="Ethernet-unreliable-conntectionless"><a href="#Ethernet-unreliable-conntectionless" class="headerlink" title="Ethernet: unreliable, conntectionless"></a>Ethernet: unreliable, conntectionless</h4><ul>
+<li><p>Connectionless (연결없음)</p>
+<ul>
+<li>no handshaking betwween sending and receiving NICs</li>
+</ul>
+</li>
+<li><p>Unreliable (신뢰하지 않는)</p>
+<ul>
+<li>NIC는 acks랑 nacks를 보내지 않음</li>
+</ul>
+</li>
+<li><p>initial sender가 higher layer rdt(e.g., TCP)를 사용하는 경우에만 dropped된 frames를 recovered해주고, 그외에는 데이터를 버림</p>
+</li>
+<li><p>Ethernet’s MAC protocol</p>
+<ul>
+<li>unslotted CSMA/CD with binary backoff</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Link-layer-Switches"><a href="#Link-layer-Switches" class="headerlink" title="Link-layer Switches"></a>Link-layer Switches</h2><ul>
+<li><p>Link-layer device: takes an active role</p>
+<ul>
+<li>switch의 역할: 받은 패킷을 다른쪽 links로 forawrd 해주는 역할</li>
+</ul>
+</li>
+<li><p>transparent(투명함)</p>
+<ul>
+<li>host는 switches의 존재를 알아차리기 어려움</li>
+<li>forwarding만 해주기 때문</li>
+</ul>
+</li>
+<li><p>plug-and-play, self-learning</p>
+</li>
+</ul>
+<h3 id="Filtering과-forwarding"><a href="#Filtering과-forwarding" class="headerlink" title="Filtering과 forwarding"></a>Filtering과 forwarding</h3><ul>
+<li>Filtering: Switch function이 하는 역할, frame을 어디로 보내야할지, drop시켜야할지 결정</li>
+<li>Forwarding: Filtering에서 보내져야할 패킷이라고 결정되면, Input port에 따라서 어느 output port로 보내야할지 결정</li>
+</ul>
+<h3 id="Switch-multiple-simultaneous-transmissons"><a href="#Switch-multiple-simultaneous-transmissons" class="headerlink" title="Switch: multiple simultaneous transmissons"></a>Switch: multiple simultaneous transmissons</h3><ul>
+<li>각 호스트는 switch와 개별로 연결되있음</li>
+<li>동시에 들어와도 collision이 발생하지 않음</li>
+</ul>
+<h3 id="Switch-self-learning"><a href="#Switch-self-learning" class="headerlink" title="Switch: self-learning"></a>Switch: self-learning</h3><ul>
+<li>스위치는 어떤 인터페이스를 통해 어떤 호스트로 갈 수 있는지 학습<ul>
+<li><p>frame을 가져오면, 스위치는 sender의 주소를 “학습”: 들어오는 LAN segment</p>
+</li>
+<li><p>sender/location pair 을 switch table에 기록</p>
+</li>
+<li><p>frame destination을 모르면, broadcast</p>
+</li>
+<li><p>reply 받으면 기록</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Switches-vs-Routers"><a href="#Switches-vs-Routers" class="headerlink" title="Switches vs. Routers"></a>Switches vs. Routers</h3><ul>
+<li><p>둘 다 store and forward:</p>
+<ul>
+<li>routers: network-layer devices</li>
+<li>switches: link-layer devices</li>
+</ul>
+</li>
+<li><p>둘 다 forwarding table 존재:</p>
+<ul>
+<li>routers: IP주소 기반</li>
+<li>switches: MAC 주소 기반</li>
+</ul>
+</li>
+<li><p>하지만 최근엔 L3 switches 사용</p>
+</li>
+</ul>
+<h2 id="VLAN-Virtual-Local-Area-Network"><a href="#VLAN-Virtual-Local-Area-Network" class="headerlink" title="VLAN (Virtual Local Area Network)"></a>VLAN (Virtual Local Area Network)</h2><ul>
+<li><p>single broadcast domain:</p>
+<ul>
+<li>all layer-2 broadcast traffic</li>
+<li>security/privacy, efficiency issues</li>
+</ul>
+</li>
+<li><p>Virtual Local Area Network: broadcast domain을 나누어주는 역할 </p>
+</li>
+<li><p>1개의 switch를 가상으로 2개의 switch가 있다고 생각할 수 있도록 만들어줌</p>
+</li>
+<li><p>라우터를 이용하여 VLAN끼리 통신</p>
+</li>
+<li><p>trunk port: 여러개의 물리적인 스위치에 정의된 VLAN간에 프레임 전달</p>
+</li>
+</ul>
+<h2 id="Summary-A-day-in-the-life-of-a-web-request"><a href="#Summary-A-day-in-the-life-of-a-web-request" class="headerlink" title="Summary: A day in the life of a web request"></a>Summary: A day in the life of a web request</h2><ol>
+<li>DHCP로 IP주소를 받아옴</li>
+<li>ARP로 DNS서버 접근, 주소를 받아옴</li>
+<li>TCP connection(3-way handshaking)</li>
+<li>HTTP request를 보냄, reply 받음</li>
+<li>웹페이지 열림</li>
+</ol>
 </div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-07T02:57:57.000Z" title="2021. 12. 7. 오전 11:57:57">2021-12-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-08T13:12:14.286Z" title="2021. 12. 8. 오후 10:12:14">2021-12-08</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/07/dataNetwork-network/">[강의정리] 데이터통신과네트워크 Network Layer</a></h1><div class="content"><hr>
 <h2 id="Network-layer-function"><a href="#Network-layer-function" class="headerlink" title="Network-layer function"></a>Network-layer function</h2><ul>
 <li><p>Forwarding: 여러개의 패킷을 매칭되는 output 포트로 연결시켜주는 역할</p>
