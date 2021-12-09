@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>[강의정리] 데이터통신과네트워크 Link Layer - Yuris</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Jihun Hong"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Jihun Hong"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Link layer: Introduction data-link layer: datagram을 서로 인접한 노드간에 전달해주는 책임을 가지고 있는 레이어  Links: 인접한 노드들을 따라서 communication channels를 연결  wired links wireless links LANs   Layer-2 packet: frame  Encapsul"><meta property="og:type" content="blog"><meta property="og:title" content="[강의정리] 데이터통신과네트워크 Link Layer"><meta property="og:url" content="https://yuris99.github.io/2021/12/08/dataNetwork-link/"><meta property="og:site_name" content="Yuris"><meta property="og:description" content="Link layer: Introduction data-link layer: datagram을 서로 인접한 노드간에 전달해주는 책임을 가지고 있는 레이어  Links: 인접한 노드들을 따라서 communication channels를 연결  wired links wireless links LANs   Layer-2 packet: frame  Encapsul"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://yuris99.github.io/img/og_image.png"><meta property="article:published_time" content="2021-12-08T13:24:02.000Z"><meta property="article:modified_time" content="2021-12-08T16:45:11.580Z"><meta property="article:author" content="Jihun Hong"><meta property="article:tag" content="Computer Network"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://yuris99.github.io/2021/12/08/dataNetwork-link/"},"headline":"[강의정리] 데이터통신과네트워크 Link Layer","image":["https://yuris99.github.io/img/og_image.png"],"datePublished":"2021-12-08T13:24:02.000Z","dateModified":"2021-12-08T16:45:11.580Z","author":{"@type":"Person","name":"Jihun Hong"},"publisher":{"@type":"Organization","name":"Yuris","logo":{"@type":"ImageObject","url":"https://yuris99.github.io/img/logo.svg"}},"description":"Link layer: Introduction data-link layer: datagram을 서로 인접한 노드간에 전달해주는 책임을 가지고 있는 레이어  Links: 인접한 노드들을 따라서 communication channels를 연결  wired links wireless links LANs   Layer-2 packet: frame  Encapsul"}</script><link rel="canonical" href="https://yuris99.github.io/2021/12/08/dataNetwork-link/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Change Themes" href="https://github.com/ppoffice/hexo-theme-icarus">hi!<i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="카탈로그" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="검색" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-08T13:24:02.000Z" title="2021. 12. 8. 오후 10:24:02">2021-12-08</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-08T16:45:11.580Z" title="2021. 12. 9. 오전 1:45:11">2021-12-09</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></span></div></div><h1 class="title is-3 is-size-4-mobile">[강의정리] 데이터통신과네트워크 Link Layer</h1><div class="content"><hr>
+<h2 id="Link-layer-Introduction"><a href="#Link-layer-Introduction" class="headerlink" title="Link layer: Introduction"></a>Link layer: Introduction</h2><ul>
+<li><p>data-link layer: datagram을 서로 인접한 노드간에 전달해주는 책임을 가지고 있는 레이어</p>
+</li>
+<li><p>Links: 인접한 노드들을 따라서 communication channels를 연결</p>
+<ul>
+<li>wired links</li>
+<li>wireless links</li>
+<li>LANs</li>
+</ul>
+</li>
+<li><p>Layer-2 packet: frame</p>
+<ul>
+<li>Encapsulates datagram (데이타그램 캡슐화)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Link-layer-services"><a href="#Link-layer-services" class="headerlink" title="Link layer services"></a>Link layer services</h3><ul>
+<li><p>Framing: datagram을 frame로 만들고, header와 trailer를 붙임</p>
+</li>
+<li><p>Link access: share해서 사용할때 어떻게 나눠쓸건지 결정</p>
+<ul>
+<li>“MAC” address in frame headers, source와 destination을 식별하는데 사용됨<ul>
+<li>IP address와 다름</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>인접한 노드 사이에 신뢰성있는 데이터 전송</p>
+<ul>
+<li>Wireless links: error가 많음</li>
+<li>드물게 low bit-error link 사용</li>
+</ul>
+</li>
+<li><p>Error detection: 신호 감소, 노이즈에 의한 에러 감지</p>
+</li>
+<li><p>Error correction: receiver는 retransmisson에 의존하지 않고 비트오류를 식별한후 수정함</p>
+</li>
+</ul>
+<h3 id="Link-layer-구현되있는-곳"><a href="#Link-layer-구현되있는-곳" class="headerlink" title="Link layer 구현되있는 곳?"></a>Link layer 구현되있는 곳?</h3><ul>
+<li>Network interface 카드</li>
+<li>Adaptors</li>
+</ul>
+<h3 id="Adaptors-communicating"><a href="#Adaptors-communicating" class="headerlink" title="Adaptors communicating"></a>Adaptors communicating</h3><ul>
+<li><p>sending side: datagram 캡슐화, frameing</p>
+</li>
+<li><p>error checking bits, rdt등등 추가</p>
+</li>
+<li><p>receiving side: 에러, rdt등등 확인</p>
+</li>
+<li><p>문제가 없으면 datagram를 추출해서 위로 보냄</p>
+</li>
+</ul>
+<h3 id="Error-detection"><a href="#Error-detection" class="headerlink" title="Error detection"></a>Error detection</h3><ul>
+<li><p>EDC = Error Detection and Correction bits </p>
+</li>
+<li><p>Error detection 100% 신뢰되진 않음</p>
+</li>
+<li><p>하지만 거의 놓치지 않는다</p>
+</li>
+<li><p>EDC가 커질수록 detection과 correction이 쉬워짐</p>
+</li>
+</ul>
+<h4 id="Parity-checking"><a href="#Parity-checking" class="headerlink" title="Parity checking"></a>Parity checking</h4><ul>
+<li><p>single bit parity: detect single bit errors</p>
+<ul>
+<li>parity bit에 1의 개수가 짝수인지 홀수인지 확인</li>
+</ul>
+</li>
+<li><p>two-dimensional bit parity: detect and correct single bit errors</p>
+</li>
+<li><p>Row와 column에서 짝수 개수 확인, 에러 correction 가능</p>
+</li>
+</ul>
+<h4 id="Checksum-에러를-체크하는데-사용되는-함수-통칭"><a href="#Checksum-에러를-체크하는데-사용되는-함수-통칭" class="headerlink" title="Checksum: 에러를 체크하는데 사용되는 함수 통칭"></a>Checksum: 에러를 체크하는데 사용되는 함수 통칭</h4><ul>
+<li>Sender send Msg with Checksum Value(CV)</li>
+<li>Receiver check CV with Checksum</li>
+</ul>
+<h4 id="Checksumming-Methods"><a href="#Checksumming-Methods" class="headerlink" title="Checksumming Methods"></a>Checksumming Methods</h4><ul>
+<li><p>Cyclic redundancy check (CRC)</p>
+<ul>
+<li><p>error-detection coding으로 더 powerful</p>
+</li>
+<li><p> d bits(Data bits) + r bits(CRC bits)</p>
+</li>
+<li><p>CRC bits: D*2^r % G</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Multiple-access-links-protocols"><a href="#Multiple-access-links-protocols" class="headerlink" title="Multiple access links, protocols"></a>Multiple access links, protocols</h3><ul>
+<li>두가지 타입의 network links:<ul>
+<li>point-to-point link: single sender, single receiver</li>
+<li>broadcast link (shared wire or medium): multiple sending and receiving</li>
+</ul>
+</li>
+</ul>
+<h3 id="Multiple-access-protocols"><a href="#Multiple-access-protocols" class="headerlink" title="Multiple access protocols"></a>Multiple access protocols</h3><ul>
+<li><p>single shared broadcast channel </p>
+</li>
+<li><p>노드들에 의해서 동시에 데이터를 보낼 수 있어야함: interference</p>
+<ul>
+<li>node가 동시에 signal을 보내려 하면 collision 발생</li>
+</ul>
+</li>
+<li><p>Multiple access protocol</p>
+<ul>
+<li>node들이 channel을 share 하고 있을 때 어떤 노드가 먼저 보낼지 결정</li>
+<li>알고리즘은 모든 노드들에게 분산된 상태에서 구동되야함</li>
+<li>Channel sharing에 관한 communication은 channel 자체를 사용해야함<ul>
+<li>조정을 위해 out-of-band channel 사용하면 안됨</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Multiple-access-protocol에-대한-이상적인-상황"><a href="#Multiple-access-protocol에-대한-이상적인-상황" class="headerlink" title="Multiple access protocol에 대한 이상적인 상황"></a>Multiple access protocol에 대한 이상적인 상황</h3><ul>
+<li><p>Given: broadcast channel of rate R bps</p>
+</li>
+<li><p>원하는 특성</p>
+<ol>
+<li>하나의 노드가 데이터를 쓸 때, sending rate: R</li>
+<li>M개의 노드와 share할 때, send average rate: R/M</li>
+<li>Fully decentralized(완벽한 탈중앙화):</li>
+</ol>
+<ul>
+<li>transmission을 조정하는 특별한 노트 X</li>
+<li>네트워크 시간동기화 가정 X</li>
+</ul>
+<ol start="4">
+<li>simple</li>
+</ol>
+</li>
+</ul>
+<h3 id="MAC-Media-Access-Control-protocols"><a href="#MAC-Media-Access-Control-protocols" class="headerlink" title="MAC (Media Access Control) protocols"></a>MAC (Media Access Control) protocols</h3><ul>
+<li>Three broad classes:<ul>
+<li>channel partitioning<ul>
+<li>채널을 작은 “조각”단위로 쪼개서 사용(time slots, frequency, code)</li>
+</ul>
+</li>
+<li>random access<ul>
+<li>채널을 나누지 않고, 충돌이 일어나면 random한 delay로 대기</li>
+</ul>
+</li>
+<li> “taking turns”</li>
+<li>번갈아가면서 사용, 공평하지만 비효율적</li>
+</ul>
+</li>
+</ul>
+<h4 id="Channel-partitioning-MAC-protocols-TDMA"><a href="#Channel-partitioning-MAC-protocols-TDMA" class="headerlink" title="Channel partitioning MAC protocols: TDMA"></a>Channel partitioning MAC protocols: TDMA</h4><ul>
+<li>TDMA: time division multiple access<ul>
+<li>시분할방식, 시간을 n-slot으로 나눠서 사용</li>
+<li>노는 slot이 생길 수 있으므로 비효율적</li>
+</ul>
+</li>
+</ul>
+<h4 id="Channel-partitioning-MAC-protocols-FDMA"><a href="#Channel-partitioning-MAC-protocols-FDMA" class="headerlink" title="Channel partitioning MAC protocols: FDMA"></a>Channel partitioning MAC protocols: FDMA</h4><ul>
+<li>FDMA: frequency division multiple access<ul>
+<li>주파수 간격으로 데이터를 쪼갬</li>
+</ul>
+</li>
+</ul>
+<h3 id="Random-access-protocols"><a href="#Random-access-protocols" class="headerlink" title="Random access protocols"></a>Random access protocols</h3><ul>
+<li><p>node가 패킷을 보낼 때</p>
+<ul>
+<li>전체 채널 send rate R 사용</li>
+<li>노드간의 사전 조절은 X</li>
+</ul>
+</li>
+<li><p>두개 이상의 노드가 동시에 사용하면 -&gt; collision</p>
+</li>
+<li><p>Random access MAC protocol 특징:</p>
+<ul>
+<li>어떻게 충돌을 detect 할건지</li>
+<li>충돌이 일어났을 때 어떻게 recover 할 건지 (e.g., via delayed retransmissions)</li>
+</ul>
+</li>
+<li><p>Examples of random access MAC protocols:</p>
+<ul>
+<li>slotted ALOHA</li>
+<li>ALOHA</li>
+<li>CSMA, CSMA/CD, CSMA/CA</li>
+</ul>
+</li>
+</ul>
+<h4 id="Random-Access-protocols-Slotted-ALOHA"><a href="#Random-Access-protocols-Slotted-ALOHA" class="headerlink" title="Random Access protocols: Slotted ALOHA"></a>Random Access protocols: Slotted ALOHA</h4><ul>
+<li><p>가정</p>
+<ul>
+<li>all frames same size</li>
+<li>동등한 사이즈로 쪼갠 time divided slots</li>
+<li>node가 slot 시작시간에 바로 transmit을 할 수 있음</li>
+<li>모든 노드들은 동기화 되있음</li>
+<li>2개 이상의 node가 하나의 slot에서 데이터를 보내려 하면, 모든 nodes가 충돌을 detect</li>
+</ul>
+</li>
+<li><p>작업</p>
+<ul>
+<li>노드가 새로 보내야되는 frame이 있으면, 다음 slot에 transmits<ul>
+<li>if no collision: node는 새로운 frame을 다음 slot에 보낼 수 있음</li>
+<li>if collision: node는 prob.p slot으로 retransmits, 성공할 때까지</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Pros:</p>
+<ul>
+<li>single active node라 transmit 을 full rate로 사용가능</li>
+<li>simple</li>
+</ul>
+</li>
+<li><p>Cons</p>
+<ul>
+<li>collisions, slot 낭비</li>
+<li>대기 슬롯</li>
+<li>시간 동기화</li>
+</ul>
+</li>
+</ul>
+<h4 id="Random-access-protocols-CSMA"><a href="#Random-access-protocols-CSMA" class="headerlink" title="Random access protocols: CSMA"></a>Random access protocols: CSMA</h4><ul>
+<li><p>CSMA (carrier sense multiple access): transmit 하기 전 누가 사용하는지 확인</p>
+<ul>
+<li>if channel sensed idle: transmit entire frame</li>
+<li>if channel sensed busy, defer transmission</li>
+</ul>
+</li>
+<li><p>대화하는데 끼어들지 않기</p>
+</li>
+</ul>
+<h5 id="Random-access-protocols-CSMA-collisions"><a href="#Random-access-protocols-CSMA-collisions" class="headerlink" title="Random access protocols: CSMA collisions"></a>Random access protocols: CSMA collisions</h5><ul>
+<li><p>Collision이 발생할 수 있음</p>
+<ul>
+<li>propagation delay(전파 지연)</li>
+</ul>
+</li>
+<li><p>Collision</p>
+<ul>
+<li>패킷을 전부 보낼 때까지 시간 낭비됨</li>
+</ul>
+</li>
+</ul>
+<h4 id="Random-access-protocols-CSMA-CD"><a href="#Random-access-protocols-CSMA-CD" class="headerlink" title="Random access protocols: CSMA/CD"></a>Random access protocols: CSMA/CD</h4><ul>
+<li><p>CDMA/CD (collision detection)</p>
+<ul>
+<li>짧은 시간에 collisions detected</li>
+<li>충돌된 transmission 중단, channel wastage 감소</li>
+</ul>
+</li>
+<li><p>collsition detection:</p>
+<ul>
+<li>easy in wired LANs: 신호 강도 측정, transmitted 비교, received signals</li>
+<li>difficult in wireless LANs: 신호 왜곡이나 수신강도로 판단하기 어려움 (CSMA/CA 사용)</li>
+</ul>
+</li>
+<li><p>예의 바른사람(끼어들어도 봐줌)</p>
+</li>
+<li><p>구성</p>
+<ol>
+<li>NIC(Network Interface Card)가 datagram을 network layer로부터 받고 crates frame</li>
+<li>If NIC senses channel idle, frame transmission 시작, If NIC senses channel busy, channel이 idle 될때까지 대기후 tranmits.</li>
+<li>만약 NIC가 다른 transmission의 방해 없이 transmit되면, 전송이 성공적으로 마무리됨</li>
+<li>만약 NIC가 또다른 transmission detects하면, send를 abort(중단)함 </li>
+<li>After aborting, NIC enter binary(exponential) backoff:</li>
+</ol>
+<ul>
+<li>n-th의 collision이 발생하면, NIC는 {0, 1, 2, …, 2^n-1}중에 K를 랜덤하게 선택, NIC waits K*512 bits times, returns to Step 2</li>
+<li>Longer backoff interval은 많은 collision이 있는것</li>
+</ul>
+</li>
+</ul>
+<h3 id="Taking-turns"><a href="#Taking-turns" class="headerlink" title="Taking turns"></a>Taking turns</h3><h4 id="Taking-turns-polling-protocol"><a href="#Taking-turns-polling-protocol" class="headerlink" title="Taking turns: polling protocol"></a>Taking turns: polling protocol</h4><ul>
+<li><p>master node에서 slave nodes에게 순서대로 transmit을 invites해줌</p>
+<ul>
+<li>일반적으로 “dumb”한 slave devices에서 사용</li>
+</ul>
+</li>
+<li><p>concerns(우려사항):</p>
+<ul>
+<li>polling overhead</li>
+<li>latency</li>
+<li>single point of failure (master가 오류가 나면 전부 사용하지 못함)</li>
+</ul>
+</li>
+</ul>
+<h4 id="Tacking-turns-token-passing"><a href="#Tacking-turns-token-passing" class="headerlink" title="Tacking turns: token passing"></a>Tacking turns: token passing</h4><ul>
+<li><p>토큰 메시지가 한 노드에서 다음 노드로 순서대로 전달됨</p>
+</li>
+<li><p>concerns(우려사항):</p>
+<ul>
+<li>polling overhead</li>
+<li>latency</li>
+<li>single point of failure (token이 오류가 나면 전부 사용하지 못함)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Switched-local-networks"><a href="#Switched-local-networks" class="headerlink" title="Switched local networks"></a>Switched local networks</h2><ul>
+<li>3개 학과, 2개 서버와 4개의 스위치 라우터</li>
+</ul>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Computer-Network/">Computer Network</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/12/09/intrust-detection/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">[강의정리] 데이터통신과네트워크 침입탐지시스템</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/12/07/dataNetwork-network/"><span class="level-item">[강의정리] 데이터통신과네트워크 Network Layer</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">댓글</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "26435fdb6c7753eff6f41c625e612bac",
+            repo: "yuris99.github.io",
+            owner: "yuris99",
+            clientID: "82a6a8c340c16a0049b8",
+            clientSecret: "79a7021606c3d95b487b75348d55505eee545664",
+            admin: ["yuris99"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 10,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">카탈로그</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Link-layer-Introduction"><span class="level-left"><span class="level-item">1</span><span class="level-item">Link layer: Introduction</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Link-layer-services"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">Link layer services</span></span></a></li><li><a class="level is-mobile" href="#Link-layer-구현되있는-곳"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">Link layer 구현되있는 곳?</span></span></a></li><li><a class="level is-mobile" href="#Adaptors-communicating"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">Adaptors communicating</span></span></a></li><li><a class="level is-mobile" href="#Error-detection"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">Error detection</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Parity-checking"><span class="level-left"><span class="level-item">1.4.1</span><span class="level-item">Parity checking</span></span></a></li><li><a class="level is-mobile" href="#Checksum-에러를-체크하는데-사용되는-함수-통칭"><span class="level-left"><span class="level-item">1.4.2</span><span class="level-item">Checksum: 에러를 체크하는데 사용되는 함수 통칭</span></span></a></li><li><a class="level is-mobile" href="#Checksumming-Methods"><span class="level-left"><span class="level-item">1.4.3</span><span class="level-item">Checksumming Methods</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Multiple-access-links-protocols"><span class="level-left"><span class="level-item">1.5</span><span class="level-item">Multiple access links, protocols</span></span></a></li><li><a class="level is-mobile" href="#Multiple-access-protocols"><span class="level-left"><span class="level-item">1.6</span><span class="level-item">Multiple access protocols</span></span></a></li><li><a class="level is-mobile" href="#Multiple-access-protocol에-대한-이상적인-상황"><span class="level-left"><span class="level-item">1.7</span><span class="level-item">Multiple access protocol에 대한 이상적인 상황</span></span></a></li><li><a class="level is-mobile" href="#MAC-Media-Access-Control-protocols"><span class="level-left"><span class="level-item">1.8</span><span class="level-item">MAC (Media Access Control) protocols</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Channel-partitioning-MAC-protocols-TDMA"><span class="level-left"><span class="level-item">1.8.1</span><span class="level-item">Channel partitioning MAC protocols: TDMA</span></span></a></li><li><a class="level is-mobile" href="#Channel-partitioning-MAC-protocols-FDMA"><span class="level-left"><span class="level-item">1.8.2</span><span class="level-item">Channel partitioning MAC protocols: FDMA</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Random-access-protocols"><span class="level-left"><span class="level-item">1.9</span><span class="level-item">Random access protocols</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Random-Access-protocols-Slotted-ALOHA"><span class="level-left"><span class="level-item">1.9.1</span><span class="level-item">Random Access protocols: Slotted ALOHA</span></span></a></li><li><a class="level is-mobile" href="#Random-access-protocols-CSMA"><span class="level-left"><span class="level-item">1.9.2</span><span class="level-item">Random access protocols: CSMA</span></span></a></li><li><a class="level is-mobile" href="#Random-access-protocols-CSMA-CD"><span class="level-left"><span class="level-item">1.9.3</span><span class="level-item">Random access protocols: CSMA/CD</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Taking-turns"><span class="level-left"><span class="level-item">1.10</span><span class="level-item">Taking turns</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Taking-turns-polling-protocol"><span class="level-left"><span class="level-item">1.10.1</span><span class="level-item">Taking turns: polling protocol</span></span></a></li><li><a class="level is-mobile" href="#Tacking-turns-token-passing"><span class="level-left"><span class="level-item">1.10.2</span><span class="level-item">Tacking turns: token passing</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#Switched-local-networks"><span class="level-left"><span class="level-item">2</span><span class="level-item">Switched local networks</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/"><span class="level-start"><span class="level-item">Codeforces</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/Problems/"><span class="level-start"><span class="level-item">Problems</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/"><span class="level-start"><span class="level-item">Lecture Summary</span></span><span class="level-end"><span class="level-item tag">20</span></span></a><ul><li><a class="level is-mobile" href="/categories/Lecture-Summary/Advanced-Computer-Math/"><span class="level-start"><span class="level-item">Advanced Computer Math</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Computer-Data-Network/"><span class="level-start"><span class="level-item">Computer Data Network</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Information-Science/"><span class="level-start"><span class="level-item">Information Science</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Math/"><span class="tag">Computer Math</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">11</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-2/"><span class="tag">Div.2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-3/"><span class="tag">Div.3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Information-Science/"><span class="tag">Information Science</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Problem-Solve/"><span class="tag">Problem Solve</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/summary/"><span class="tag">summary</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a><p class="is-size-7"><span>&copy; 2021 Jihun Hong</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/yuris99"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="맨 위로" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "이 웹 사이트는 귀하의 경험을 향상시키기 위해 Cookie를 사용합니다.",
+          dismiss: "무시",
+          allow: "허용",
+          deny: "거부",
+          link: "더 알아보기",
+          policy: "Cookie 정책",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="입력 하세요..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"입력 하세요...","untitled":"(제목 없음)","posts":"포스트","pages":"페이지","categories":"카테고리","tags":"태그"});
+        });</script></body></html>

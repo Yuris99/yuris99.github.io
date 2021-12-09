@@ -1,5 +1,866 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>태그: Computer Network - Yuris</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Jihun Hong"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Jihun Hong"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Yuris"><meta property="og:url" content="https://yuris99.github.io/"><meta property="og:site_name" content="Yuris"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://yuris99.github.io/img/og_image.png"><meta property="article:author" content="Jihun Hong"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://yuris99.github.io"},"headline":"Yuris","image":["https://yuris99.github.io/img/og_image.png"],"author":{"@type":"Person","name":"Jihun Hong"},"publisher":{"@type":"Organization","name":"Yuris","logo":{"@type":"ImageObject","url":"https://yuris99.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Change Themes" href="https://github.com/ppoffice/hexo-theme-icarus">hi!<i class="fab fa-github"></i></a><a class="navbar-item search" title="검색" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">태그</a></li><li class="is-active"><a href="#" aria-current="page">Computer Network</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-07T02:57:57.000Z" title="2021. 12. 7. 오전 11:57:57">2021-12-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-08T13:12:14.286Z" title="2021. 12. 8. 오후 10:12:14">2021-12-08</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/07/dataNetwork-network/">[강의정리] 데이터통신과네트워크 Network Layer</a></h1><div class="content"><hr>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>태그: Computer Network - Yuris</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Jihun Hong"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Jihun Hong"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Yuris"><meta property="og:url" content="https://yuris99.github.io/"><meta property="og:site_name" content="Yuris"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://yuris99.github.io/img/og_image.png"><meta property="article:author" content="Jihun Hong"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://yuris99.github.io"},"headline":"Yuris","image":["https://yuris99.github.io/img/og_image.png"],"author":{"@type":"Person","name":"Jihun Hong"},"publisher":{"@type":"Organization","name":"Yuris","logo":{"@type":"ImageObject","url":"https://yuris99.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Change Themes" href="https://github.com/ppoffice/hexo-theme-icarus">hi!<i class="fab fa-github"></i></a><a class="navbar-item search" title="검색" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">태그</a></li><li class="is-active"><a href="#" aria-current="page">Computer Network</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-09T03:25:38.000Z" title="2021. 12. 9. 오후 12:25:38">2021-12-09</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-09T05:39:52.613Z" title="2021. 12. 9. 오후 2:39:52">2021-12-09</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/09/dataNetwork-password/">[강의정리] 데이터통신과네트워크 네트워크와 암호</a></h1><div class="content"><hr>
+<h1 id="암호기술"><a href="#암호기술" class="headerlink" title="암호기술"></a>암호기술</h1><h2 id="암호학적-해쉬-함수"><a href="#암호학적-해쉬-함수" class="headerlink" title="암호학적 해쉬 함수"></a>암호학적 해쉬 함수</h2><ul>
+<li><p>Cryptographic hash functions</p>
+</li>
+<li><p>one-way function: 한방향으로만 입출력(출력값을가지고 입력값을 구하기 어려움)</p>
+</li>
+<li><p>해쉬 함수 특징</p>
+<ul>
+<li>1차 역상 저항성(Preimage resistance): output을 가지고 input을 유추하기 어려움</li>
+</ul>
+</li>
+<li><p>Avalanche effect</p>
+<ul>
+<li>입력값이 1비트 값만 변하더라도 결과값은 전혀 다른값이 됨</li>
+<li>암호학적 해쉬 함수 종류<ul>
+<li>MD5, SHA1, SHA256… </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>사용 예: 파일 이미지 확인, 패스워드 생성기</p>
+</li>
+</ul>
+<h2 id="대칭키-암호"><a href="#대칭키-암호" class="headerlink" title="대칭키 암호"></a>대칭키 암호</h2><ul>
+<li><p>평문 (Planetext): 암호화 되기 전 메시지</p>
+</li>
+<li><p>암호문 (Ciphertext): 암호화된 메시지</p>
+</li>
+<li><p>구성요소</p>
+<ul>
+<li>암호알고리즘: E()</li>
+<li>암호화 키: K</li>
+<li>암호화(Encryption): EK(P) = C</li>
+<li>복호화(Decryption): DK(C) = P</li>
+</ul>
+</li>
+<li><p>대칭키 암호 (Symmetric key encryption)</p>
+<ul>
+<li>스트림 암호 (Stream Cipher): RC4, OTP, …</li>
+<li>블록 암호 (Block cipher): DES, AES, SEED, …</li>
+</ul>
+</li>
+</ul>
+<h3 id="블록-암호-Block-Cipher"><a href="#블록-암호-Block-Cipher" class="headerlink" title="블록 암호 (Block Cipher)"></a>블록 암호 (Block Cipher)</h3><ul>
+<li>실생활에서 주로 사용되는 대칭키 암호 시스템</li>
+<li>평문을 고정된 길이의 블록으로 나눈 후, 암호화 과정 진행<ul>
+<li>암호문 길이 = 평문 길이</li>
+</ul>
+</li>
+</ul>
+<h3 id="대칭키-암호-DES"><a href="#대칭키-암호-DES" class="headerlink" title="대칭키 암호 (DES)"></a>대칭키 암호 (DES)</h3><ul>
+<li>1977년에 표준으로 제정</li>
+<li>2007년에 6.4일만에 해독됨</li>
+</ul>
+<h3 id="대칭키-암호-AES"><a href="#대칭키-암호-AES" class="headerlink" title="대칭키 암호 (AES)"></a>대칭키 암호 (AES)</h3><ul>
+<li>1997년 NIST가 차세대 암호 표쥰(AES: Advanced encryption standard) 공모</li>
+<li>벨기에 암호학자들이 제안한 블록 암호 시스템 선정</li>
+</ul>
+<h2 id="메시지-인증-코드-MAC"><a href="#메시지-인증-코드-MAC" class="headerlink" title="메시지 인증 코드 (MAC)"></a>메시지 인증 코드 (MAC)</h2><ul>
+<li><p>MAC(Message authentication code)</p>
+</li>
+<li><p>MAC 구성요소</p>
+<ul>
+<li>MAC 알고리즘: MAC()</li>
+<li>MAC Key: K</li>
+</ul>
+</li>
+<li><p>MAC을 만드는 방법</p>
+<ul>
+<li>블록암호 기반 MAC 알고리즘</li>
+<li>암호학적 해쉬 기반 MAC 알고리즘 (일반적)</li>
+</ul>
+</li>
+</ul>
+<h2 id="공개키-암호-시스템"><a href="#공개키-암호-시스템" class="headerlink" title="공개키 암호 시스템"></a>공개키 암호 시스템</h2><ul>
+<li><p>공개키 암호(Public key system or Asymmetric key system)</p>
+<ul>
+<li><p>공개키 암호는 한쌍의 키를 가지고 있음</p>
+</li>
+<li><p>공개키: 외부로 공개하는 키 값</p>
+</li>
+<li><p>개인키: 자신만 가지고 있는 키 값</p>
+</li>
+<li><p>수학적 난제를 통해 키를 생성</p>
+</li>
+<li><p>전자서명 시스템에 자주 사용</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="네트워크와-암호"><a href="#네트워크와-암호" class="headerlink" title="네트워크와 암호"></a>네트워크와 암호</h1><h2 id="Backgrounds"><a href="#Backgrounds" class="headerlink" title="Backgrounds"></a>Backgrounds</h2><ul>
+<li><p>Link encryption</p>
+<ul>
+<li>암호화가 모든 링크에서 독립적으로 수행</li>
+<li>모든 링크간의 사전에 공유된 암호화 키 필요</li>
+</ul>
+</li>
+<li><p>End-to-End encryption</p>
+<ul>
+<li>암호화가 시작점과 도착점에서 수행 </li>
+</ul>
+</li>
+</ul>
+<h3 id="End-to-End-암호화"><a href="#End-to-End-암호화" class="headerlink" title="End-to-End 암호화"></a>End-to-End 암호화</h3><ul>
+<li><p>헤더부분(e.g., IP address)은 암호화 되지 않음</p>
+<ul>
+<li>헤더정보를 통해 인터넷 패킷들을 라우팅</li>
+<li>헤더정보가 암호화되지 않으므로 traffic 흐름 노출<ul>
+<li>End-to-End에서는 A와 B가 통신하고 있다는 사실 노출</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>그래서 End-to-End와 Link 암호화 동시에 사용되기도 함</p>
+<ul>
+<li>End-to-End 암호화: 데이터 보호</li>
+<li>Link 암호화: traffic 흐름 숨김</li>
+</ul>
+</li>
+<li><p>둘다 대부분 대칭키 암호 사용 (e.g., AES)</p>
+<ul>
+<li>비대칭키 암호(공개키 암호)는 주로 암호화 키 교환(혹은 인증)에 사용</li>
+</ul>
+</li>
+</ul>
+<h2 id="SSL-TLS-프로토콜-구조"><a href="#SSL-TLS-프로토콜-구조" class="headerlink" title="SSL/TLS 프로토콜 구조"></a>SSL/TLS 프로토콜 구조</h2><ul>
+<li><p>SSL/TLS 프로토콜은 클라이언트와 서버의 통신에 메시지 인증, 기밀성, 가용성 제공</p>
+</li>
+<li><p>암호화 되지 않은 패킷 (e.g., HTTP)는 SSL패킷으로 인코딩 되면서 암호화 진행 (HTTP SSL)</p>
+</li>
+</ul>
+<h3 id="구조"><a href="#구조" class="headerlink" title="구조"></a>구조</h3><ul>
+<li><p>Handshake protocol</p>
+<ul>
+<li>암호화/인증 통신을 위해 사용할 알고리즘의 종류 그리고 암호화/인증 키에 대해 협의</li>
+</ul>
+</li>
+<li><p>ChangeCipherSpec protocol</p>
+<ul>
+<li>Handshake 프로토콜을 통해 교환된 정보들을(e.g., 암호 알고리즘 종류, 암호화 키) 확인</li>
+</ul>
+</li>
+<li><p>Alert protocol</p>
+<ul>
+<li>TLS 괒어 중에 발생하는 에러 혹은 비정상적인 상황을 리포트</li>
+</ul>
+</li>
+<li><p>Record portocol</p>
+<ul>
+<li>TLS에서 전송되는 상위 레이어의 메시지 처리</li>
+</ul>
+</li>
+</ul>
+<h2 id="IPsec"><a href="#IPsec" class="headerlink" title="IPsec"></a>IPsec</h2><ul>
+<li><p>IPSec(Internet Protocol Security): SSL과 달리 네트워크 계층에서 보안을 제공하기 위해 IETF(Internet Engineering Task Force)에 의해 표준화된 프로토콜</p>
+</li>
+<li><p>왜사용?</p>
+<ul>
+<li>어플리케이션 레이어에서 보호 안될수도</li>
+<li>UDP 사용할수도</li>
+</ul>
+</li>
+</ul>
+<h3 id="Transport-mode-vs-tunnel-mode"><a href="#Transport-mode-vs-tunnel-mode" class="headerlink" title="Transport mode vs. tunnel mode"></a>Transport mode vs. tunnel mode</h3><h4 id="전송모드-Transport-모드"><a href="#전송모드-Transport-모드" class="headerlink" title="전송모드 (Transport 모드)"></a>전송모드 (Transport 모드)</h4><ul>
+<li>IPSec의 기본 모드, end-to-end 보안 제공</li>
+<li>IPSec에서 전송모드가 사용되면 IP데이터영역만 보안 처리함으로써 IP데이터 영역을 보호</li>
+<li>IP헤더는 보호X</li>
+</ul>
+<h4 id="터널모드-Tunnel-모드"><a href="#터널모드-Tunnel-모드" class="headerlink" title="터널모드 (Tunnel 모드)"></a>터널모드 (Tunnel 모드)</h4><ul>
+<li>IP패킷 전체를 보호</li>
+<li>헤더영역도 보호함</li>
+<li>트래픽 흐름 보호 가능</li>
+</ul>
+<h2 id="TLS-vs-IPSec"><a href="#TLS-vs-IPSec" class="headerlink" title="TLS vs. IPSec"></a>TLS vs. IPSec</h2><ul>
+<li><p>SSL/TLS</p>
+<ul>
+<li>transport layer에서 제공</li>
+<li>일반 보안통신에 주로 사용</li>
+</ul>
+</li>
+<li><p>IPSec</p>
+<ul>
+<li>network layer에서 제공</li>
+<li>특수 보안통신(e.g., VPN)에서 주로 샤용</li>
+</ul>
+</li>
+</ul>
+<h2 id="VPN-Virtual-Private-Network"><a href="#VPN-Virtual-Private-Network" class="headerlink" title="VPN(Virtual Private Network)"></a>VPN(Virtual Private Network)</h2><h2 id="Tor-The-Onion-Router"><a href="#Tor-The-Onion-Router" class="headerlink" title="Tor (The Onion Router)"></a>Tor (The Onion Router)</h2></div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-08T18:19:08.000Z" title="2021. 12. 9. 오전 3:19:08">2021-12-09</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-09T02:59:20.116Z" title="2021. 12. 9. 오전 11:59:20">2021-12-09</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/09/intrust-detection/">[강의정리] 데이터통신과네트워크 침입탐지시스템</a></h1><div class="content"><hr>
+<h1 id="네트워크-트래픽-분석과-악성코드"><a href="#네트워크-트래픽-분석과-악성코드" class="headerlink" title="네트워크 트래픽 분석과 악성코드"></a>네트워크 트래픽 분석과 악성코드</h1><ul>
+<li>악성코드를 분석하는데 네트워크 트래픽 분석이 왜 필요할까?<ul>
+<li>악성코드는 네트워크 기술이 발달함에 따라 배포 및 명령 전달이 용이해짐</li>
+<li>86년도부터 급격히 증가한 배경은 인터넷 기술의 발전</li>
+<li>출현개수와 새로운 종의 출현은 인터넷 보급속도와 유사하게 증가</li>
+</ul>
+</li>
+</ul>
+<h2 id="인터넷을-통한-악성코드-감염-경로"><a href="#인터넷을-통한-악성코드-감염-경로" class="headerlink" title="인터넷을 통한 악성코드 감염 경로"></a>인터넷을 통한 악성코드 감염 경로</h2><ul>
+<li>인터넷 브라우저</li>
+<li>불법 크랙 프로그램</li>
+<li>피싱/파밍</li>
+<li>외부 문서의 매크로 </li>
+</ul>
+<h2 id="파악"><a href="#파악" class="headerlink" title="파악"></a>파악</h2><ul>
+<li><p>네트워크 트래픽 분석을 통해 악성코드의 정확한 행위를 파악 가능</p>
+<ul>
+<li>대부분 악성코드는 네트워크 사용</li>
+<li>DDoS 공격을 위한 좀비 PC를 모으거나, 특정사용자 파일 감시, 악의적인 파일 암호화등의 악성행위는 네트워크가 필요한 경우가 많음</li>
+</ul>
+</li>
+<li><p>네트워크 트래픽을 통한 악성코드 통신 차단 기능</p>
+<ul>
+<li>방화벽을 통한 의심 ip, 포트 차단</li>
+<li>Intrusion Detection System(IDS)를 통한 네트워크 공격 탐지 및 Intrusion Prevention System (IPS)를 통한 네트워크 트래픽 차단</li>
+</ul>
+</li>
+</ul>
+<h1 id="보안-관점에서-바라본-OSI-7계층"><a href="#보안-관점에서-바라본-OSI-7계층" class="headerlink" title="보안 관점에서 바라본 OSI 7계층"></a>보안 관점에서 바라본 OSI 7계층</h1><ul>
+<li>L2: MAC</li>
+<li>L3: IP</li>
+<li>L4: 프로토콜(TCP/UDP)</li>
+<li>L7: 페이로드</li>
+</ul>
+<h2 id="L2-계층"><a href="#L2-계층" class="headerlink" title="L2 계층"></a>L2 계층</h2><ul>
+<li>데이터 링크 계층으로 MAC과 가장 관련이 깊음</li>
+<li>Source MAC주소와 Destination MAC 주소를 보고 Switch에서 차단 가능</li>
+</ul>
+<h3 id="L2-방화벽"><a href="#L2-방화벽" class="headerlink" title="L2 방화벽"></a>L2 방화벽</h3><ul>
+<li><p>L2와 가장 관계가 깊은 보안 시스템은 방화벽</p>
+</li>
+<li><p>일반적으로 방화벽의 경우 최소 2개 이상의 NIC 필요</p>
+</li>
+<li><p>장점</p>
+<ul>
+<li>L2 방화벽을 설치 할 때 일반적으로 네트워크 디자인을 바꾸지 않아도 됨</li>
+</ul>
+</li>
+<li><p>단점</p>
+<ul>
+<li>동일한 네트워크 안에서만 가능, 다양한 네트워크 환경에는 적용 불가능</li>
+</ul>
+</li>
+</ul>
+<h2 id="L3-계층"><a href="#L3-계층" class="headerlink" title="L3 계층"></a>L3 계층</h2><ul>
+<li><p>네트워크 계층으로 IP 주소와 연관 있음</p>
+</li>
+<li><p>하나의 네트워크 장비(e.g., 방화벽)를 통해 여러개의 네트워크 망을 구성</p>
+<ul>
+<li>NAT와 VLAN기술 필요</li>
+</ul>
+</li>
+</ul>
+<h3 id="L3-방화벽"><a href="#L3-방화벽" class="headerlink" title="L3 방화벽"></a>L3 방화벽</h3><ul>
+<li><p>장점</p>
+<ul>
+<li>L2 방화벽에선 하지 못했던 좀 더 다양한 접근 제어 가능</li>
+<li>NAT과 VLAN 활용</li>
+</ul>
+</li>
+<li><p>단점</p>
+<ul>
+<li>L3 방화벽을 설치할 때 일반적으로 네트워크 디자인을 바꿔야 할 수도 있음</li>
+</ul>
+</li>
+</ul>
+<h2 id="L4-계층"><a href="#L4-계층" class="headerlink" title="L4 계층"></a>L4 계층</h2><ul>
+<li>전송계층</li>
+<li>패킷을 포트수준까지 확인</li>
+</ul>
+<h2 id="L7-계층"><a href="#L7-계층" class="headerlink" title="L7 계층"></a>L7 계층</h2><ul>
+<li>L5는 세션계층, L6는 표현계층, L7은 응용계층<ul>
+<li>요즘에는 L5,6,7을 통틀어 L7이라 부르기도 함</li>
+</ul>
+</li>
+<li>L7 방화벽에서는 패킷 페이로드를 활용하여 운용 가능</li>
+</ul>
+<h1 id="방화벽"><a href="#방화벽" class="headerlink" title="방화벽"></a>방화벽</h1><ul>
+<li>하드웨어 기반 방화벽: 여러대의 PC와 서버를 커버함</li>
+<li>소프트웨어 기반 방화벽: 설치된 host PC만 보호</li>
+</ul>
+<h2 id="방화벽-1세대-방화벽"><a href="#방화벽-1세대-방화벽" class="headerlink" title="방화벽: 1세대 방화벽"></a>방화벽: 1세대 방화벽</h2><ul>
+<li><p>패킷 필터링 기반의 1세대 방화벽 </p>
+<table>
+<thead>
+<tr>
+<th>src IP</th>
+<th>dst IP</th>
+<th>src Port</th>
+<th>dst Port</th>
+<th>Control</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>any</td>
+<td>1.1.1.1</td>
+<td>any</td>
+<td>80</td>
+<td>permit</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>80포트 listen</p>
+</li>
+<li><p>80포트에 대한 접근 허용(HTTP 포트)</p>
+</li>
+<li><p>무수히 많은 룰을 셋팅해야함</p>
+</li>
+<li><p>80번 포트를 열때 나가는 포트에 대해 많은 포트를 열어줘야함</p>
+<ul>
+<li>룰관리 이슈</li>
+<li> 포트 개방에 따른 이슈</li>
+</ul>
+</li>
+</ul>
+<h2 id="방화벽-2세대-방화벽"><a href="#방화벽-2세대-방화벽" class="headerlink" title="방화벽: 2세대 방화벽"></a>방화벽: 2세대 방화벽</h2><ul>
+<li><p>Stateful Inspection: TCP 접속 시 방화벽에서 패킷의 payload를 보면서 3way handshake의 state 추적, rule을 자동으로 추가</p>
+</li>
+<li><p>장점:</p>
+<ul>
+<li>Response 패킷에 대한 룰을 불필요하게 작성할필요 없음</li>
+<li>동작하는 동안 checksum도 계산, 잘못된패킷은 폐기 가능</li>
+</ul>
+</li>
+</ul>
+<h2 id="방화벽-3세대-방화벽"><a href="#방화벽-3세대-방화벽" class="headerlink" title="방화벽: 3세대 방화벽"></a>방화벽: 3세대 방화벽</h2><ul>
+<li><p>L7 방화멱 또는 애플리케이션 방화벽</p>
+</li>
+<li><p>실제 패킷 내용 검사, 단순한 포트/IP 조사뿐만 아니라 어떤 애플리케이션과 통신하고있는지 파악</p>
+<ul>
+<li>2세대 방화벽: 80/443 허용이나 차단 가능</li>
+<li>3세대 방화벽: 페이스북 차단, 인스타 허용같은 룰 가능</li>
+</ul>
+</li>
+<li><p>L2, L3, L4 모두 커버 가능하지만 성능 이슈로 L7에 집중하기도 함</p>
+<ul>
+<li>범용적인 서비스보단 오피스용</li>
+</ul>
+</li>
+</ul>
+<h2 id="방화벽-구성"><a href="#방화벽-구성" class="headerlink" title="방화벽 구성"></a>방화벽 구성</h2><ul>
+<li>Intranet: 직원 내부망</li>
+<li>서비스대역(DMZ): 네트워크 중립지역, 외부에 서비스를 제공할때 내부 네트워크와 분리시킨 공간</li>
+</ul>
+<h3 id="A구간-외부에서-서버-접속-서비스-대역으로-오는-접속"><a href="#A구간-외부에서-서버-접속-서비스-대역으로-오는-접속" class="headerlink" title="A구간: 외부에서 서버 접속 (서비스 대역으로 오는 접속)"></a>A구간: 외부에서 서버 접속 (서비스 대역으로 오는 접속)</h3><ul>
+<li>외부로 공개된 웹서버가 존재하면, HTTP(80), HTTPS(443) 포트 허용</li>
+<li>그밖의 모든 포트 차단 (E.g., RDP(3389), SSH(22))</li>
+</ul>
+<h3 id="B구간-내부망에서-서버로-접속"><a href="#B구간-내부망에서-서버로-접속" class="headerlink" title="B구간: 내부망에서 서버로 접속"></a>B구간: 내부망에서 서버로 접속</h3><ul>
+<li>내부망에 존재하는 엔지니어들을 위해 다양한 제어 포트를 열어둠</li>
+<li>E.g., HTTP(80), HTTPS(443), SSH(22), RDP(3389) 등</li>
+</ul>
+<h3 id="C구간-서버에서-외부망-접속"><a href="#C구간-서버에서-외부망-접속" class="headerlink" title="C구간: 서버에서 외부망 접속"></a>C구간: 서버에서 외부망 접속</h3><ul>
+<li>서버 패치를 위해 Linux Repository 접근 허용</li>
+<li>일반 사이트는 접속 불허용!</li>
+</ul>
+<h3 id="D구간-내부망에서-외부망으로-접속"><a href="#D구간-내부망에서-외부망으로-접속" class="headerlink" title="D구간: 내부망에서 외부망으로 접속"></a>D구간: 내부망에서 외부망으로 접속</h3><ul>
+<li>서버 패치를 위해 Linux Repository 접근 허용</li>
+<li>파일 유출 방지를 위해 구글드라이브, 네이버 드라이브 불허용</li>
+<li>악성코드 감염 방지를 위해 악성 사이트 접근 불허용</li>
+</ul>
+<h3 id="High-Availability-HA"><a href="#High-Availability-HA" class="headerlink" title="High Availability (HA)"></a>High Availability (HA)</h3><ul>
+<li><p>High Availability: 2대의 방화벽을 통해, 1개의 방화벽에 장애가 생길경우를 대비</p>
+</li>
+<li><p>한대는 온라인 상태, 한대는 대기/레디 상태 (Active-Standby)</p>
+</li>
+<li><p>두개가 항상 온라인 상태 (Active-Active)</p>
+</li>
+</ul>
+<h3 id="바이패스-스위치"><a href="#바이패스-스위치" class="headerlink" title="바이패스 스위치"></a>바이패스 스위치</h3><ul>
+<li> 방화벽에 장애가 생겼을 경우, 우회경로 만들어줌</li>
+<li>보안보다 서비스가 중요하다고 판단될 경우</li>
+</ul>
+<h3 id="Full-Mesh"><a href="#Full-Mesh" class="headerlink" title="Full Mesh"></a>Full Mesh</h3><ul>
+<li>네트워크 장비를 2대 이상 준비한 후, 모두 연결</li>
+</ul>
+<h3 id="방화벽-룰-관리"><a href="#방화벽-룰-관리" class="headerlink" title="방화벽 룰 관리"></a>방화벽 룰 관리</h3><ul>
+<li>오래된 룰은 정기적으로 확인 후, 필요없는 경우 해당룰을 지워줌</li>
+<li>룰이 겹치지 않도록 튜닝하는것도 필요</li>
+</ul>
+<hr>
+<h1 id="침입탐지시스템"><a href="#침입탐지시스템" class="headerlink" title="침입탐지시스템"></a>침입탐지시스템</h1><h2 id="탐지-방법"><a href="#탐지-방법" class="headerlink" title="탐지 방법"></a>탐지 방법</h2><ul>
+<li><p>Signature 기반 공격 탐지</p>
+<ul>
+<li>악성 공격의 일정한 패턴(Signature)을 탐지 룰에 추가함으로 공격을 탐지</li>
+<li>알려지지 않은 공격을 탐지하지 못함</li>
+<li>한계를 극복하기 위해 Anomaly 기반 공격 탐지가 설계됨</li>
+</ul>
+</li>
+<li><p>Anomaly 기반 공격 탐지</p>
+<ul>
+<li>비정상적인 트래픽이 발생하면 공격으로 감지</li>
+<li>E.g., 평소 IP주소당 최대 1Mbps, 어느날 20Mbps? 공격이다!</li>
+<li>오탐존재</li>
+</ul>
+</li>
+</ul>
+<h3 id="Signature-기반-공격-탐지"><a href="#Signature-기반-공격-탐지" class="headerlink" title="Signature 기반 공격 탐지"></a>Signature 기반 공격 탐지</h3><ul>
+<li>IDS는 다음과 같은 탐지 룰을 기반으로 작동<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Alert tcp any any -&gt; any any (msg: &quot;LoCAL-RULE Test for TestMyIDS&quot;;</span><br><span class="line">content: &quot;testmyids.com&quot;; classtype:misc-activity; sid:1000001;rev:1;)</span><br></pre></td></tr></table></figure></li>
+<li>알람 조건<ul>
+<li>Source ip 주소와 Destination ip 주소 any any</li>
+<li>Source port number와 Destination port number any any</li>
+<li>Payload에 “testmyids.com” 문구 포함</li>
+</ul>
+</li>
+</ul>
+<h3 id="Anomaly-기반-공격-탐지"><a href="#Anomaly-기반-공격-탐지" class="headerlink" title="Anomaly 기반 공격 탐지"></a>Anomaly 기반 공격 탐지</h3><ul>
+<li>IPS 트래픽을 학습하는 방법: 다양한 Machine learning 기반 방법</li>
+</ul>
+<h2 id="IDS-종류"><a href="#IDS-종류" class="headerlink" title="IDS 종류"></a>IDS 종류</h2><ul>
+<li><p>NIDS (Network-based IDS)</p>
+<ul>
+<li>네트워크 인프라를 기준으로 동작하는 IDS</li>
+</ul>
+</li>
+<li><p>HIDS (Host-based IDS)</p>
+<ul>
+<li>Host를 관리하는 상황헤서 동작하는 IDS</li>
+</ul>
+</li>
+<li><p>장점</p>
+<ul>
+<li>NIDS: 네트워크 전체를 한군데서 분석 가능</li>
+<li>HIDS: Host별 상세 분석 가능, 사용자단위 분석도 가능</li>
+</ul>
+</li>
+<li><p>단점</p>
+<ul>
+<li>NIDS: IDS를 경우한 공격만 확인 가능, 암호화된 트래픽도 못봄</li>
+<li>HIDS: 개별로 관리해야함</li>
+</ul>
+</li>
+</ul>
+<h3 id="NIDS"><a href="#NIDS" class="headerlink" title="NIDS"></a>NIDS</h3><ul>
+<li><p>탐지 위주 정책, 인라인으로 들어가지 않음(따로 삐져나와있음)</p>
+<ul>
+<li>장애를 예방하기위한 이중화 구성이 필수가아님</li>
+<li>NIDS에 장애가 발생해도 네트워크 로그의 저장이 필요하면 이중화구성 해야함(Backup 장비 이용)</li>
+</ul>
+</li>
+<li><p>NIDS에 필요한것: 전체 네트워크 패킷</p>
+<ul>
+<li>네트워크 패킷을 복사해서 IDS로 전송</li>
+<li>Cisco에서는 트래픽복사하는 행위를 SPAN(Switch Port Analyzer)</li>
+<li>대부분의 스위치가 SPAN or 포트미러링 제공</li>
+</ul>
+</li>
+<li><p>HIDS의 경우 호스트 네트워크 패킷, 시스템 로그 필요</p>
+</li>
+</ul>
+<h4 id="포트-미러링"><a href="#포트-미러링" class="headerlink" title="포트 미러링"></a>포트 미러링</h4><ul>
+<li><p>스위치 환경에서 포트 미러링을 통해 스니핑(패킷 엿듣기) 제공</p>
+<ul>
+<li>스위치 환경에서 패킷 분석을 위해 스위치포트에 스니퍼 연결</li>
+</ul>
+</li>
+<li><p>스위치가 포트미러링을 지원, 스니퍼를 연결하기 위한 포트가 있어야함</p>
+<ul>
+<li>포트 미러링을 할 때 미러링하는 포트의 처리율을 알아야 함.</li>
+</ul>
+</li>
+</ul>
+<h3 id="HIDS"><a href="#HIDS" class="headerlink" title="HIDS"></a>HIDS</h3><ul>
+<li><p>HIDS 필요한것: 호스트 네트워크 데이터 + 시스템 로그 데이터</p>
+</li>
+<li><p>utmp(x) 로그</p>
+<ul>
+<li>utmp 데몬: utmp(x) 파일에 로그 남기는 프로그램</li>
+<li>utmp 데몬은 리눅스의 가장 기본 로깅을 제공하는 데몬<ul>
+<li>현재 시스템에 로그인한 사용자의 상태 출력</li>
+</ul>
+</li>
+<li>utmp 데몬에 저장된 로그를 출력하는 명령: w, who, users, whodo, finger 등<ul>
+<li>w: 현재 시스템에 로그인된 계정, 셸종류, 로그인시간, 실행중인 프로세스 종류</li>
+<li>who: 접속한 시스템의 IP 확인</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>wtmp(x) 로그</p>
+<ul>
+<li>wtmp 데몬: wtmp(x) 파일에 로그 남김, /usr/include/utmp.h 파일 구조체 사용</li>
+<li>utmp데몬과 비슷한 역할, 사용자들의 로그인,로그아웃,재부팅 정보 수록</li>
+<li>last명령 이용</li>
+</ul>
+</li>
+<li><p>su(switch user) 로그</p>
+<ul>
+<li>권한 변경에 대한 로그</li>
+<li>cat /var/adm/sulog</li>
+</ul>
+</li>
+<li><p>pacct 로그</p>
+<ul>
+<li>시스템에 로그인한 모든 사용자가 수행한 프로그램 정보 저장</li>
+<li>acctcom 명령 이용<ul>
+<li>root 계정으로 vi에디터 실행한 기록: acctcom -u root -n vi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>lastcomm명령: 실행된 날짜 출력</p>
+</li>
+</ul>
+<h3 id="리눅스-로그-분석과-설정"><a href="#리눅스-로그-분석과-설정" class="headerlink" title="리눅스 로그 분석과 설정"></a>리눅스 로그 분석과 설정</h3><ul>
+<li><p>syslog</p>
+<ul>
+<li>시스템의 로그 정보를 대부분 수집해서 로깅</li>
+<li>로그종류와 수준은 /etc/syslog.conf 파일</li>
+</ul>
+</li>
+<li><p>authlog/loginlog</p>
+<ul>
+<li>실패한 로그인 시도에 대한 로깅 (loginlog 파일에 저장)</li>
+<li>설정: etc/default/login, 재부팅후 적용</li>
+</ul>
+</li>
+</ul>
+<h2 id="IDS-vs-IPS"><a href="#IDS-vs-IPS" class="headerlink" title="IDS vs. IPS"></a>IDS vs. IPS</h2><ul>
+<li><p>Intrusion Detection System</p>
+</li>
+<li><p>Intrusion Prevention System</p>
+</li>
+<li><p>IDS는 공격에 대한 블록기능 X, 탐지만 하는경우가 많음</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>IPS</th>
+<th>IDS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>시스템 타입</td>
+<td>액티브(모니터링, 차단까지)</td>
+<td>패시브(모니터링, 경고)</td>
+</tr>
+<tr>
+<td>매커니즘</td>
+<td>Anomaly based detection\nSigniture detection</td>
+<td>Anomaly based detection\nSigniture detection</td>
+</tr>
+<tr>
+<td>위치</td>
+<td>Inline형태로 설치</td>
+<td>Out of band</td>
+</tr>
+<tr>
+<td>대응방법</td>
+<td>경고를 주거나 패킷을 Drop</td>
+<td>알람 보냄</td>
+</tr>
+<tr>
+<td>퍼포먼스 영향</td>
+<td>패킷속도에 저하가 생길 수 있음</td>
+<td>복사해서 분석하기 때문에 퍼포먼스적 영향 X</td>
+</tr>
+<tr>
+<td>benefits</td>
+<td>자동화되고, 방지도 되기 때문에 회사에서 선호</td>
+<td>IPS가 차단할 합법적인 traffic을 차단하지 않음</td>
+</tr>
+</tbody></table>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-08T13:24:02.000Z" title="2021. 12. 8. 오후 10:24:02">2021-12-08</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-08T16:45:11.580Z" title="2021. 12. 9. 오전 1:45:11">2021-12-09</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/08/dataNetwork-link/">[강의정리] 데이터통신과네트워크 Link Layer</a></h1><div class="content"><hr>
+<h2 id="Link-layer-Introduction"><a href="#Link-layer-Introduction" class="headerlink" title="Link layer: Introduction"></a>Link layer: Introduction</h2><ul>
+<li><p>data-link layer: datagram을 서로 인접한 노드간에 전달해주는 책임을 가지고 있는 레이어</p>
+</li>
+<li><p>Links: 인접한 노드들을 따라서 communication channels를 연결</p>
+<ul>
+<li>wired links</li>
+<li>wireless links</li>
+<li>LANs</li>
+</ul>
+</li>
+<li><p>Layer-2 packet: frame</p>
+<ul>
+<li>Encapsulates datagram (데이타그램 캡슐화)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Link-layer-services"><a href="#Link-layer-services" class="headerlink" title="Link layer services"></a>Link layer services</h3><ul>
+<li><p>Framing: datagram을 frame로 만들고, header와 trailer를 붙임</p>
+</li>
+<li><p>Link access: share해서 사용할때 어떻게 나눠쓸건지 결정</p>
+<ul>
+<li>“MAC” address in frame headers, source와 destination을 식별하는데 사용됨<ul>
+<li>IP address와 다름</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>인접한 노드 사이에 신뢰성있는 데이터 전송</p>
+<ul>
+<li>Wireless links: error가 많음</li>
+<li>드물게 low bit-error link 사용</li>
+</ul>
+</li>
+<li><p>Error detection: 신호 감소, 노이즈에 의한 에러 감지</p>
+</li>
+<li><p>Error correction: receiver는 retransmisson에 의존하지 않고 비트오류를 식별한후 수정함</p>
+</li>
+</ul>
+<h3 id="Link-layer-구현되있는-곳"><a href="#Link-layer-구현되있는-곳" class="headerlink" title="Link layer 구현되있는 곳?"></a>Link layer 구현되있는 곳?</h3><ul>
+<li>Network interface 카드</li>
+<li>Adaptors</li>
+</ul>
+<h3 id="Adaptors-communicating"><a href="#Adaptors-communicating" class="headerlink" title="Adaptors communicating"></a>Adaptors communicating</h3><ul>
+<li><p>sending side: datagram 캡슐화, frameing</p>
+</li>
+<li><p>error checking bits, rdt등등 추가</p>
+</li>
+<li><p>receiving side: 에러, rdt등등 확인</p>
+</li>
+<li><p>문제가 없으면 datagram를 추출해서 위로 보냄</p>
+</li>
+</ul>
+<h3 id="Error-detection"><a href="#Error-detection" class="headerlink" title="Error detection"></a>Error detection</h3><ul>
+<li><p>EDC = Error Detection and Correction bits </p>
+</li>
+<li><p>Error detection 100% 신뢰되진 않음</p>
+</li>
+<li><p>하지만 거의 놓치지 않는다</p>
+</li>
+<li><p>EDC가 커질수록 detection과 correction이 쉬워짐</p>
+</li>
+</ul>
+<h4 id="Parity-checking"><a href="#Parity-checking" class="headerlink" title="Parity checking"></a>Parity checking</h4><ul>
+<li><p>single bit parity: detect single bit errors</p>
+<ul>
+<li>parity bit에 1의 개수가 짝수인지 홀수인지 확인</li>
+</ul>
+</li>
+<li><p>two-dimensional bit parity: detect and correct single bit errors</p>
+</li>
+<li><p>Row와 column에서 짝수 개수 확인, 에러 correction 가능</p>
+</li>
+</ul>
+<h4 id="Checksum-에러를-체크하는데-사용되는-함수-통칭"><a href="#Checksum-에러를-체크하는데-사용되는-함수-통칭" class="headerlink" title="Checksum: 에러를 체크하는데 사용되는 함수 통칭"></a>Checksum: 에러를 체크하는데 사용되는 함수 통칭</h4><ul>
+<li>Sender send Msg with Checksum Value(CV)</li>
+<li>Receiver check CV with Checksum</li>
+</ul>
+<h4 id="Checksumming-Methods"><a href="#Checksumming-Methods" class="headerlink" title="Checksumming Methods"></a>Checksumming Methods</h4><ul>
+<li><p>Cyclic redundancy check (CRC)</p>
+<ul>
+<li><p>error-detection coding으로 더 powerful</p>
+</li>
+<li><p> d bits(Data bits) + r bits(CRC bits)</p>
+</li>
+<li><p>CRC bits: D*2^r % G</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Multiple-access-links-protocols"><a href="#Multiple-access-links-protocols" class="headerlink" title="Multiple access links, protocols"></a>Multiple access links, protocols</h3><ul>
+<li>두가지 타입의 network links:<ul>
+<li>point-to-point link: single sender, single receiver</li>
+<li>broadcast link (shared wire or medium): multiple sending and receiving</li>
+</ul>
+</li>
+</ul>
+<h3 id="Multiple-access-protocols"><a href="#Multiple-access-protocols" class="headerlink" title="Multiple access protocols"></a>Multiple access protocols</h3><ul>
+<li><p>single shared broadcast channel </p>
+</li>
+<li><p>노드들에 의해서 동시에 데이터를 보낼 수 있어야함: interference</p>
+<ul>
+<li>node가 동시에 signal을 보내려 하면 collision 발생</li>
+</ul>
+</li>
+<li><p>Multiple access protocol</p>
+<ul>
+<li>node들이 channel을 share 하고 있을 때 어떤 노드가 먼저 보낼지 결정</li>
+<li>알고리즘은 모든 노드들에게 분산된 상태에서 구동되야함</li>
+<li>Channel sharing에 관한 communication은 channel 자체를 사용해야함<ul>
+<li>조정을 위해 out-of-band channel 사용하면 안됨</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Multiple-access-protocol에-대한-이상적인-상황"><a href="#Multiple-access-protocol에-대한-이상적인-상황" class="headerlink" title="Multiple access protocol에 대한 이상적인 상황"></a>Multiple access protocol에 대한 이상적인 상황</h3><ul>
+<li><p>Given: broadcast channel of rate R bps</p>
+</li>
+<li><p>원하는 특성</p>
+<ol>
+<li>하나의 노드가 데이터를 쓸 때, sending rate: R</li>
+<li>M개의 노드와 share할 때, send average rate: R/M</li>
+<li>Fully decentralized(완벽한 탈중앙화):</li>
+</ol>
+<ul>
+<li>transmission을 조정하는 특별한 노트 X</li>
+<li>네트워크 시간동기화 가정 X</li>
+</ul>
+<ol start="4">
+<li>simple</li>
+</ol>
+</li>
+</ul>
+<h3 id="MAC-Media-Access-Control-protocols"><a href="#MAC-Media-Access-Control-protocols" class="headerlink" title="MAC (Media Access Control) protocols"></a>MAC (Media Access Control) protocols</h3><ul>
+<li>Three broad classes:<ul>
+<li>channel partitioning<ul>
+<li>채널을 작은 “조각”단위로 쪼개서 사용(time slots, frequency, code)</li>
+</ul>
+</li>
+<li>random access<ul>
+<li>채널을 나누지 않고, 충돌이 일어나면 random한 delay로 대기</li>
+</ul>
+</li>
+<li> “taking turns”</li>
+<li>번갈아가면서 사용, 공평하지만 비효율적</li>
+</ul>
+</li>
+</ul>
+<h4 id="Channel-partitioning-MAC-protocols-TDMA"><a href="#Channel-partitioning-MAC-protocols-TDMA" class="headerlink" title="Channel partitioning MAC protocols: TDMA"></a>Channel partitioning MAC protocols: TDMA</h4><ul>
+<li>TDMA: time division multiple access<ul>
+<li>시분할방식, 시간을 n-slot으로 나눠서 사용</li>
+<li>노는 slot이 생길 수 있으므로 비효율적</li>
+</ul>
+</li>
+</ul>
+<h4 id="Channel-partitioning-MAC-protocols-FDMA"><a href="#Channel-partitioning-MAC-protocols-FDMA" class="headerlink" title="Channel partitioning MAC protocols: FDMA"></a>Channel partitioning MAC protocols: FDMA</h4><ul>
+<li>FDMA: frequency division multiple access<ul>
+<li>주파수 간격으로 데이터를 쪼갬</li>
+</ul>
+</li>
+</ul>
+<h3 id="Random-access-protocols"><a href="#Random-access-protocols" class="headerlink" title="Random access protocols"></a>Random access protocols</h3><ul>
+<li><p>node가 패킷을 보낼 때</p>
+<ul>
+<li>전체 채널 send rate R 사용</li>
+<li>노드간의 사전 조절은 X</li>
+</ul>
+</li>
+<li><p>두개 이상의 노드가 동시에 사용하면 -&gt; collision</p>
+</li>
+<li><p>Random access MAC protocol 특징:</p>
+<ul>
+<li>어떻게 충돌을 detect 할건지</li>
+<li>충돌이 일어났을 때 어떻게 recover 할 건지 (e.g., via delayed retransmissions)</li>
+</ul>
+</li>
+<li><p>Examples of random access MAC protocols:</p>
+<ul>
+<li>slotted ALOHA</li>
+<li>ALOHA</li>
+<li>CSMA, CSMA/CD, CSMA/CA</li>
+</ul>
+</li>
+</ul>
+<h4 id="Random-Access-protocols-Slotted-ALOHA"><a href="#Random-Access-protocols-Slotted-ALOHA" class="headerlink" title="Random Access protocols: Slotted ALOHA"></a>Random Access protocols: Slotted ALOHA</h4><ul>
+<li><p>가정</p>
+<ul>
+<li>all frames same size</li>
+<li>동등한 사이즈로 쪼갠 time divided slots</li>
+<li>node가 slot 시작시간에 바로 transmit을 할 수 있음</li>
+<li>모든 노드들은 동기화 되있음</li>
+<li>2개 이상의 node가 하나의 slot에서 데이터를 보내려 하면, 모든 nodes가 충돌을 detect</li>
+</ul>
+</li>
+<li><p>작업</p>
+<ul>
+<li>노드가 새로 보내야되는 frame이 있으면, 다음 slot에 transmits<ul>
+<li>if no collision: node는 새로운 frame을 다음 slot에 보낼 수 있음</li>
+<li>if collision: node는 prob.p slot으로 retransmits, 성공할 때까지</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Pros:</p>
+<ul>
+<li>single active node라 transmit 을 full rate로 사용가능</li>
+<li>simple</li>
+</ul>
+</li>
+<li><p>Cons</p>
+<ul>
+<li>collisions, slot 낭비</li>
+<li>대기 슬롯</li>
+<li>시간 동기화</li>
+</ul>
+</li>
+</ul>
+<h4 id="Random-access-protocols-CSMA"><a href="#Random-access-protocols-CSMA" class="headerlink" title="Random access protocols: CSMA"></a>Random access protocols: CSMA</h4><ul>
+<li><p>CSMA (carrier sense multiple access): transmit 하기 전 누가 사용하는지 확인</p>
+<ul>
+<li>if channel sensed idle: transmit entire frame</li>
+<li>if channel sensed busy, defer transmission</li>
+</ul>
+</li>
+<li><p>대화하는데 끼어들지 않기</p>
+</li>
+</ul>
+<h5 id="Random-access-protocols-CSMA-collisions"><a href="#Random-access-protocols-CSMA-collisions" class="headerlink" title="Random access protocols: CSMA collisions"></a>Random access protocols: CSMA collisions</h5><ul>
+<li><p>Collision이 발생할 수 있음</p>
+<ul>
+<li>propagation delay(전파 지연)</li>
+</ul>
+</li>
+<li><p>Collision</p>
+<ul>
+<li>패킷을 전부 보낼 때까지 시간 낭비됨</li>
+</ul>
+</li>
+</ul>
+<h4 id="Random-access-protocols-CSMA-CD"><a href="#Random-access-protocols-CSMA-CD" class="headerlink" title="Random access protocols: CSMA/CD"></a>Random access protocols: CSMA/CD</h4><ul>
+<li><p>CDMA/CD (collision detection)</p>
+<ul>
+<li>짧은 시간에 collisions detected</li>
+<li>충돌된 transmission 중단, channel wastage 감소</li>
+</ul>
+</li>
+<li><p>collsition detection:</p>
+<ul>
+<li>easy in wired LANs: 신호 강도 측정, transmitted 비교, received signals</li>
+<li>difficult in wireless LANs: 신호 왜곡이나 수신강도로 판단하기 어려움 (CSMA/CA 사용)</li>
+</ul>
+</li>
+<li><p>예의 바른사람(끼어들어도 봐줌)</p>
+</li>
+<li><p>구성</p>
+<ol>
+<li>NIC(Network Interface Card)가 datagram을 network layer로부터 받고 crates frame</li>
+<li>If NIC senses channel idle, frame transmission 시작, If NIC senses channel busy, channel이 idle 될때까지 대기후 tranmits.</li>
+<li>만약 NIC가 다른 transmission의 방해 없이 transmit되면, 전송이 성공적으로 마무리됨</li>
+<li>만약 NIC가 또다른 transmission detects하면, send를 abort(중단)함 </li>
+<li>After aborting, NIC enter binary(exponential) backoff:</li>
+</ol>
+<ul>
+<li>n-th의 collision이 발생하면, NIC는 {0, 1, 2, …, 2^n-1}중에 K를 랜덤하게 선택, NIC waits K*512 bits times, returns to Step 2</li>
+<li>Longer backoff interval은 많은 collision이 있는것</li>
+</ul>
+</li>
+</ul>
+<h3 id="Taking-turns"><a href="#Taking-turns" class="headerlink" title="Taking turns"></a>Taking turns</h3><h4 id="Taking-turns-polling-protocol"><a href="#Taking-turns-polling-protocol" class="headerlink" title="Taking turns: polling protocol"></a>Taking turns: polling protocol</h4><ul>
+<li><p>master node에서 slave nodes에게 순서대로 transmit을 invites해줌</p>
+<ul>
+<li>일반적으로 “dumb”한 slave devices에서 사용</li>
+</ul>
+</li>
+<li><p>concerns(우려사항):</p>
+<ul>
+<li>polling overhead</li>
+<li>latency</li>
+<li>single point of failure (master가 오류가 나면 전부 사용하지 못함)</li>
+</ul>
+</li>
+</ul>
+<h4 id="Tacking-turns-token-passing"><a href="#Tacking-turns-token-passing" class="headerlink" title="Tacking turns: token passing"></a>Tacking turns: token passing</h4><ul>
+<li><p>토큰 메시지가 한 노드에서 다음 노드로 순서대로 전달됨</p>
+</li>
+<li><p>concerns(우려사항):</p>
+<ul>
+<li>polling overhead</li>
+<li>latency</li>
+<li>single point of failure (token이 오류가 나면 전부 사용하지 못함)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Switched-local-networks"><a href="#Switched-local-networks" class="headerlink" title="Switched local networks"></a>Switched local networks</h2><ul>
+<li>3개 학과, 2개 서버와 4개의 스위치 라우터</li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-07T02:57:57.000Z" title="2021. 12. 7. 오전 11:57:57">2021-12-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-08T13:12:14.286Z" title="2021. 12. 8. 오후 10:12:14">2021-12-08</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/07/dataNetwork-network/">[강의정리] 데이터통신과네트워크 Network Layer</a></h1><div class="content"><hr>
 <h2 id="Network-layer-function"><a href="#Network-layer-function" class="headerlink" title="Network-layer function"></a>Network-layer function</h2><ul>
 <li><p>Forwarding: 여러개의 패킷을 매칭되는 output 포트로 연결시켜주는 역할</p>
 </li>
@@ -1111,221 +1972,7 @@
 <li>L7 스위치: Application Data 기반 네트워크 통신 지원</li>
 </ul>
 <h2 id="기본적인-네트워크의-구성"><a href="#기본적인-네트워크의-구성" class="headerlink" title="기본적인 네트워크의 구성"></a>기본적인 네트워크의 구성</h2><p><img src="networkInfra.jpg"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-09-05T18:03:52.000Z" title="2021. 9. 6. 오전 3:03:52">2021-09-06</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-09-14T01:04:46.087Z" title="2021. 9. 14. 오전 10:04:46">2021-09-14</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/09/06/dataNetwork-W1/">[강의정리] 데이터통신과네트워크 Overview</a></h1><div class="content"><hr>
-<h1 id="네트워크의-이해"><a href="#네트워크의-이해" class="headerlink" title="네트워크의 이해"></a>네트워크의 이해</h1><h3 id="네트워크의-사전적-의미"><a href="#네트워크의-사전적-의미" class="headerlink" title="네트워크의 사전적 의미"></a>네트워크의 사전적 의미</h3><ul>
-<li>여러한 통신설비를 통해서 두대 이상의 컴퓨터를 서로 연결하는것</li>
-</ul>
-<h3 id="다수의-컴퓨터를-네트워크로-연결했을-때-얻을-수-있는-이점"><a href="#다수의-컴퓨터를-네트워크로-연결했을-때-얻을-수-있는-이점" class="headerlink" title="다수의 컴퓨터를 네트워크로 연결했을 때 얻을 수 있는 이점"></a>다수의 컴퓨터를 네트워크로 연결했을 때 얻을 수 있는 이점</h3><ul>
-<li>데이터 공유가 용이함 (NAS)</li>
-<li>주변장치 공유 (프린터)</li>
-<li>눙률적인 통신 (메일)</li>
-</ul>
-<hr>
-<h2 id="근거리통신-Local-Area-Network"><a href="#근거리통신-Local-Area-Network" class="headerlink" title="근거리통신 (Local Area Network)"></a>근거리통신 (Local Area Network)</h2><h3 id="근거리-통신망-LAN-Local-Area-Network"><a href="#근거리-통신망-LAN-Local-Area-Network" class="headerlink" title="근거리 통신망 (LAN, Local Area Network)"></a>근거리 통신망 (LAN, Local Area Network)</h3><ul>
-<li>한 건물이나 학교 내 캠퍼스처럼 비교적 가까운 지역에 한정된 통신망<br><img src="00.jpg"></li>
-</ul>
-<hr>
-<h2 id="광역통신-Wide-Area-Network"><a href="#광역통신-Wide-Area-Network" class="headerlink" title="광역통신 (Wide Area Network)"></a>광역통신 (Wide Area Network)</h2><h3 id="광역-통신망-WAN"><a href="#광역-통신망-WAN" class="headerlink" title="광역 통신망 (WAN)"></a>광역 통신망 (WAN)</h3><ul>
-<li>두 개 이상의 근거리 네트워크가 넓은 지역에 걸쳐 연결되어 있는 것</li>
-<li>WAN은 하나의 국가 또는 국가와 국가 간을 연결하는 매우 범위가 넓은 네트워크</li>
-<li>우리가 매일 사용하는 인터넷<br><img src="01.jpg"></li>
-</ul>
-<hr>
-<h2 id="통신방식"><a href="#통신방식" class="headerlink" title="통신방식"></a>통신방식</h2><h3 id="클라이언트-서버-시스템"><a href="#클라이언트-서버-시스템" class="headerlink" title="클라이언트/서버 시스템"></a>클라이언트/서버 시스템</h3><ul>
-<li>다른 컴퓨터에 데이터 전송 서비스를 제공하는 컴퓨터를 ‘서버’라 하고, 서버에서 보내주는 데이터서비스를 수신하는 컴퓨터를 ‘클라이언트’라고 한다.<br><img src="02.jpg"></li>
-</ul>
-<h3 id="유니캐스트"><a href="#유니캐스트" class="headerlink" title="유니캐스트"></a>유니캐스트</h3><ul>
-<li>네트워크에서 가장 많이 사용하는 방식</li>
-<li><strong>서버와 클라이언트 간의 일대일(1:1) 통신 방식</strong></li>
-<li>클라이언트의 IP주소와 MAC주소가 필요<br><img src="03.jpg"></li>
-</ul>
-<h3 id="브로드캐스트"><a href="#브로드캐스트" class="headerlink" title="브로드캐스트"></a>브로드캐스트</h3><ul>
-<li><p><strong>로컬 LAN(라우터로 구분된 공간)에 있는 모든 네트워크 단말기에 데이터를 보내는 방식</strong></p>
-</li>
-<li><p>서버와 클라이언트간에 일대모두(1:모두)로 통신하는 데이터 전송 서비스</p>
-</li>
-<li><p>브로드캐스트의 MAC주소는 <code>FF-FF-FF-FF-FF-FF</code>로 미리 정해져 있다.<br><img src="04.jpg"></p>
-</li>
-<li><p>다른 라우터를 찾거나, 라우터끼리 데이터를 교환하거나, 서버가 서비스를 제공하려고 모든 클라이언트에게 알릴 때 등 여러 상황에서 사용</p>
-</li>
-<li><p>하지만 불특정 다수에게 전송되는 서비스라 수신을 원치않는 클라이언트도 수신하므로 <code>네트워크 성능 저하</code>를 가져올 수 있다.<br><img src="05.jpg"></p>
-</li>
-</ul>
-<h3 id="멀티캐스트"><a href="#멀티캐스트" class="headerlink" title="멀티캐스트"></a>멀티캐스트</h3><ul>
-<li>브로드캐스트는 데이터를 무조건 CPU로 전송하기 때문에 컴퓨터 자체의 성능을 떨어뜨림</li>
-<li>멀티캐스트는 전송하려는 <code>특정 그룹에게만 한 번에 전송</code>할 수 있기 때문에 유니캐스트처럼 반복해서 보낼 필요가 없고, 브로드캐스트처럼 전송받을 필요가 없는 컴퓨터에 보내지 않아도 됨<br><img src="06.jpg"></li>
-</ul>
-<hr>
-<hr>
-<h1 id="프로토콜-Protocol"><a href="#프로토콜-Protocol" class="headerlink" title="프로토콜 (Protocol)"></a>프로토콜 (Protocol)</h1><h3 id="프로토콜에-대한-이해"><a href="#프로토콜에-대한-이해" class="headerlink" title="프로토콜에 대한 이해"></a>프로토콜에 대한 이해</h3><ul>
-<li>본래의 의미는 외교에서 의례 또는 의정서</li>
-<li>톰 마릴이 <code>컴퓨터와 컴퓨터 사이에서 메시지를 전달하는 과정</code>이라 정의</li>
-</ul>
-<hr>
-<h2 id="프로토콜의-3가지-요소"><a href="#프로토콜의-3가지-요소" class="headerlink" title="프로토콜의 3가지 요소"></a>프로토콜의 3가지 요소</h2><ul>
-<li>구문(Syntax): <strong>데이터의 구조나 포멧</strong>을 의미</li>
-</ul>
-<ul>
-<li>의미(Semantics): <strong>전송되는 데이터의 각 부분이 무엇을 뜻하는지</strong>를 알 수 있게 미리 정해둔 규칙<br><em>(데이터 자체뿐만 아니라 오류 제어, 동기 제어, 흐름 제어를 포함)</em></li>
-</ul>
-<ul>
-<li>순서(Timing): 어떤 데이터를 보낼 것인지와 얼마나 빠르게 데이터를 보낼 것인지 정의</li>
-</ul>
-<h2 id="프로토콜의-기능"><a href="#프로토콜의-기능" class="headerlink" title="프로토콜의 기능"></a>프로토콜의 기능</h2><h3 id="주소-설정-Addressing"><a href="#주소-설정-Addressing" class="headerlink" title="주소 설정(Addressing)"></a>주소 설정(Addressing)</h3><ul>
-<li>서로 다른 시스템의 두 개체가 통신을 하는경우 필요</li>
-</ul>
-<h3 id="순서-제어-Sequence-Control"><a href="#순서-제어-Sequence-Control" class="headerlink" title="순서 제어(Sequence Control)"></a>순서 제어(Sequence Control)</h3><ul>
-<li>프로토콜 데이터 단위를 전송할 때 보내는 순서를 명시하는 기능(연결 지향형 (Connection-Oriented)에서만 사용)</li>
-</ul>
-<h3 id="데이터-대열의-단편화-및-재조합-Fragmentation-amp-Reassembly"><a href="#데이터-대열의-단편화-및-재조합-Fragmentation-amp-Reassembly" class="headerlink" title="데이터 대열의 단편화 및 재조합(Fragmentation &amp; Reassembly)"></a>데이터 대열의 단편화 및 재조합(Fragmentation &amp; Reassembly)</h3><ul>
-<li>대용량 파일을 전송할 때 전송 효율이 높은 작은 단위로 나누어 전송한 뒤 전송 받은 시스템에서 이를 재조합 해야 함</li>
-<li>어떻게 쪼갤건지, 재조합 할건지</li>
-</ul>
-<h3 id="캡슐화-Encapsulation"><a href="#캡슐화-Encapsulation" class="headerlink" title="캡슐화(Encapsulation)"></a>캡슐화(Encapsulation)</h3><ul>
-<li>데이터에 제어 정보를 추가</li>
-</ul>
-<h3 id="연결-제어-Connection-Control"><a href="#연결-제어-Connection-Control" class="headerlink" title="연결 제어(Connection Control)"></a>연결 제어(Connection Control)</h3><ul>
-<li>연결 설정, 데이터 전송, 연결 해제에 대한 통제 수행</li>
-</ul>
-<h3 id="흐름-제어-Flow-Control"><a href="#흐름-제어-Flow-Control" class="headerlink" title="흐름 제어(Flow Control)"></a>흐름 제어(Flow Control)</h3><ul>
-<li>송신측 개체로부터 오는 데이터의 양이나 속도를 조절하는 기능</li>
-<li>송신측과 수신측의 속도 차이 등으로 인한 정보 유실을 방지</li>
-</ul>
-<h3 id="오류-제어-Error-Control"><a href="#오류-제어-Error-Control" class="headerlink" title="오류 제어(Error Control)"></a>오류 제어(Error Control)</h3><ul>
-<li>두 개체에서 데이터를 교환할 때 오류가 발생할 경우, 이를 제어하는 기법</li>
-<li>순서를 검사하거나 특정 시간 안에 받지 못하면 재전송을 요구하는 방식</li>
-</ul>
-<h3 id="동기화-Synchronization"><a href="#동기화-Synchronization" class="headerlink" title="동기화(Synchronization)"></a>동기화(Synchronization)</h3><ul>
-<li>두 개체 간에 데이터를 전송할 때 각 개체는 특정 타이머 값이나 윈도우 크기 등을 통해 동시에 정의된 인자 값을 공유하는 것</li>
-</ul>
-<h3 id="다중화-Multiplexing"><a href="#다중화-Multiplexing" class="headerlink" title="다중화(Multiplexing)"></a>다중화(Multiplexing)</h3><ul>
-<li>통신 선로 하나에서 여러 시스템을 동시에 통신할 수 있는 기법</li>
-</ul>
-<h3 id="전송-서비스"><a href="#전송-서비스" class="headerlink" title="전송 서비스"></a>전송 서비스</h3><ul>
-<li>우선순위 결정, 서비스 등급과 보안 요구 등을 제어하는 서비스</li>
-</ul>
-<hr>
-<hr>
-<h1 id="네트워크-계층-구조"><a href="#네트워크-계층-구조" class="headerlink" title="네트워크 계층 구조"></a>네트워크 계층 구조</h1><h3 id="네트워크-계층화에-대한-이해"><a href="#네트워크-계층화에-대한-이해" class="headerlink" title="네트워크 계층화에 대한 이해"></a>네트워크 계층화에 대한 이해</h3><ul>
-<li>1980년대 초 ISO(International Organization for Standardization)은 여러 업체가 만든 시스템에 대해 상호 연동이 가능한 표준 네트워크 모델을 제정할 필요성을 인식</li>
-<li>1984년 OSI(Open System Interconnection) 네트워크 모델을 발표<br><img src="07.jpg"></li>
-</ul>
-<h3 id="OSI-7계층-모델"><a href="#OSI-7계층-모델" class="headerlink" title="OSI 7계층 모델"></a>OSI 7계층 모델</h3><p><img src="08.jpg"></p>
-<h2 id="OSI-7계층"><a href="#OSI-7계층" class="headerlink" title="OSI 7계층"></a>OSI 7계층</h2><h3 id="물리-계층-1계층"><a href="#물리-계층-1계층" class="headerlink" title="물리 계층: 1계층"></a>물리 계층: 1계층</h3><ul>
-<li>실제 장치를 연결하는데 필요한 전기적, 물리적 세부 사항을 정의</li>
-<li>물리 계층의 장치로는 허브나 리피터가 있음</li>
-</ul>
-<h3 id="데이터-링크-계층-2계층"><a href="#데이터-링크-계층-2계층" class="headerlink" title="데이터 링크 계층: 2계층"></a>데이터 링크 계층: 2계층</h3><ul>
-<li>점대점(Point-to-Point) 사이의 신뢰성 있는 전송을 보장하기 위한 계층</li>
-<li>CRC 기반의 오류 제어와 흐름 제어가 필요</li>
-<li>가장 잘 알려진 예는 이더넷</li>
-</ul>
-<h3 id="네트워크-계층-3계층"><a href="#네트워크-계층-3계층" class="headerlink" title="네트워크 계층: 3계층"></a>네트워크 계층: 3계층</h3><ul>
-<li>여러 노드를 거칠 때마다 경로를 찾아주는 역할</li>
-<li>라우팅, 흐름 제어, 단편화(Segmentation/Desegmentation), 오류 제어 등을 수행</li>
-<li>대표적인 예는 라우터임, 또한 3계층에서 동작하는 스위치를 흔히 L3 스위치라 함.</li>
-</ul>
-<h3 id="전송-계층-4계층"><a href="#전송-계층-4계층" class="headerlink" title="전송 계층: 4계층"></a>전송 계층: 4계층</h3><ul>
-<li>양 끝단 사용자들이 신뢰성 있는 데이터를 주고받을 수 있게 하여 상위 계층이 데이터 전달의 유효성이나 효율성을 고려하지 않아도 되게 해줌.</li>
-<li>전송 계층에서 동작하는 프로토콜 중 TCP는 연결 지향(Connetion-Oriented) 프로토콜임</li>
-</ul>
-<h3 id="세션-계층-5계층"><a href="#세션-계층-5계층" class="headerlink" title="세션 계층: 5계층"></a>세션 계층: 5계층</h3><ul>
-<li>양 끝단의 응용 프로세스가 통신을 관리하기 위한 방법을 제공</li>
-<li>TCP/IP 세션을 만들고 없애는 책임을 짐.</li>
-</ul>
-<h3 id="표현-계층-6계층"><a href="#표현-계층-6계층" class="headerlink" title="표현 계층: 6계층"></a>표현 계층: 6계층</h3><ul>
-<li>시스템에서 사용되는 코드 간의 번역을 담당</li>
-<li>표현 계층은 data의 Format(형식)을 정의함</li>
-</ul>
-<h3 id="응용-계층-7계층"><a href="#응용-계층-7계층" class="headerlink" title="응용 계층: 7계층"></a>응용 계층: 7계층</h3><ul>
-<li>사용자나 응용 프로그램 사이에 데이터 교환을 가능하게 하는 계층</li>
-<li>HTTP, FTP, 터미널 서비스, 메일 프로그램, 디렉토리 서비스 등을 제공</li>
-</ul>
-<p><img src="09.jpg"></p>
-<hr>
-<h2 id="TCP-IP-4계층"><a href="#TCP-IP-4계층" class="headerlink" title="TCP/IP 4계층"></a>TCP/IP 4계층</h2><p><img src="10.jpg"> <img src="11.jpg"></p>
-<h3 id="OSI-7계층-vs-TCP-IP-4계층"><a href="#OSI-7계층-vs-TCP-IP-4계층" class="headerlink" title="OSI 7계층 vs. TCP/IP 4계층"></a>OSI 7계층 vs. TCP/IP 4계층</h3><ul>
-<li>OSI는 개념적인 모델 (실제 구현에서 반드시 지킨다고 볼 수 없음)</li>
-<li>TCP/IP 프로토콜은 OSI 모델보다 먼저 개발됨</li>
-<li>TCP/IP 프로토콜의 계층은 OSI 모델의 계층과 정확히 일치하지 않음</li>
-<li>두 계층을 비교할 때, 세션(Session)과 표현(Presentation) 2개의 계층이 TCP/IP프로토콜 그룹에 없다는 것을 알 수 있음</li>
-<li>OSI 7 Layer는 장비 개발과 통신 자체를 어떻게 표준으로 잡을지 사용되는 반면에 실질적인 통신 자체는 주로 TCP/IP 프로토콜을 사용함</li>
-<li>최근에는 TCP/IP 모델을 5계층으로 분류하기도 함</li>
-</ul>
-<hr>
-<h2 id="네트워크-계층-구조-물리-계층"><a href="#네트워크-계층-구조-물리-계층" class="headerlink" title="네트워크 계층 구조: 물리 계층"></a>네트워크 계층 구조: 물리 계층</h2><h3 id="1계층-물리-계층-Physical-Layer"><a href="#1계층-물리-계층-Physical-Layer" class="headerlink" title="1계층: 물리 계층(Physical Layer)"></a>1계층: 물리 계층(Physical Layer)</h3><ul>
-<li><p>두 시스템 간에 데이터를 전송하려고 링크를 활성화하고 관리하는 전기적 · 기계적 · 절차적 · 기능적 특성 등을 정의</p>
-</li>
-<li><p>OSI 참조 모델 7계층 중 물리 계층은 최하위 계층인 첫 번째 계층으로, <strong>상위 계층에서 전송된 데이터를 물리매체를 통해 다른 시스템에 전기적 신호로 전송</strong></p>
-</li>
-<li><p>LAN 카드, 케이블, 허브, 라우터 등 물리적인 것과 데이터 전송에 사용하는 전압 등 기본적인 것들이 물리계층에 속함.</p>
-</li>
-<li><p>송신 측: 데이터 링크 계층에서 0과 1로 구성된 비트열의 데이터(프레임)을 받아 전기적 신호로 변환한 후 전송매체를 통하여 수신측에 보냄</p>
-</li>
-<li><p>수신 측: 송신측에서 받은 전기 신호를 0과 1로 구성된 비트열로 복원, 수신측의 데이터 링크 계층에 전송<br><img src="11.jpg"></p>
-</li>
-</ul>
-<h3 id="물리-계층-관련-장비"><a href="#물리-계층-관련-장비" class="headerlink" title="물리 계층 관련 장비"></a>물리 계층 관련 장비</h3><h4 id="리피터-Repeater"><a href="#리피터-Repeater" class="headerlink" title="리피터(Repeater)"></a>리피터(Repeater)</h4><ul>
-<li>네트워클르 연장하기 위한 장비</li>
-<li>불분명해진 신호 세기를 다시 증가시키는 역할</li>
-<li>최근 리피터가 모든 네트워크 장비에 공통으로 들어가는 기능이 됨.</li>
-</ul>
-<h4 id="허브-Hub"><a href="#허브-Hub" class="headerlink" title="허브(Hub)"></a>허브(Hub)</h4><ul>
-<li>요즘 쓰이는 스위치의 예전 형태</li>
-<li>허브는 스위치와 형태나 사용 방법이 같지만 패킷을 모든 곳에 똑같이 복사해서 보내는 것이 다름(스위치는 목적지에만 데이터를 전송)<br><img src="13.jpg"></li>
-</ul>
-<hr>
-<h2 id="네트워크-계층-구조-데이터-링크-계층"><a href="#네트워크-계층-구조-데이터-링크-계층" class="headerlink" title="네트워크 계층 구조: 데이터 링크 계층"></a>네트워크 계층 구조: 데이터 링크 계층</h2><h3 id="2계층-데이터-링크-계층-Data-Link-Layer"><a href="#2계층-데이터-링크-계층-Data-Link-Layer" class="headerlink" title="2계층: 데이터 링크 계층(Data Link Layer)"></a>2계층: 데이터 링크 계층(Data Link Layer)</h3><ul>
-<li>물리적 링크를 이용하여 신뢰성 있는 데이터를 전송하는 계층</li>
-<li>네트워크를 통해 데이터를 전송할 때 전송로 역할</li>
-<li>데이터 링크 계층은 비트를 프레임이라는 논리적 단위로 구성</li>
-<li>시스템 간에 오류 없이 데이터를 전송하려고 **네트워크 계층에서 받은 데이터 단위(패킷)를 프레임으로 구성하여 물리 계층으로 전송</li>
-</ul>
-<p><img src="15.jpg"><br><img src="16.jpg"></p>
-<ul>
-<li>데이터 링크 계층의 물리적인 주소: 랜카드나 네트워크 장비의 하드웨어 주소(MAC 주소)</li>
-<li>네트워크 카드의 MAC 주소는 윈도우 명령 창에서 ‘ipconfig /all’ 명령을 실행하면 ‘Physical Address’ 에서 확인 가능<ul>
-<li>리눅스 Machine의 경우 ifconfig 명령어</li>
-</ul>
-</li>
-</ul>
-<p><img src="17.jpg"></p>
-<h3 id="MAC-주소"><a href="#MAC-주소" class="headerlink" title="MAC 주소"></a>MAC 주소</h3><ul>
-<li>총 12개의 16진수로 구성</li>
-<li>앞쪽 6개는 네트워크 카드를 만든 회사(OUI: Organizationally Unique Identifier)를 뜻하고, 뒤쪽 6개는 호스트 식별자(Host Identifier)로 각 회사에서 임의로 붙이는 일종의 시리얼</li>
-<li>같은 MAC 주소는 존재하지 않음<br><img src="18.jpg"></li>
-</ul>
-<h3 id="데이터-링크-계층-프로토콜-이더넷"><a href="#데이터-링크-계층-프로토콜-이더넷" class="headerlink" title="데이터 링크 계층 프로토콜: 이더넷"></a>데이터 링크 계층 프로토콜: 이더넷</h3><ul>
-<li>제록스의 PARC(Palo Alto Research Center)에서 1970년대에 개발한 데이터 링크 계층의 프로토콜</li>
-</ul>
-<h3 id="CSMA-CD-Carrier-Sense-Multiple-Access-Collision-Detection"><a href="#CSMA-CD-Carrier-Sense-Multiple-Access-Collision-Detection" class="headerlink" title="CSMA/CD (Carrier Sense Multiple Access/Collision Detection)"></a>CSMA/CD (Carrier Sense Multiple Access/Collision Detection)</h3><ul>
-<li>이더넷의 통신 방식</li>
-<li>이더넷 환경에서 통신을 하고 싶을 때, Carrier Sense를 수행함</li>
-<li>복수개의 디바이스가 동시에 통신을 시작할 때, Collision이 발생하고 이를 Detection 할 수 있음</li>
-<li>Collision Detection이 일어난 후, 랜덤한 시간을 기다리고 다시 데이터를 보냄</li>
-</ul>
-<h3 id="데이터-링크-계층-장비"><a href="#데이터-링크-계층-장비" class="headerlink" title="데이터 링크 계층 장비"></a>데이터 링크 계층 장비</h3><h4 id="브리지-Bridge"><a href="#브리지-Bridge" class="headerlink" title="브리지(Bridge)"></a>브리지(Bridge)</h4><ul>
-<li>랜(LAN)과 랜(LAN)을 연결하는 초기의 네트워크 장치</li>
-<li>데이터 링크 계층에서 통신 선로를 따라서 한 네트워크에서 그 다음 네트워크로 데이터 프레임을 복사하는 역할<br><img src="19.jpg"></li>
-</ul>
-<h4 id="스위치"><a href="#스위치" class="headerlink" title="스위치"></a>스위치</h4><ul>
-<li>기본적으로 데이터 링크 계층에서 작동하는 스위치를 뜻함 (L2 스위치)</li>
-<li>허브의 단점이 Collision Domain의 확대를 해결<ul>
-<li>L2 스위치는 연결된 시스템이 늘어날수록 패킷 간 충돌 때문에 매우 낮은 속도로 동작하는 더미 허브의 문제점을 해결하는 획기적인 방안</li>
-</ul>
-</li>
-<li>과거에는 브릿지를 통해서 Collision Domain을 나누었지만, 현재는 스위치가 인기가 많음.</li>
-</ul>
-<h4 id="스위치의-MAC-주소-테이블"><a href="#스위치의-MAC-주소-테이블" class="headerlink" title="스위치의 MAC 주소 테이블"></a>스위치의 MAC 주소 테이블</h4><ul>
-<li>시스템 간의 원활한 통신을 위해 주소 테이블을 생성하고 관리하는 역할<br><img src="20.jpg"></li>
-</ul>
-<h2 id="네트워크-계층-구조-네트워크-계층"><a href="#네트워크-계층-구조-네트워크-계층" class="headerlink" title="네트워크 계층 구조: 네트워크 계층"></a>네트워크 계층 구조: 네트워크 계층</h2><h3 id="3계층-네트워크-계층-Network-Layer"><a href="#3계층-네트워크-계층-Network-Layer" class="headerlink" title="3계층: 네트워크 계층(Network Layer)"></a>3계층: 네트워크 계층(Network Layer)</h3><ul>
-<li>랜(LAN)을 벗어난 통신을 하기 위해 네트워크 계층에서 IP 주소를 사용</li>
-<li>라우팅 프로토콜을 사용하여 최적의 경로를 선택</li>
-<li>네트워크 계층은 데이터를 패킷 단위로 분할하여 전송한 후 재결합함<br><img src="21.jpg"></li>
-</ul>
-<p><img src="22.jpg"></p>
-</div></article></div></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://www.gravatar.com/avatar/ff42fcc44a23b9ba23053b5a11f39e57?s=128" alt="Jihun Hong"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Jihun Hong</p><p class="is-size-6 is-block">Yuris</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Republic of Korea.</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">포스트</p><a href="/archives"><p class="title">25</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">카테고리</p><a href="/categories"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">태그</p><a href="/tags"><p class="title">8</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/yuris99" target="_blank" rel="noopener">팔로우</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/"><span class="level-start"><span class="level-item">Codeforces</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/Problems/"><span class="level-start"><span class="level-item">Problems</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/"><span class="level-start"><span class="level-item">Lecture Summary</span></span><span class="level-end"><span class="level-item tag">17</span></span></a><ul><li><a class="level is-mobile" href="/categories/Lecture-Summary/Advanced-Computer-Math/"><span class="level-start"><span class="level-item">Advanced Computer Math</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Computer-Data-Network/"><span class="level-start"><span class="level-item">Computer Data Network</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Information-Science/"><span class="level-start"><span class="level-item">Information Science</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-07T02:57:57.000Z">2021-12-07</time></p><p class="title"><a href="/2021/12/07/dataNetwork-network/">[강의정리] 데이터통신과네트워크 Network Layer</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-26T08:21:00.000Z">2021-11-26</time></p><p class="title"><a href="/2021/11/26/dataNetwork-transport/">[강의정리] 데이터통신과네트워크 Transport Layer 기말</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-18T14:28:01.000Z">2021-11-18</time></p><p class="title"><a href="/2021/11/18/algorithm-w8/">algorithm-w8</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-21T07:01:17.000Z">2021-10-21</time></p><p class="title"><a href="/2021/10/21/dataNetwork-Chapter3/">[강의정리] 데이터통신과네트워크 Transport Layer</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-20T22:20:08.000Z">2021-10-21</time></p><p class="title"><a href="/2021/10/21/dataNetwork-Chapter2/">[강의정리] 데이터통신과네트워크 Application Layer</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/12/"><span class="level-start"><span class="level-item">12월 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">11월 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">10월 2021</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/09/"><span class="level-start"><span class="level-item">9월 2021</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/08/"><span class="level-start"><span class="level-item">8월 2021</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Math/"><span class="tag">Computer Math</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-2/"><span class="tag">Div.2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-3/"><span class="tag">Div.3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Information-Science/"><span class="tag">Information Science</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Problem-Solve/"><span class="tag">Problem Solve</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/summary/"><span class="tag">summary</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a><p class="is-size-7"><span>&copy; 2021 Jihun Hong</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/yuris99"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/tags/Computer-Network/page/0/">이전</a></div><div class="pagination-next"><a href="/tags/Computer-Network/page/2/">다음</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/tags/Computer-Network/">1</a></li><li><a class="pagination-link" href="/tags/Computer-Network/page/2/">2</a></li></ul></nav></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://www.gravatar.com/avatar/ff42fcc44a23b9ba23053b5a11f39e57?s=128" alt="Jihun Hong"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Jihun Hong</p><p class="is-size-6 is-block">Yuris</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Republic of Korea.</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">포스트</p><a href="/archives"><p class="title">28</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">카테고리</p><a href="/categories"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">태그</p><a href="/tags"><p class="title">8</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/yuris99" target="_blank" rel="noopener">팔로우</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/"><span class="level-start"><span class="level-item">Codeforces</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/Problems/"><span class="level-start"><span class="level-item">Problems</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/"><span class="level-start"><span class="level-item">Lecture Summary</span></span><span class="level-end"><span class="level-item tag">20</span></span></a><ul><li><a class="level is-mobile" href="/categories/Lecture-Summary/Advanced-Computer-Math/"><span class="level-start"><span class="level-item">Advanced Computer Math</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Computer-Data-Network/"><span class="level-start"><span class="level-item">Computer Data Network</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Information-Science/"><span class="level-start"><span class="level-item">Information Science</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-09T03:25:38.000Z">2021-12-09</time></p><p class="title"><a href="/2021/12/09/dataNetwork-password/">[강의정리] 데이터통신과네트워크 네트워크와 암호</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-08T18:19:08.000Z">2021-12-09</time></p><p class="title"><a href="/2021/12/09/intrust-detection/">[강의정리] 데이터통신과네트워크 침입탐지시스템</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-08T13:24:02.000Z">2021-12-08</time></p><p class="title"><a href="/2021/12/08/dataNetwork-link/">[강의정리] 데이터통신과네트워크 Link Layer</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-07T02:57:57.000Z">2021-12-07</time></p><p class="title"><a href="/2021/12/07/dataNetwork-network/">[강의정리] 데이터통신과네트워크 Network Layer</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-26T08:21:00.000Z">2021-11-26</time></p><p class="title"><a href="/2021/11/26/dataNetwork-transport/">[강의정리] 데이터통신과네트워크 Transport Layer 기말</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/12/"><span class="level-start"><span class="level-item">12월 2021</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">11월 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">10월 2021</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/09/"><span class="level-start"><span class="level-item">9월 2021</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/08/"><span class="level-start"><span class="level-item">8월 2021</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Math/"><span class="tag">Computer Math</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">11</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-2/"><span class="tag">Div.2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-3/"><span class="tag">Div.3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Information-Science/"><span class="tag">Information Science</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Problem-Solve/"><span class="tag">Problem Solve</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/summary/"><span class="tag">summary</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a><p class="is-size-7"><span>&copy; 2021 Jihun Hong</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/yuris99"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
