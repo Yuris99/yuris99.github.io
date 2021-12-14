@@ -1,5 +1,36 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>태그: Algorithm - Yuris</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Jihun Hong"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Jihun Hong"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Yuris"><meta property="og:url" content="https://yuris99.github.io/"><meta property="og:site_name" content="Yuris"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://yuris99.github.io/img/og_image.png"><meta property="article:author" content="Jihun Hong"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://yuris99.github.io"},"headline":"Yuris","image":["https://yuris99.github.io/img/og_image.png"],"author":{"@type":"Person","name":"Jihun Hong"},"publisher":{"@type":"Organization","name":"Yuris","logo":{"@type":"ImageObject","url":"https://yuris99.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Change Themes" href="https://github.com/ppoffice/hexo-theme-icarus">hi!<i class="fab fa-github"></i></a><a class="navbar-item search" title="검색" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">태그</a></li><li class="is-active"><a href="#" aria-current="page">Algorithm</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-12T22:00:12.000Z" title="2021. 12. 13. 오전 7:00:12">2021-12-13</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-12T23:30:24.809Z" title="2021. 12. 13. 오전 8:30:24">2021-12-13</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/13/algorithm-w10/">[강의정리] 알고리즘 Backtracking, Branch-and-Bound</a></h1><div class="content"><hr>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>태그: Algorithm - Yuris</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Jihun Hong"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Jihun Hong"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Yuris"><meta property="og:url" content="https://yuris99.github.io/"><meta property="og:site_name" content="Yuris"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://yuris99.github.io/img/og_image.png"><meta property="article:author" content="Jihun Hong"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://yuris99.github.io"},"headline":"Yuris","image":["https://yuris99.github.io/img/og_image.png"],"author":{"@type":"Person","name":"Jihun Hong"},"publisher":{"@type":"Organization","name":"Yuris","logo":{"@type":"ImageObject","url":"https://yuris99.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Change Themes" href="https://github.com/ppoffice/hexo-theme-icarus">hi!<i class="fab fa-github"></i></a><a class="navbar-item search" title="검색" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-9-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">태그</a></li><li class="is-active"><a href="#" aria-current="page">Algorithm</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-13T04:27:20.000Z" title="2021. 12. 13. 오후 1:27:20">2021-12-13</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-13T04:43:07.989Z" title="2021. 12. 13. 오후 1:43:07">2021-12-13</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/13/algorithm-searching/">[강의정리] 알고리즘 Searching Methods</a></h1><div class="content"><hr>
+<h1 id="Search-Problems"><a href="#Search-Problems" class="headerlink" title="Search Problems"></a>Search Problems</h1><h2 id="consist"><a href="#consist" class="headerlink" title="consist"></a>consist</h2><ul>
+<li>A state space</li>
+<li>A succeossor function </li>
+</ul>
+<h2 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h2><ol>
+<li>Initial state</li>
+</ol>
+<h2 id="Search-Strategies"><a href="#Search-Strategies" class="headerlink" title="Search Strategies"></a>Search Strategies</h2><ol>
+<li>Completeness</li>
+</ol>
+<ul>
+<li>Solution을 찾을 수 있는가</li>
+</ul>
+<ol start="2">
+<li>Optimality</li>
+</ol>
+<ul>
+<li>최소 코스트가 항상 나오는가</li>
+</ul>
+<ol start="3">
+<li><p>Time complexity</p>
+</li>
+<li><p>Space complexity</p>
+</li>
+</ol>
+<h2 id="Uninformed-Search-Strategies"><a href="#Uninformed-Search-Strategies" class="headerlink" title="Uninformed Search Strategies"></a>Uninformed Search Strategies</h2><ul>
+<li>DFS</li>
+<li>BFS</li>
+<li>UNIFORM</li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-12T22:00:12.000Z" title="2021. 12. 13. 오전 7:00:12">2021-12-13</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-13T02:02:13.405Z" title="2021. 12. 13. 오전 11:02:13">2021-12-13</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/13/algorithm-w10/">[강의정리] 알고리즘 Backtracking, Branch-and-Bound</a></h1><div class="content"><hr>
 <h2 id="Depth-First-Search-깊이우선탐색"><a href="#Depth-First-Search-깊이우선탐색" class="headerlink" title="Depth First Search(깊이우선탐색)"></a>Depth First Search(깊이우선탐색)</h2><ul>
 <li>노드의 모든 후손노드를 방문한다. (preorder tree traversal)</li>
 </ul>
@@ -47,10 +78,83 @@
 </li>
 <li><p>toweight이 W초과할때까지</p>
 </li>
-<li><p>남은부분에 마지막일부취하고 profit을 bound에 ㅓㄷ함</p>
+<li><p>남은부분에 마지막일부취하고 profit을 bound에 더함</p>
 </li>
 </ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-12T18:42:46.000Z" title="2021. 12. 13. 오전 3:42:46">2021-12-13</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-12T23:30:24.809Z" title="2021. 12. 13. 오전 8:30:24">2021-12-13</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/13/algorithm-finalSum/">[강의정리] 알고리즘 기말정리</a></h1><div class="content"><hr>
+<h3 id="분석"><a href="#분석" class="headerlink" title="분석"></a>분석</h3><ul>
+<li><p>점검하는 마디의 수: O(2^n)</p>
+</li>
+<li><p>DP보다 좋은가? 확실하지 않음</p>
+<ul>
+<li>DP worst(O(min(2^n, nW)))</li>
+<li>BT worst(O(2^n))  </li>
+</ul>
+</li>
+<li><p>–</p>
+</li>
+</ul>
+<h1 id="Branch-and-Bound-분기한정법"><a href="#Branch-and-Bound-분기한정법" class="headerlink" title="Branch-and-Bound (분기한정법)"></a>Branch-and-Bound (분기한정법)</h1><ul>
+<li><p>backtracking과 비슷</p>
+<ul>
+<li>state space tree 사용</li>
+</ul>
+</li>
+<li><p>Backtracking과 차이점</p>
+<ul>
+<li>트리를 순회하는 방법을 제한하지 않는다.</li>
+<li>최적화 문제에서만 사용</li>
+</ul>
+</li>
+</ul>
+<h2 id="Breadth-First-Search-너비우선탐색"><a href="#Breadth-First-Search-너비우선탐색" class="headerlink" title="Breadth-First Search ( 너비우선탐색)"></a>Breadth-First Search ( 너비우선탐색)</h2><ol>
+<li>뿌리마디 먼저 검색</li>
+<li>다음 수준1에있는 모든 마디를 검색</li>
+<li>다음 수준2에있는 모든 마디를 검색</li>
+<li>…</li>
+</ol>
+<ul>
+<li>Queue 사용</li>
+</ul>
+<h2 id="Best-First-Search-최고우선탐색"><a href="#Best-First-Search-최고우선탐색" class="headerlink" title="Best-First Search (최고우선탐색)"></a>Best-First Search (최고우선탐색)</h2><ul>
+<li>최고의 한계를 가진 마디를 우선으로 선택</li>
+<li>우선순위 큐(Priority QUeue) 사용</li>
+</ul>
+<hr>
+<h1 id="The-Travveling-Salesperson-Problem-TSP"><a href="#The-Travveling-Salesperson-Problem-TSP" class="headerlink" title="The Travveling Salesperson Problem (TSP)"></a>The Travveling Salesperson Problem (TSP)</h1><ul>
+<li><p>외판원의 집이 위치하고 있는 도시에서 출발,<br>다른 도시들을 각각 한번씩만 방문하고, 다시 집으로 돌아오는<br>가장 짧은 일주여행경로(tour)을 결정하는 문제</p>
+</li>
+<li><p>여러개의 징루 여행경로 중에서 길이가 최소가 되는 경로가 최적일주여행경로(optimal tour)가 된다.</p>
+</li>
+<li><p>부르트포스 알고리즘:</p>
+<ul>
+<li>가능한 일주여행경로의 총 개수는 (n-1)!</li>
+</ul>
+</li>
+</ul>
+<h2 id="DP를-이용한-접근방법"><a href="#DP를-이용한-접근방법" class="headerlink" title="DP를 이용한 접근방법"></a>DP를 이용한 접근방법</h2><ul>
+<li><p>V: 모든 정점의 집합</p>
+</li>
+<li><p>A: V의 부분집합</p>
+</li>
+<li><p>D[vi][A]: A에 속한 각 정점을 한번씩만 거쳐서 vi에서 v1로 가는 최단경로 길이</p>
+</li>
+<li><p>D[vi][V-{v1}] = min(W[1][j] + D[vj][V-{v1, vj}])</p>
+</li>
+<li><p>n=40일때 DP로 6년…. O(n^2*s2^n)</p>
+</li>
+</ul>
+<h2 id="분기한정법을-이용한-접근방법"><a href="#분기한정법을-이용한-접근방법" class="headerlink" title="분기한정법을 이용한 접근방법"></a>분기한정법을 이용한 접근방법</h2><h3 id="상태공간트리-구축방법"><a href="#상태공간트리-구축방법" class="headerlink" title="상태공간트리 구축방법"></a>상태공간트리 구축방법</h3><ul>
+<li><p>각 마디는 출발마디로부터 일주여행경로</p>
+</li>
+<li><p>리프노드에있는 일주여행경로를 찾음</p>
+</li>
+<li><p>lowerbound 가져오기</p>
+</li>
+</ul>
+<h3 id="Branch-and-Bound"><a href="#Branch-and-Bound" class="headerlink" title="Branch-and-Bound"></a>Branch-and-Bound</h3><ul>
+<li>Backtracking은 속해있다.</li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-12T18:42:46.000Z" title="2021. 12. 13. 오전 3:42:46">2021-12-13</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-13T05:26:46.133Z" title="2021. 12. 13. 오후 2:26:46">2021-12-13</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/13/algorithm-finalSum/">[강의정리] 알고리즘 기말정리</a></h1><div class="content"><hr>
 <h2 id="Minimum-Spanning-Tree"><a href="#Minimum-Spanning-Tree" class="headerlink" title="Minimum Spanning Tree"></a>Minimum Spanning Tree</h2><ul>
 <li>정의</li>
 <li>알고리즘(Prim’s and Kruskal’s) complexities, 이게 greedy appraoch인가??</li>
@@ -85,8 +189,16 @@
 <li><p>Complexities &amp; 구현방법(data structures?)</p>
 </li>
 </ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-12T14:47:36.000Z" title="2021. 12. 12. 오후 11:47:36">2021-12-12</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-12T15:56:01.986Z" title="2021. 12. 13. 오전 12:56:01">2021-12-13</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/12/algorithm-NUO/">[강의정리] 알고리즘 Nonlinear Unconstrained Optimization</a></h1><div class="content"><hr>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-12T14:47:36.000Z" title="2021. 12. 12. 오후 11:47:36">2021-12-12</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-13T04:22:28.265Z" title="2021. 12. 13. 오후 1:22:28">2021-12-13</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/12/12/algorithm-NUO/">[강의정리] 알고리즘 Nonlinear Unconstrained Optimization</a></h1><div class="content"><hr>
+<h1 id="Nonlinear-Unconstrained-Optimizations"><a href="#Nonlinear-Unconstrained-Optimizations" class="headerlink" title="Nonlinear Unconstrained Optimizations"></a>Nonlinear Unconstrained Optimizations</h1><ul>
+<li>Heuristic: 짐작, 경험등 규칙을 통하여 수행하는 알고리즘</li>
+<li>Optimality: X</li>
+</ul>
 <h2 id="Genetic-Algorithms-GE-유전-알고리즘"><a href="#Genetic-Algorithms-GE-유전-알고리즘" class="headerlink" title="Genetic Algorithms (GE) : 유전 알고리즘"></a>Genetic Algorithms (GE) : 유전 알고리즘</h2><ul>
+<li>N개의 hypotheses(가설), 유지해나가는 알고리즘</li>
+<li>집단 유전학의 개체 진화 원리르 이용하는 문제해결공간 탐색 방법</li>
+</ul>
+<ul>
 <li>In population:<ul>
 <li>Selection: 어떤것을 선택할것인가</li>
 <li>Crossover: Selection한 후보중 어떤식으로 Mixable 할것인가</li>
@@ -94,6 +206,133 @@
 <li>Replacement: 새로운 N개를 대치</li>
 </ul>
 </li>
+</ul>
+<h4 id="유전알고리즘-표현"><a href="#유전알고리즘-표현" class="headerlink" title="유전알고리즘 표현"></a>유전알고리즘 표현</h4><ul>
+<li>순서 기반 표현: 각각의 노드들을 하나하나 index줘서 표현</li>
+</ul>
+<h3 id="선택-연산"><a href="#선택-연산" class="headerlink" title="선택 연산"></a>선택 연산</h3><ul>
+<li>교차에 쓰이는 두개의 부모 해를 고르기 위한 연산<ul>
+<li>우수한 해가 선택될 확률이 높아야함</li>
+</ul>
+</li>
+</ul>
+<h4 id="품질-비례-룰렛휠-선택"><a href="#품질-비례-룰렛휠-선택" class="headerlink" title="품질 비례 룰렛휠 선택"></a>품질 비례 룰렛휠 선택</h4><ul>
+<li>각 해의 품질을 평가한 다음 가장 좋은 해의 적합도가 가장 나쁜 해의 적합도의 k배가 되도록 조절</li>
+<li>fi = (Cw - Ci) + ( Cw - Cb ) / (k - 1), k&gt;1<ul>
+<li>Cw : 해집단 내에서 가장 나쁜 해의 비용</li>
+<li>Cb : 해집단 내에서 가장 좋은 해의 비용</li>
+<li>Ci : 해 i의 비용</li>
+</ul>
+</li>
+</ul>
+<h4 id="순위기반-선택"><a href="#순위기반-선택" class="headerlink" title="순위기반 선택"></a>순위기반 선택</h4><ul>
+<li>해잡단 내에서 해들을 품질 순으로 순위를 매긴 후 다음 가장 좋은 해부터 일차 함수적으로 적합도 배정</li>
+<li>fi = max + ( i - 1 ) X (min - max ) / (n - 1)</li>
+</ul>
+<h3 id="교차-연산"><a href="#교차-연산" class="headerlink" title="교차 연산"></a>교차 연산</h3><ul>
+<li>유전 알고리즘의 대표 연산</li>
+<li>연산 중 가장 다양한 대안 존재</li>
+</ul>
+<h4 id="일점-교차-point-crossover"><a href="#일점-교차-point-crossover" class="headerlink" title="일점 교차(point crossover)"></a>일점 교차(point crossover)</h4><ul>
+<li>길이가 n인 일차원 문자열로된 염색체 상에서 일점 교차로 자르는 방법(총 n-1가지)</li>
+</ul>
+<h4 id="다점-교차-multipoint-crossover"><a href="#다점-교차-multipoint-crossover" class="headerlink" title="다점 교차(multipoint crossover)"></a>다점 교차(multipoint crossover)</h4><ul>
+<li><p>염색체의 길이가 n일 때 k점 교차로 자르는 방법의 총 수는 n-1Ck가지</p>
+</li>
+<li><p>일점교차보다 교란의 정도가 커서 보다 넓은 탐색 공간을 탐색할 수 있음</p>
+</li>
+<li><p>교란이 강하면 수렴성이 떨어져 주어진 시간 예산내에 제대로 수렴하지 않을 가능성</p>
+</li>
+</ul>
+<h4 id="균등-교차-uniform-crossover"><a href="#균등-교차-uniform-crossover" class="headerlink" title="균등 교차(uniform crossover)"></a>균등 교차(uniform crossover)</h4><ul>
+<li>자름선을 이용하지않음</li>
+<li>이론적으로 완벽(모든 재조합 가능성 open)</li>
+<li> 난수를 사용</li>
+</ul>
+<h4 id="사이클-교차-cycle-crossover"><a href="#사이클-교차-cycle-crossover" class="headerlink" title="사이클 교차(cycle crossover)"></a>사이클 교차(cycle crossover)</h4><ul>
+<li>염색체가 순열일경우 사용</li>
+<li>S2[index] = S1</li>
+</ul>
+<h4 id="순서-교차-order-crossover"><a href="#순서-교차-order-crossover" class="headerlink" title="순서 교차(order crossover)"></a>순서 교차(order crossover)</h4><ul>
+<li>염색체가 순열일경우 사용</li>
+<li>한 부분집합을 고정함, 남은부분 부분집합 뒤부터 순서대로</li>
+</ul>
+<h4 id="간선-재조합"><a href="#간선-재조합" class="headerlink" title="간선 재조합"></a>간선 재조합</h4><ul>
+<li><p>TSP를 위해 개발된 교차연산</p>
+</li>
+<li><p>부모해의 특성을 보존, 변이가 적으면 교란이 너무 적음</p>
+</li>
+<li><p>인접도시목록을 이용하여 TRACKING</p>
+</li>
+<li><p>장단점?</p>
+<ul>
+<li>각각이 생각했던 최종 SOLUTION을 유지해나갈 수 있음</li>
+</ul>
+</li>
+</ul>
+<h4 id="BFS를-이용한-유전자-재배치"><a href="#BFS를-이용한-유전자-재배치" class="headerlink" title="BFS를 이용한 유전자 재배치"></a>BFS를 이용한 유전자 재배치</h4><ul>
+<li>유전알고리즘 시작 전에 문제에 깃든 정보(유전자들 간의 관계)를 이용하여 유전자들의 위치를 재배치</li>
+</ul>
+<h3 id="변이-연산"><a href="#변이-연산" class="headerlink" title="변이 연산"></a>변이 연산</h3><ul>
+<li>부모해에 없는 속성을 도입하여 탐색 공간을 넓히려는 목적을 가진 연산</li>
+</ul>
+<h4 id="전형적-변이"><a href="#전형적-변이" class="headerlink" title="전형적 변이"></a>전형적 변이</h4><h4 id="비균등-변이"><a href="#비균등-변이" class="headerlink" title="비균등 변이"></a>비균등 변이</h4><h4 id="수선"><a href="#수선" class="headerlink" title="수선"></a>수선</h4><h4 id="기타-변이-연산"><a href="#기타-변이-연산" class="headerlink" title="기타 변이 연산"></a>기타 변이 연산</h4><h3 id="세대형-유전-알고리즘"><a href="#세대형-유전-알고리즘" class="headerlink" title="세대형 유전 알고리즘"></a>세대형 유전 알고리즘</h3><ul>
+<li><p>해집단 내에서 염색체가 대부분(전체) 대치되므로 대치 연산이 비교전 간단</p>
+</li>
+<li><p>convergence(수렴)이 일어나기 어려움</p>
+</li>
+<li><p>안정 상태 유전 알고리즘은 한 개 또는 소수의 해가 생기는 즉시 해집단 내의 해들과 대치하게 되므로 대치될 대상을 고르는 작업이 매우 중요한 영향을 미침<br>-&gt; 부분적인 최적화가 어렵다</p>
+</li>
+</ul>
+<h3 id="GA가-유용한-문제들"><a href="#GA가-유용한-문제들" class="headerlink" title="GA가 유용한 문제들"></a>GA가 유용한 문제들</h3><ul>
+<li>전통적 방법으로(결정론적인(deterministic)방법으로) 좋은 해를 잘 구하지 못하는 문제</li>
+</ul>
+<h3 id="GA가-소용-없는-문제들"><a href="#GA가-소용-없는-문제들" class="headerlink" title="GA가 소용 없는 문제들"></a>GA가 소용 없는 문제들</h3><ul>
+<li><p>결정론적 알고리즘(deterministic algorithm)으로 쉽게 풀리는 문제</p>
+</li>
+<li><p>결정론적 알고리즘(deterministic algorithm)으로 쉽게 풀리지 않으나 크기가 너무 작은 문제</p>
+<ul>
+<li>5-city TSP 등</li>
+</ul>
+</li>
+<li><p>Solution Space가 가늠할 수 없는 근사치 최대값을 찾기 유용한 알고리즘이다.</p>
+</li>
+</ul>
+<h2 id="GA-장단점"><a href="#GA-장단점" class="headerlink" title="GA 장단점"></a>GA 장단점</h2><h3 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h3><ul>
+<li>빠르다 (메모리 사용량 적음) 엄청 큰 Search space에서.</li>
+<li>쉽다.</li>
+</ul>
+<h3 id="단점"><a href="#단점" class="headerlink" title="단점"></a>단점</h3><ul>
+<li>Randomized - optimal하지 못하고 complete하지 못함</li>
+<li>local maxima에 빠질 수 있음</li>
+</ul>
+<hr>
+<h2 id="Downhill-Simplex-Method"><a href="#Downhill-Simplex-Method" class="headerlink" title="Downhill Simplex Method"></a>Downhill Simplex Method</h2><ul>
+<li>Starting Guess</li>
+<li>N+1 각형을 유지</li>
+</ul>
+<p>N+1개의 꼭짓점 갖는 구조<br>하나 이상의 테스트 포인트 유지</p>
+<h3 id="기본적인-Operation"><a href="#기본적인-Operation" class="headerlink" title="기본적인 Operation"></a>기본적인 Operation</h3><ul>
+<li>4개의 scalar parameters을 지정<ul>
+<li>reflection p</li>
+<li>expansion w</li>
+<li>contraction y</li>
+<li>shrinkage a<ul>
+<li>Standard: p = 1, w = 2, y = 1/2 and a = 1/2</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="진행방식"><a href="#진행방식" class="headerlink" title="진행방식"></a>진행방식</h3><ol>
+<li>Order: 어떤 포인트가 가장 유명한지 판단</li>
+<li>Reflect</li>
+<li>Expand</li>
+<li>Contract</li>
+</ol>
+<ul>
+<li>outside</li>
+<li>inside</li>
 </ul>
 </div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-11-18T14:28:01.000Z" title="2021. 11. 18. 오후 11:28:01">2021-11-18</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-12-12T21:33:42.586Z" title="2021. 12. 13. 오전 6:33:42">2021-12-13</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Lecture-Summary/">Lecture Summary</a><span> / </span><a class="link-muted" href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/18/algorithm-w8/">[강의정리] 알고리즘 Greedy Approach</a></h1><div class="content"><hr>
 <h1 id="Greedy-Algorithm"><a href="#Greedy-Algorithm" class="headerlink" title="Greedy Algorithm"></a>Greedy Algorithm</h1><ul>
@@ -591,89 +830,7 @@
 <h2 id="계산복잡도"><a href="#계산복잡도" class="headerlink" title="계산복잡도"></a>계산복잡도</h2><h3 id="Big-O-표기법"><a href="#Big-O-표기법" class="headerlink" title="Big O 표기법"></a>Big O 표기법</h3><h4 id="정의-점근적-상한-Asymptotic-Upper-Bound"><a href="#정의-점근적-상한-Asymptotic-Upper-Bound" class="headerlink" title="정의 : 점근적 상한(Asymptotic Upper Bound)"></a>정의 : 점근적 상한(Asymptotic Upper Bound)</h4><h3 id="차수의-주요-성질"><a href="#차수의-주요-성질" class="headerlink" title="차수의 주요 성질"></a>차수의 주요 성질</h3><h4 id="복잡도-함수-순서"><a href="#복잡도-함수-순서" class="headerlink" title="복잡도 함수 순서"></a>복잡도 함수 순서</h4><ul>
 <li>lgn, n, nlgn, n<sup>2</sup>, n<sup>j</sup>, n<sup>k</sup>, a<sup>n</sup>, bn<sup>n</sup>, n!<br>k &gt; j &gt; 2, b &gt; a &gt; 1</li>
 </ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-08-24T18:36:01.000Z" title="2021. 8. 25. 오전 3:36:01">2021-08-25</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-09-21T13:21:34.961Z" title="2021. 9. 21. 오후 10:21:34">2021-09-21</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Algorithm/">Algorithm</a><span> / </span><a class="link-muted" href="/categories/Algorithm/Codeforces/">Codeforces</a><span> / </span><a class="link-muted" href="/categories/Algorithm/Codeforces/Problems/">Problems</a></span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/08/25/codeforces-740-A/">Codeforces Round #740 (Div. 2) Problem. A</a></h1><div class="content"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1561/problem/A">https://codeforces.com/contest/1561/problem/A</a><br>Codeforces Round #740 (Div. 2, based on VK Cup 2021 - Final (Engine))</p>
-<h2 id="A-Simply-Strange-Sort"><a href="#A-Simply-Strange-Sort" class="headerlink" title="A. Simply Strange Sort"></a>A. Simply Strange Sort</h2><table>
-<thead>
-<tr>
-<th>TimeLimit</th>
-<th>MemoryLimit</th>
-<th align="center">Difficulty</th>
-<th>Tags</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>2 S</td>
-<td>512 MB</td>
-<td align="center">800</td>
-<td><code>brute force</code> <code>implementation</code> <code>sortings</code></td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>Attr</th>
-<th align="left">SubNo</th>
-<th align="center">SolveTime</th>
-<th align="center">Time</th>
-<th align="center">Memory</th>
-<th align="center">Accept?</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td align="left">126892151</td>
-<td align="center">20min</td>
-<td align="center">31 ms</td>
-<td align="center">3600KB</td>
-<td align="center">Wrong answer</td>
-</tr>
-<tr>
-<td>2</td>
-<td align="left">126900288</td>
-<td align="center">+25min (45m)</td>
-<td align="center">46 ms</td>
-<td align="center">3700KB</td>
-<td align="center">Accepted</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="문제-요약"><a href="#문제-요약" class="headerlink" title="문제 요약"></a>문제 요약</h2><p>조금 이상한 정렬..</p>
-<p>n개의 원소를 가지고있는 배열 a(n개의 원소를 가진 배열, n: 홀수)이 주어진다.<br>배열 a를 오름차순으로 정렬한다.</p>
-<p>알고리즘: f(i)를 수행한다.<br>i는 (1 &lt;= i &lt;= n-1)사이로 수행되고, 각 다음과 같은 알고리즘을 사용한다 :<br>  만약 **a<sub>i</sub> &gt; a<sub>i+1</sub>**이면, **<strong>a<sub>i</sub> 와 a<sub>i+1</sub>의 값을 변경</strong>한다. </p>
-<p>알고리즘은 반복으로 구성되고, 숫자 1부터 시작한다. <strong>i번째 반복일 때, 다음과 같은 알고리즘을 수행</strong>한다</p>
-<ul>
-<li>만약 <code>i</code>가 <strong>홀수</strong>이면: f(1), f(3),…,f(n-2);를 호출</li>
-<li>만약 <code>i</code>가 <strong>짝수</strong>이면: f(2), f(4),…,f(n-1);를 호출</li>
-</ul>
-<p>배열이 오름차순으로 정렬될 때까지 반복한다.</p>
-<p>몇번의 반복을 해야 오름차순으로 정렬되는지 구하는 문제…</p>
-<h3 id="피드백"><a href="#피드백" class="headerlink" title="피드백"></a>피드백</h3><h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>1-st line : Testcase (1 &lt;= t &lt;= 100)<br>각 Testcase 마다<br>  1-st line : 1개의 정수 (1 &lt;= n &lt;= 1000, n: 홀수)<br>  2-nd line : n개의 정수 a<sub>1</sub>, a<sub>2</sub>…,a<sub>n</sub> (1 &lt;= a<sub>i</sub> &lt;= n)</p>
-<p><em>모든 테스트케이스의 n의 합이 999를 넘지 않는다.</em> </p>
-<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>각 Testcase 마다<br>최초로 오름차순으로 정렬이 되는 최소 반복 횟수를 출력</p>
-<p>이미 정렬이 되어있다면, 0을 출력</p>
-<hr>
-<h2 id="문제-풀이"><a href="#문제-풀이" class="headerlink" title="문제 풀이"></a>문제 풀이</h2><p>그냥 무시정으로 반복해도 해결할 수 있는 문제이다. 알고리즘도 다 알려주고 위에서 시키는대로 코드를 짜기만 하면 되는 문제</p>
-<h3 id="Attr-1-Wrong-answer-on-pretest-2"><a href="#Attr-1-Wrong-answer-on-pretest-2" class="headerlink" title="Attr 1 (Wrong answer on pretest 2)"></a>Attr 1 (Wrong answer on pretest 2)</h3><p>처음에는 <code>checkSorted</code>라는 변수를 하나 만들어서 반복문 안에서 변경되는 점이 있으면 <code>checkSorted</code>를 꺼주고, <code>checkSorted</code>가 꺼지지 않으면 정렬이 된것으로 보고 반복문을 탈출시켜주는 코드였다.</p>
-<p>에러가 떴다.</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> TestCase = <span class="number">0</span>;</span><br><span class="line">    cin &gt;&gt; TestCase;</span><br><span class="line">    <span class="keyword">while</span> (TestCase --)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n, arr[<span class="number">1001</span>];</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        arr[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            cin &gt;&gt; arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">            result ++;</span><br><span class="line">            <span class="keyword">int</span> checkSorted = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = (result%<span class="number">2</span>==<span class="number">0</span>?<span class="number">2</span>:<span class="number">1</span>); i &lt; n; i+=<span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(arr[i] &gt; arr[i+<span class="number">1</span>]) &#123;</span><br><span class="line">                    <span class="comment">//cout &lt;&lt; &quot;exchange &quot; &lt;&lt; arr[i] &lt;&lt; &quot; and &quot; &lt;&lt; arr[i+1] &lt;&lt; endl;</span></span><br><span class="line">                    <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">                    arr[i] = arr[i+<span class="number">1</span>];</span><br><span class="line">                    arr[i+<span class="number">1</span>] = temp;</span><br><span class="line">                    checkSorted = <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(arr[i<span class="number">-1</span>] &gt; arr[i]) checkSorted = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(checkSorted) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        cout &lt;&lt; result - <span class="number">1</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="Attr-2-Accepted"><a href="#Attr-2-Accepted" class="headerlink" title="Attr 2 (Accepted!)"></a>Attr 2 (Accepted!)</h3><p>에러가 날만한 테스트 케이스를 하나씩 넣어봤는데 바로 발견할 수 있었다.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 5 4</span><br></pre></td></tr></table></figure>
-<p>위의 케이스를 넣었을때, 확인이 되지않고 0으로 출력이 되었다.<br>바로 해결할 수 있는 문제였는데, 햇갈려서 알고리즘을 다시 짜는 수준까지 가버렸다.</p>
-<p>시간이 더 걸리더라도 그냥 배열이 정렬되었는지 미리 확인을 하는 코드를 추가했는데, 시간제한이 넉넉하다보니 문제없이 잘 작동하였었다.</p>
-<p><del>바로 해결하지 못한 이유는 위 케이스의 답이 2가아닌 1이라 생각하고 삽질하고 있었다…</del></p>
-<hr>
-<h3 id="최종-해설"><a href="#최종-해설" class="headerlink" title="최종 해설"></a>최종 해설</h3><p>위의 해설이랑 똑같이 만들었다.</p>
-<p><code>n</code>을 먼저받고, 문제에서 1부터 시작했기 때문에 햇갈리지 않기 위해서 배열의 0은 0으로 채워주고 1부터 입력값을 받아주었다. (1~`n`)</p>
-<p>그다음 정렬이 될 때까지 무한반복을 해주는데, 먼저 배열이 정렬되었는지 확인을 해준다. 단순히 for문으로 반복하면서 비교를 해주었다.</p>
-<p>정렬이 되지않았으면 <code>result</code>값을 1 더해주고 문제에 나온 알고리즘을 수행해준다.</p>
-<p>이렇게 반복하면 어렵지 않게 답을 구할 수 있다.</p>
-<hr>
-<h2 id="최종-코드"><a href="#최종-코드" class="headerlink" title="최종 코드"></a>최종 코드</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> TestCase = <span class="number">0</span>;</span><br><span class="line">    cin &gt;&gt; TestCase;</span><br><span class="line">    <span class="keyword">while</span> (TestCase --)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n, arr[<span class="number">1001</span>];</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        arr[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            cin &gt;&gt; arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="comment">//check if array sorted</span></span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(i; i &lt; n; i++) </span><br><span class="line">                <span class="keyword">if</span>(arr[i] &gt; arr[i+<span class="number">1</span>])</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span>(i == n) <span class="keyword">break</span>;</span><br><span class="line"> </span><br><span class="line">            result ++;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = (result%<span class="number">2</span>==<span class="number">0</span>?<span class="number">2</span>:<span class="number">1</span>); i &lt; n; i+=<span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(arr[i] &gt; arr[i+<span class="number">1</span>]) &#123;</span><br><span class="line">                    <span class="comment">//cout &lt;&lt; &quot;exchange &quot; &lt;&lt; arr[i] &lt;&lt; &quot; and &quot; &lt;&lt; arr[i+1] &lt;&lt; endl;</span></span><br><span class="line">                    <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">                    arr[i] = arr[i+<span class="number">1</span>];</span><br><span class="line">                    arr[i+<span class="number">1</span>] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        cout &lt;&lt; result &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="느낀점"><a href="#느낀점" class="headerlink" title="느낀점"></a>느낀점</h2><p>알람은 미리미리 맞춰놓자.<br>정신좀 차리자.</p>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/tags/Algorithm/page/0/">이전</a></div><div class="pagination-next"><a href="/tags/Algorithm/page/2/">다음</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/tags/Algorithm/">1</a></li><li><a class="pagination-link" href="/tags/Algorithm/page/2/">2</a></li></ul></nav></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://www.gravatar.com/avatar/ff42fcc44a23b9ba23053b5a11f39e57?s=128" alt="Jihun Hong"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Jihun Hong</p><p class="is-size-6 is-block">Yuris</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Republic of Korea.</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">포스트</p><a href="/archives"><p class="title">31</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">카테고리</p><a href="/categories"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">태그</p><a href="/tags"><p class="title">8</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/yuris99" target="_blank" rel="noopener">팔로우</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/"><span class="level-start"><span class="level-item">Codeforces</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/Problems/"><span class="level-start"><span class="level-item">Problems</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/"><span class="level-start"><span class="level-item">Lecture Summary</span></span><span class="level-end"><span class="level-item tag">24</span></span></a><ul><li><a class="level is-mobile" href="/categories/Lecture-Summary/Advanced-Computer-Math/"><span class="level-start"><span class="level-item">Advanced Computer Math</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Computer-Data-Network/"><span class="level-start"><span class="level-item">Computer Data Network</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Information-Science/"><span class="level-start"><span class="level-item">Information Science</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-12T22:00:12.000Z">2021-12-13</time></p><p class="title"><a href="/2021/12/13/algorithm-w10/">[강의정리] 알고리즘 Backtracking, Branch-and-Bound</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-12T18:42:46.000Z">2021-12-13</time></p><p class="title"><a href="/2021/12/13/algorithm-finalSum/">[강의정리] 알고리즘 기말정리</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-12T14:47:36.000Z">2021-12-12</time></p><p class="title"><a href="/2021/12/12/algorithm-NUO/">[강의정리] 알고리즘 Nonlinear Unconstrained Optimization</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-09T03:25:38.000Z">2021-12-09</time></p><p class="title"><a href="/2021/12/09/dataNetwork-password/">[강의정리] 데이터통신과네트워크 네트워크와 암호</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-08T18:19:08.000Z">2021-12-09</time></p><p class="title"><a href="/2021/12/09/intrust-detection/">[강의정리] 데이터통신과네트워크 침입탐지시스템</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Computer-Data-Network/">Computer Data Network</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/12/"><span class="level-start"><span class="level-item">12월 2021</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">11월 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">10월 2021</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/09/"><span class="level-start"><span class="level-item">9월 2021</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/08/"><span class="level-start"><span class="level-item">8월 2021</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag">14</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Math/"><span class="tag">Computer Math</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">11</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-2/"><span class="tag">Div.2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-3/"><span class="tag">Div.3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Information-Science/"><span class="tag">Information Science</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Problem-Solve/"><span class="tag">Problem Solve</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/summary/"><span class="tag">summary</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a><p class="is-size-7"><span>&copy; 2021 Jihun Hong</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/yuris99"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/tags/Algorithm/page/0/">이전</a></div><div class="pagination-next"><a href="/tags/Algorithm/page/2/">다음</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/tags/Algorithm/">1</a></li><li><a class="pagination-link" href="/tags/Algorithm/page/2/">2</a></li></ul></nav></div><div class="column column-left is-3-tablet is-3-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://www.gravatar.com/avatar/ff42fcc44a23b9ba23053b5a11f39e57?s=128" alt="Jihun Hong"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Jihun Hong</p><p class="is-size-6 is-block">Yuris</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Republic of Korea.</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">포스트</p><a href="/archives"><p class="title">33</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">카테고리</p><a href="/categories"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">태그</p><a href="/tags"><p class="title">8</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/yuris99" target="_blank" rel="noopener">팔로우</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/"><span class="level-start"><span class="level-item">Codeforces</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/Algorithm/Codeforces/Problems/"><span class="level-start"><span class="level-item">Problems</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/"><span class="level-start"><span class="level-item">Lecture Summary</span></span><span class="level-end"><span class="level-item tag">26</span></span></a><ul><li><a class="level is-mobile" href="/categories/Lecture-Summary/Advanced-Computer-Math/"><span class="level-start"><span class="level-item">Advanced Computer Math</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Computer-Data-Network/"><span class="level-start"><span class="level-item">Computer Data Network</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/categories/Lecture-Summary/Information-Science/"><span class="level-start"><span class="level-item">Information Science</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-13T16:20:30.000Z">2021-12-14</time></p><p class="title"><a href="/2021/12/14/matlab-w9/">[강의정리] 고급 컴퓨터수학 W9</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Advanced-Computer-Math/">Advanced Computer Math</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-13T04:27:20.000Z">2021-12-13</time></p><p class="title"><a href="/2021/12/13/algorithm-searching/">[강의정리] 알고리즘 Searching Methods</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-12T22:00:12.000Z">2021-12-13</time></p><p class="title"><a href="/2021/12/13/algorithm-w10/">[강의정리] 알고리즘 Backtracking, Branch-and-Bound</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-12T18:42:46.000Z">2021-12-13</time></p><p class="title"><a href="/2021/12/13/algorithm-finalSum/">[강의정리] 알고리즘 기말정리</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-12-12T14:47:36.000Z">2021-12-12</time></p><p class="title"><a href="/2021/12/12/algorithm-NUO/">[강의정리] 알고리즘 Nonlinear Unconstrained Optimization</a></p><p class="categories"><a href="/categories/Lecture-Summary/">Lecture Summary</a> / <a href="/categories/Lecture-Summary/Algorithm/">Algorithm</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/12/"><span class="level-start"><span class="level-item">12월 2021</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">11월 2021</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">10월 2021</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/09/"><span class="level-start"><span class="level-item">9월 2021</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/08/"><span class="level-start"><span class="level-item">8월 2021</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag">15</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Math/"><span class="tag">Computer Math</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Computer-Network/"><span class="tag">Computer Network</span><span class="tag">11</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-2/"><span class="tag">Div.2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Div-3/"><span class="tag">Div.3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Information-Science/"><span class="tag">Information Science</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Problem-Solve/"><span class="tag">Problem Solve</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/summary/"><span class="tag">summary</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Yuris" height="28"></a><p class="is-size-7"><span>&copy; 2021 Jihun Hong</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/yuris99"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
